@@ -60,6 +60,8 @@ JIT-Model-Loading mandate for LM Studio Server API.
 
 ★★★ **`--plan-from-file` SHIPPED + first ever live G18 firing**: [feature + live-fire](entries/2026-04-28-2130-meta-plan-from-file-shipped-G18-live-fired.md) — gitoma commit `bc18a95`. Path D structural blocker SOLVED for G18. Same pattern unlocks G16 + G19. Reproducible benches now possible.
 
+★★ **G16 + G19 closure attempt — CPG-staleness bug surfaced**: [findings](entries/2026-04-28-2155-G16-G19-attempted-CPG-staleness-bug-found.md) — G16 fires (technically a false-positive that happens to match design intent); G19 structurally unfireable on add-the-clique patches because `worker._cpg_index` is built once and never refreshed. New backlog: incremental CPG rebuild in worker.
+
 ---
 
 ## How this log is written
