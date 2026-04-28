@@ -44,6 +44,22 @@ JIT-Model-Loading mandate for LM Studio Server API.
 
 ---
 
+## 2026-04-28 — generation bench day
+
+5-way bench on `gitoma-bench-generation` (one repo, 5 branches with the same intent but different starting states). Sequential on minimac1, 28 min total. **Structural conclusion**: gitoma is a polish agent, not a generation agent. README intent + spec files + failing-test imports are all invisible to the planner. Only inline TODO markers survive — and the worker still misinterprets them.
+
+| When | Branch | PR | Verdict |
+|------|--------|----|---------|
+| 20:05 | start-empty | [#1](https://github.com/fabriziosalmi/gitoma-bench-generation/pull/1) | boilerplate only — zero src/ — [details](entries/2026-04-28-2005-bench-generation-start-empty.md) |
+| 20:11 | start-skeleton | [#2](https://github.com/fabriziosalmi/gitoma-bench-generation/pull/2) | skeleton dirs ignored — [details](entries/2026-04-28-2011-bench-generation-start-skeleton.md) |
+| 20:17 | start-stub | [#3](https://github.com/fabriziosalmi/gitoma-bench-generation/pull/3) | ★ partial impl — but contradicts spec — [details](entries/2026-04-28-2017-bench-generation-start-stub.md) |
+| 20:22 | start-spec | [#4](https://github.com/fabriziosalmi/gitoma-bench-generation/pull/4) | spec treated as docs — wrap with MkDocs — [details](entries/2026-04-28-2022-bench-generation-start-spec.md) |
+| 20:28 | start-tests-first | [#5](https://github.com/fabriziosalmi/gitoma-bench-generation/pull/5) | ❌ TDD attack vector backfired — cosmetic edit instead of impl — [details](entries/2026-04-28-2028-bench-generation-start-tests-first.md) |
+
+★ **Meta-finding**: [structural conclusion + roadmap](entries/2026-04-28-2034-meta-bench-generation-conclusions.md) — gitoma needs `--plan-from-file` (operator-curated TaskPlan) to be usable for from-zero work. 2-3h feature, single highest-leverage thing to ship.
+
+---
+
 ## How this log is written
 
 For now, entries are written manually by the operator after each
