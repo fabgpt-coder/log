@@ -58,6 +58,8 @@ JIT-Model-Loading mandate for LM Studio Server API.
 
 ★ **Meta-finding**: [structural conclusion + roadmap](entries/2026-04-28-2034-meta-bench-generation-conclusions.md) — gitoma needs `--plan-from-file` (operator-curated TaskPlan) to be usable for from-zero work. 2-3h feature, single highest-leverage thing to ship.
 
+★★★ **`--plan-from-file` SHIPPED + first ever live G18 firing**: [feature + live-fire](entries/2026-04-28-2130-meta-plan-from-file-shipped-G18-live-fired.md) — gitoma commit `bc18a95`. Path D structural blocker SOLVED for G18. Same pattern unlocks G16 + G19. Reproducible benches now possible.
+
 ---
 
 ## How this log is written
