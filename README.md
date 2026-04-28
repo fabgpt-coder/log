@@ -72,6 +72,8 @@ JIT-Model-Loading mandate for LM Studio Server API.
 
 ★★★ **`gitoma scaffold` — third deterministic vertical**: [feature](entries/2026-04-29-0050-scaffold-vertical-third-spider-leg.md) — gitoma commits `83690cc` + `3a8e160`. Wraps occam-trees (1000-scaffold dataset oracle) into a CLI command that materialises canonical project trees via PR. Closes the from-zero generation gap that yesterday's bench-generation finding exposed. Live-fired on 2 fresh repos (MERN × L4 + Django+React × L5), idempotency confirmed. Third spider leg in `gitoma/integrations/`.
 
+★★ **Layer0 v2 — grouped search + pinned + tag_all_of**: [feature](entries/2026-04-29-0117-layer0-grouped-pinned-tracked.md) — gitoma commit `353dfc6` tracks layer0 upstream `f2e70860` (6 agentic memory features). PHASE 1.5 now uses bucketed search (pinned-fact + guard-fail + pr-shipped + plan-shipped — pinned first); PHASE 8 ingests `--plan-from-file` plan-source memories with `pinned=True` so they survive retention. AND filter on tags lands precise queries. Live-validated end-to-end. Spider-web cycle 2 proven: upstream ships → gitoma tracks additively.
+
 ---
 
 ## How this log is written
