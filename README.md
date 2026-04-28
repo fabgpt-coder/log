@@ -68,6 +68,12 @@ JIT-Model-Loading mandate for LM Studio Server API.
 
 ---
 
+## 2026-04-29 — small-hours
+
+★★★ **`gitoma scaffold` — third deterministic vertical**: [feature](entries/2026-04-29-0050-scaffold-vertical-third-spider-leg.md) — gitoma commits `83690cc` + `3a8e160`. Wraps occam-trees (1000-scaffold dataset oracle) into a CLI command that materialises canonical project trees via PR. Closes the from-zero generation gap that yesterday's bench-generation finding exposed. Live-fired on 2 fresh repos (MERN × L4 + Django+React × L5), idempotency confirmed. Third spider leg in `gitoma/integrations/`.
+
+---
+
 ## How this log is written
 
 For now, entries are written manually by the operator after each
