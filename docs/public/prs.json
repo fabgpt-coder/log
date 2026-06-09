@@ -46,7 +46,198 @@
     "top_guards": [],
     "first_day": "2026-04-21",
     "last_day": "2026-06-09",
-    "active_days": 13
+    "active_days": 13,
+    "mttr": {
+      "count": 155,
+      "mean_s": 360598,
+      "median_s": 195,
+      "p90_s": 196137
+    },
+    "daily_series": {
+      "days": 30,
+      "series": [
+        {
+          "date": "2026-05-11",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-12",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-13",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-14",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-15",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-16",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-17",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-18",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-19",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-20",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-21",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-22",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-23",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-24",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-25",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-26",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-27",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-28",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-29",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-30",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-05-31",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-06-01",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-06-02",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-06-03",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-06-04",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-06-05",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-06-06",
+          "opened": 9,
+          "resolved": 8,
+          "median_s": 23
+        },
+        {
+          "date": "2026-06-07",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-06-08",
+          "opened": 34,
+          "resolved": 34,
+          "median_s": 147
+        },
+        {
+          "date": "2026-06-09",
+          "opened": 57,
+          "resolved": 72,
+          "median_s": 146
+        }
+      ]
+    }
   },
   "prs": [
     {

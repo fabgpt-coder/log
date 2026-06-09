@@ -13,17 +13,10 @@ When the agent ships a richer diary entry alongside a PR (model, endpoint, subta
 | PRs total | **194** |
 | State mix | merged 98 · open 39 · closed 57 |
 | Distinct repos | 35 |
-| Distinct models | 0 |
-| Subtasks completed | — |
-| Guard firings | 0 |
-| Diary entries | 0 / 194 |
+| MTTR (median) | **3m** · mean 4.2d · p90 2.3d (over 155 resolved) |
 | Activity span | 13 active days (2026-04-21 → 2026-06-09) |
 
 **Top repos** — `gitoma` (41) · `gitoma-bench-ladder` (37) · `b2v` (29) · `gitoma-bench-blast` (14) · `cf-box` (10)
-
-**Top models** — _no models yet_
-
-**Top guards** — _no guard firings yet_
 
 ---
 

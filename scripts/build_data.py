@@ -323,6 +323,93 @@ def merge_entries(gh_records: list[dict], entries: list[dict]) -> list[dict]:
 # Stats
 # ---------------------------------------------------------------------------
 
+def _resolution_seconds(p: dict) -> int | None:
+    """Seconds between PR open and the PR being merged/closed. None if open
+    or if timestamps are missing / inverted."""
+    end_raw = p.get("merged_at") or p.get("closed_at")
+    start_raw = p.get("date")
+    if not end_raw or not start_raw:
+        return None
+    try:
+        end = dt.datetime.fromisoformat(str(end_raw).replace("Z", "+00:00"))
+        start = dt.datetime.fromisoformat(str(start_raw).replace("Z", "+00:00"))
+    except (ValueError, TypeError):
+        return None
+    delta = (end - start).total_seconds()
+    return int(delta) if delta >= 0 else None
+
+
+def _percentile(sorted_vals: list[int], p: float) -> int:
+    if not sorted_vals:
+        return 0
+    k = max(0, min(len(sorted_vals) - 1, int(round(p * (len(sorted_vals) - 1)))))
+    return sorted_vals[k]
+
+
+def _median(sorted_vals: list[int]) -> int:
+    n = len(sorted_vals)
+    if n == 0:
+        return 0
+    if n % 2 == 1:
+        return sorted_vals[n // 2]
+    return (sorted_vals[n // 2 - 1] + sorted_vals[n // 2]) // 2
+
+
+def compute_mttr(prs: list[dict]) -> dict:
+    secs = sorted(s for s in (_resolution_seconds(p) for p in prs) if s is not None)
+    if not secs:
+        return {"count": 0, "mean_s": None, "median_s": None, "p90_s": None}
+    return {
+        "count": len(secs),
+        "mean_s": sum(secs) // len(secs),
+        "median_s": _median(secs),
+        "p90_s": _percentile(secs, 0.9),
+    }
+
+
+def compute_daily_series(prs: list[dict], days: int = 30) -> dict:
+    """For each of the last `days` calendar days (UTC): how many PRs opened,
+    how many resolved, and median resolution time for the ones resolved."""
+    today = dt.datetime.now(dt.timezone.utc).date()
+    start = today - dt.timedelta(days=days - 1)
+    span = [start + dt.timedelta(days=i) for i in range(days)]
+    opened: dict[dt.date, int] = {d: 0 for d in span}
+    resolved: dict[dt.date, list[int]] = {d: [] for d in span}
+
+    for p in prs:
+        # opened
+        if p.get("date"):
+            try:
+                od = dt.datetime.fromisoformat(p["date"]).date()
+                if od in opened:
+                    opened[od] += 1
+            except ValueError:
+                pass
+        # resolved
+        end_raw = p.get("merged_at") or p.get("closed_at")
+        if end_raw:
+            try:
+                rd = dt.datetime.fromisoformat(str(end_raw).replace("Z", "+00:00")).date()
+            except ValueError:
+                continue
+            if rd in resolved:
+                s = _resolution_seconds(p)
+                if s is not None:
+                    resolved[rd].append(s)
+
+    series = []
+    for d in span:
+        bucket = sorted(resolved[d])
+        median_s = _median(bucket) if bucket else None
+        series.append({
+            "date": d.isoformat(),
+            "opened": opened[d],
+            "resolved": len(bucket),
+            "median_s": median_s,
+        })
+    return {"days": days, "series": series}
+
+
 def compute_stats(prs: list[dict]) -> dict:
     verdicts = Counter(p.get("verdict_class") or "open" for p in prs)
     states = Counter(p.get("state") or "unknown" for p in prs)
@@ -353,6 +440,8 @@ def compute_stats(prs: list[dict]) -> dict:
         "first_day": days[0] if days else None,
         "last_day": days[-1] if days else None,
         "active_days": len(days),
+        "mttr": compute_mttr(prs),
+        "daily_series": compute_daily_series(prs, days=30),
     }
 
 
@@ -360,8 +449,21 @@ def compute_stats(prs: list[dict]) -> dict:
 # Markdown rendering
 # ---------------------------------------------------------------------------
 
+def _human_duration(secs: int | None) -> str:
+    if secs is None:
+        return "—"
+    if secs < 60:
+        return f"{secs}s"
+    if secs < 3600:
+        return f"{round(secs / 60)}m"
+    if secs < 86400:
+        return f"{secs / 3600:.1f}h"
+    return f"{secs / 86400:.1f}d"
+
+
 def render_stats_table(s: dict) -> str:
     st = s["states"]
+    mttr = s.get("mttr", {})
 
     def pill(name: str, label: str) -> str:
         n = st.get(name, 0)
@@ -373,33 +475,32 @@ def render_stats_table(s: dict) -> str:
         if x
     ) or "—"
 
-    subs = f"{s['subs_num']}/{s['subs_den']} ({s['subs_pct']}%)" if s["subs_den"] else "—"
     span = (
         f"{s['active_days']} active days ({s['first_day']} → {s['last_day']})"
         if s["first_day"] else "—"
     )
+
+    rows = [
+        f"| PRs total | **{s['prs_total']}** |",
+        f"| State mix | {state_line} |",
+        f"| Distinct repos | {s['distinct_repos']} |",
+        f"| MTTR (median) | **{_human_duration(mttr.get('median_s'))}** "
+        f"· mean {_human_duration(mttr.get('mean_s'))} "
+        f"· p90 {_human_duration(mttr.get('p90_s'))} "
+        f"(over {mttr.get('count', 0)} resolved) |",
+        f"| Activity span | {span} |",
+    ]
+    if s["diary_count"]:
+        rows.append(f"| Diary entries | {s['diary_count']} / {s['prs_total']} |")
 
     def top(items, label: str) -> str:
         if not items:
             return f"_no {label} yet_"
         return " · ".join(f"`{k}` ({v})" for k, v in items)
 
-    return (
-        "| Metric | Value |\n"
-        "|---|---|\n"
-        f"| PRs total | **{s['prs_total']}** |\n"
-        f"| State mix | {state_line} |\n"
-        f"| Distinct repos | {s['distinct_repos']} |\n"
-        f"| Distinct models | {s['distinct_models']} |\n"
-        f"| Subtasks completed | {subs} |\n"
-        f"| Guard firings | {s['guard_firings']} |\n"
-        f"| Diary entries | {s['diary_count']} / {s['prs_total']} |\n"
-        f"| Activity span | {span} |\n"
-        "\n"
-        f"**Top repos** — {top(s['top_repos'], 'repos')}\n\n"
-        f"**Top models** — {top(s['top_models'], 'models')}\n\n"
-        f"**Top guards** — {top(s['top_guards'], 'guard firings')}\n"
-    )
+    out = "| Metric | Value |\n|---|---|\n" + "\n".join(rows) + "\n\n"
+    out += f"**Top repos** — {top(s['top_repos'], 'repos')}\n"
+    return out
 
 
 def render_readme(stats: dict, today: str) -> str:
@@ -432,6 +533,7 @@ def render_homepage(stats: dict, today: str) -> str:
             return "—"
         return " · ".join(f"`{k}` ({v})" for k, v in items[:5])
 
+    resolved = (st.get("merged", 0) + st.get("closed", 0))
     fm = f"""---
 layout: home
 hero:
@@ -447,11 +549,11 @@ hero:
       link: https://github.com/{LOG_REPO}
 features:
   - title: PRs shipped
-    details: '{s["prs_total"]}'
-  - title: Repos × models
-    details: '{s["distinct_repos"]} repos · {s["distinct_models"]} models'
-  - title: Diary coverage
-    details: '{s["diary_count"]} / {s["prs_total"]} runs documented'
+    details: '{s["prs_total"]} across {s["distinct_repos"]} repos'
+  - title: Merged
+    details: '{st.get("merged", 0)} of {s["prs_total"]}'
+  - title: Resolved
+    details: '{resolved} of {s["prs_total"]} ({"100" if not s["prs_total"] else round(100*resolved/s["prs_total"])}%)'
 ---
 
 """
@@ -463,17 +565,15 @@ features:
     ) or "—"
 
     body = f"""
+## MTTR & throughput
+
+<MetricsPanel />
+
 ## At a glance — {today}
 
 **PR state mix** — {state_line}
 
 **Top repos** — {top(s['top_repos'])}
-
-**Top models** — {top(s['top_models'])}
-
-**Top guards** — {top(s['top_guards'])}
-
-**Subtasks completed** — {subs}
 
 **Activity** — {s['active_days']} active days ({s['first_day'] or '—'} → {s['last_day'] or '—'})
 
