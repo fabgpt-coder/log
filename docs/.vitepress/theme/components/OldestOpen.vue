@@ -35,7 +35,7 @@ function truncate(s: string, n = 80): string {
       </thead>
       <tbody>
         <tr v-for="r in rows" :key="r.repo + '#' + r.pr">
-          <td class="age">{{ ageFromTs(r.ts) }}</td>
+          <td class="age">{{ ageFromTs(r.ts) }} ago</td>
           <td>
             <a :href="r.pr_url" target="_blank" rel="noopener">
               <span class="owner">{{ r.owner }}/</span><code>{{ r.repo_short }}</code>

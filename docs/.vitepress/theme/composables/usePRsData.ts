@@ -6,6 +6,16 @@ const loaded = ref(false)
 const error = ref<string | null>(null)
 let promise: Promise<any> | null = null
 
+// Reactive "now" that ticks every 60s on the client. Anywhere ageFromTs()
+// is called in a template, the template re-renders on each tick — so "3h
+// ago" labels stay fresh on long-open tabs without a page reload.
+const nowTs = ref(typeof window !== 'undefined' ? Math.floor(Date.now() / 1000) : 0)
+if (typeof window !== 'undefined') {
+  setInterval(() => {
+    nowTs.value = Math.floor(Date.now() / 1000)
+  }, 60_000)
+}
+
 export function usePRsData() {
   if (!promise && typeof window !== 'undefined') {
     promise = fetch(withBase('/prs.json'))
@@ -28,7 +38,7 @@ export function usePRsData() {
         return null
       })
   }
-  return { data, loaded, error }
+  return { data, loaded, error, nowTs }
 }
 
 export function humanDuration(s: number | null | undefined): string {
@@ -39,6 +49,8 @@ export function humanDuration(s: number | null | undefined): string {
   return `${(s / 86400).toFixed(1)}d`
 }
 
-export function ageFromTs(ts: number, nowTs: number = Math.floor(Date.now() / 1000)): string {
-  return humanDuration(nowTs - ts)
+// Reads the reactive `nowTs` so any template calling this auto-refreshes
+// when the ticker fires (Vue tracks the read during render).
+export function ageFromTs(ts: number): string {
+  return humanDuration(nowTs.value - ts)
 }
