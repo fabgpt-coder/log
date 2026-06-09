@@ -27,12 +27,13 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     outputs:
       commit_sha: ${{ steps.commit.outputs.sha }}
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-python@v5
@@ -41,7 +42,12 @@ jobs:
 
       - run: pip install --quiet pyyaml==6.*
 
+      # If data generation fails (network / rate-limit / API outage), keep going:
+      # VitePress will rebuild using the previously-committed prs.json, so the
+      # site stays live with stale-but-valid data rather than turning red.
       - name: Generate data + README + homepage
+        id: gen
+        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AGENT_GH_LOGIN: fabgpt-coder
@@ -49,8 +55,13 @@ jobs:
           SITE_URL: https://fabgpt-coder.github.io/log/
         run: python3 scripts/build_data.py
 
+      - name: Warn on generation failure
+        if: steps.gen.outcome == 'failure'
+        run: echo "::warning::build_data.py failed — rebuilding site with previous prs.json"
+
       - name: Commit generated files if changed
         id: commit
+        if: steps.gen.outcome == 'success'
         run: |
           set -euo pipefail
           git config user.name "fabgpt-coder[bot]"
@@ -70,7 +81,7 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-      - run: npm install --no-audit --no-fund
+      - run: npm ci --no-audit --no-fund
 
       - name: Build VitePress
         run: npm run docs:build
@@ -86,6 +97,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

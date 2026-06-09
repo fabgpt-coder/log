@@ -2,20 +2,25 @@
 import { computed } from 'vue'
 import { usePRsData, humanDuration } from '../composables/usePRsData'
 
-const { data, loaded } = usePRsData()
+const { data, loaded, error } = usePRsData()
 
 const pulse = computed(() => data.value?.stats?.pulse || null)
 </script>
 
 <template>
-  <div class="pulse-strip" v-if="loaded && pulse">
+  <div v-if="error" class="data-err">Failed to load stats: {{ error }}</div>
+  <div class="pulse-strip" v-else-if="loaded && pulse">
     <div class="pulse-cell">
       <div class="lbl">Last PR opened</div>
-      <div class="val">{{ humanDuration(pulse.last_pr_age_s) }}<span class="sfx"> ago</span></div>
+      <div class="val">
+        {{ humanDuration(pulse.last_pr_age_s) }}<span class="sfx" v-if="pulse.last_pr_age_s != null"> ago</span>
+      </div>
     </div>
     <div class="pulse-cell">
       <div class="lbl">Last merge</div>
-      <div class="val">{{ humanDuration(pulse.last_merge_age_s) }}<span class="sfx"> ago</span></div>
+      <div class="val">
+        {{ humanDuration(pulse.last_merge_age_s) }}<span class="sfx" v-if="pulse.last_merge_age_s != null"> ago</span>
+      </div>
     </div>
     <div class="pulse-cell">
       <div class="lbl">Open right now</div>
@@ -76,4 +81,5 @@ const pulse = computed(() => data.value?.stats?.pulse || null)
   font-size: 13px;
   padding: 0.5rem 0;
 }
+
 </style>

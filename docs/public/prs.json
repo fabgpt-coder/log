@@ -1,18 +1,24 @@
 {
   "generated_at": "2026-06-09",
   "agent": "fabgpt-coder",
+  "fetch": {
+    "total_count": 228,
+    "collected": 228,
+    "truncated": false,
+    "error": null
+  },
   "stats": {
-    "prs_total": 223,
+    "prs_total": 228,
     "diary_count": 0,
     "states": {
+      "open": 7,
       "closed": 103,
-      "merged": 118,
-      "open": 2
+      "merged": 118
     },
     "verdicts": {
+      "open": 7,
       "closed": 103,
-      "merged": 118,
-      "open": 2
+      "merged": 118
     },
     "subs_num": 0,
     "subs_den": 0,
@@ -232,19 +238,19 @@
         },
         {
           "date": "2026-06-09",
-          "opened": 86,
+          "opened": 91,
           "resolved": 138,
           "median_s": 196
         }
       ]
     },
     "pulse": {
-      "now": "2026-06-09T16:44:39.418309+00:00",
-      "last_pr_at": "2026-06-09T11:54:45+00:00",
-      "last_pr_age_s": 17394,
+      "now": "2026-06-09T17:20:43.442129+00:00",
+      "last_pr_at": "2026-06-09T17:20:06+00:00",
+      "last_pr_age_s": 37,
       "last_merge_at": "2026-06-09T11:56:33+00:00",
-      "last_merge_age_s": 17286,
-      "open_count": 2,
+      "last_merge_age_s": 19450,
+      "open_count": 7,
       "stale_count": 2,
       "stale_threshold_days": 7
     },
@@ -310,6 +316,18 @@
         "last_activity_ts": 1780980113
       },
       {
+        "repo": "fabriziosalmi/brandkit",
+        "repo_short": "brandkit",
+        "owner": "fabriziosalmi",
+        "total": 6,
+        "merged": 4,
+        "closed": 0,
+        "open": 2,
+        "merge_rate": 1.0,
+        "median_mttr_s": 152,
+        "last_activity_ts": 1781025577
+      },
+      {
         "repo": "fabriziosalmi/aidlp",
         "repo_short": "aidlp",
         "owner": "fabriziosalmi",
@@ -320,6 +338,18 @@
         "merge_rate": 0.667,
         "median_mttr_s": 96,
         "last_activity_ts": 1781002069
+      },
+      {
+        "repo": "fabriziosalmi/open-video-watermark",
+        "repo_short": "open-video-watermark",
+        "owner": "fabriziosalmi",
+        "total": 5,
+        "merged": 4,
+        "closed": 0,
+        "open": 1,
+        "merge_rate": 1.0,
+        "median_mttr_s": 142,
+        "last_activity_ts": 1781025583
       },
       {
         "repo": "fabriziosalmi/proximity",
@@ -370,6 +400,30 @@
         "last_activity_ts": 1777401178
       },
       {
+        "repo": "fabriziosalmi/newsgator",
+        "repo_short": "newsgator",
+        "owner": "fabriziosalmi",
+        "total": 4,
+        "merged": 3,
+        "closed": 0,
+        "open": 1,
+        "merge_rate": 1.0,
+        "median_mttr_s": 198,
+        "last_activity_ts": 1781025606
+      },
+      {
+        "repo": "fabriziosalmi/zion",
+        "repo_short": "zion",
+        "owner": "fabriziosalmi",
+        "total": 4,
+        "merged": 1,
+        "closed": 2,
+        "open": 1,
+        "merge_rate": 0.333,
+        "median_mttr_s": 966,
+        "last_activity_ts": 1781025599
+      },
+      {
         "repo": "fabriziosalmi/wildbox",
         "repo_short": "wildbox",
         "owner": "fabriziosalmi",
@@ -380,30 +434,6 @@
         "merge_rate": 0.0,
         "median_mttr_s": 492,
         "last_activity_ts": 1781006085
-      },
-      {
-        "repo": "fabriziosalmi/open-video-watermark",
-        "repo_short": "open-video-watermark",
-        "owner": "fabriziosalmi",
-        "total": 4,
-        "merged": 4,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 142,
-        "last_activity_ts": 1781006035
-      },
-      {
-        "repo": "fabriziosalmi/brandkit",
-        "repo_short": "brandkit",
-        "owner": "fabriziosalmi",
-        "total": 4,
-        "merged": 4,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 152,
-        "last_activity_ts": 1781006007
       },
       {
         "repo": "fabriziosalmi/websites-monitor",
@@ -430,18 +460,6 @@
         "last_activity_ts": 1780985981
       },
       {
-        "repo": "fabriziosalmi/zion",
-        "repo_short": "zion",
-        "owner": "fabriziosalmi",
-        "total": 3,
-        "merged": 1,
-        "closed": 2,
-        "open": 0,
-        "merge_rate": 0.333,
-        "median_mttr_s": 966,
-        "last_activity_ts": 1781002079
-      },
-      {
         "repo": "fabriziosalmi/aimp",
         "repo_short": "aimp",
         "owner": "fabriziosalmi",
@@ -452,18 +470,6 @@
         "merge_rate": 1.0,
         "median_mttr_s": 91,
         "last_activity_ts": 1780992670
-      },
-      {
-        "repo": "fabriziosalmi/newsgator",
-        "repo_short": "newsgator",
-        "owner": "fabriziosalmi",
-        "total": 3,
-        "merged": 3,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 198,
-        "last_activity_ts": 1780980129
       },
       {
         "repo": "fabriziosalmi/gitoma-bench-supply-chain",
@@ -762,6 +768,56 @@
         "title": "\ud83e\udd16 [Gitoma] Improve gitoma-bench-blast: 2 quality improvements",
         "date": "2026-04-30T18:54:55+00:00",
         "ts": 1777575295
+      },
+      {
+        "repo": "fabriziosalmi/brandkit",
+        "repo_short": "brandkit",
+        "owner": "fabriziosalmi",
+        "pr": 15,
+        "pr_url": "https://github.com/fabriziosalmi/brandkit/pull/15",
+        "title": "Bump urllib3 to 2.7.0 (high)",
+        "date": "2026-06-09T17:19:31+00:00",
+        "ts": 1781025571
+      },
+      {
+        "repo": "fabriziosalmi/brandkit",
+        "repo_short": "brandkit",
+        "owner": "fabriziosalmi",
+        "pr": 16,
+        "pr_url": "https://github.com/fabriziosalmi/brandkit/pull/16",
+        "title": "Bump Werkzeug to 3.1.6 (medium)",
+        "date": "2026-06-09T17:19:37+00:00",
+        "ts": 1781025577
+      },
+      {
+        "repo": "fabriziosalmi/open-video-watermark",
+        "repo_short": "open-video-watermark",
+        "owner": "fabriziosalmi",
+        "pr": 14,
+        "pr_url": "https://github.com/fabriziosalmi/open-video-watermark/pull/14",
+        "title": "Bump black to 26.3.1 (high)",
+        "date": "2026-06-09T17:19:43+00:00",
+        "ts": 1781025583
+      },
+      {
+        "repo": "fabriziosalmi/zion",
+        "repo_short": "zion",
+        "owner": "fabriziosalmi",
+        "pr": 185,
+        "pr_url": "https://github.com/fabriziosalmi/zion/pull/185",
+        "title": "Bump 2 dependencies in Cargo.toml (high)",
+        "date": "2026-06-09T17:19:59+00:00",
+        "ts": 1781025599
+      },
+      {
+        "repo": "fabriziosalmi/newsgator",
+        "repo_short": "newsgator",
+        "owner": "fabriziosalmi",
+        "pr": 11,
+        "pr_url": "https://github.com/fabriziosalmi/newsgator/pull/11",
+        "title": "Add explicit dependency version constraints",
+        "date": "2026-06-09T17:20:06+00:00",
+        "ts": 1781025606
       }
     ],
     "title_buckets": [
@@ -775,11 +831,11 @@
       ],
       [
         "Bump",
-        42
+        46
       ],
       [
         "Add",
-        14
+        15
       ],
       [
         "Prevent",
@@ -800,6 +856,151 @@
     ]
   },
   "prs": [
+    {
+      "date": "2026-06-09T17:20:06+00:00",
+      "ts": 1781025606,
+      "repo": "fabriziosalmi/newsgator",
+      "owner": "fabriziosalmi",
+      "repo_short": "newsgator",
+      "pr": 11,
+      "pr_url": "https://github.com/fabriziosalmi/newsgator/pull/11",
+      "title": "Add explicit dependency version constraints",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-06-09T17:19:59+00:00",
+      "ts": 1781025599,
+      "repo": "fabriziosalmi/zion",
+      "owner": "fabriziosalmi",
+      "repo_short": "zion",
+      "pr": 185,
+      "pr_url": "https://github.com/fabriziosalmi/zion/pull/185",
+      "title": "Bump 2 dependencies in Cargo.toml (high)",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-06-09T17:19:43+00:00",
+      "ts": 1781025583,
+      "repo": "fabriziosalmi/open-video-watermark",
+      "owner": "fabriziosalmi",
+      "repo_short": "open-video-watermark",
+      "pr": 14,
+      "pr_url": "https://github.com/fabriziosalmi/open-video-watermark/pull/14",
+      "title": "Bump black to 26.3.1 (high)",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-06-09T17:19:37+00:00",
+      "ts": 1781025577,
+      "repo": "fabriziosalmi/brandkit",
+      "owner": "fabriziosalmi",
+      "repo_short": "brandkit",
+      "pr": 16,
+      "pr_url": "https://github.com/fabriziosalmi/brandkit/pull/16",
+      "title": "Bump Werkzeug to 3.1.6 (medium)",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-06-09T17:19:31+00:00",
+      "ts": 1781025571,
+      "repo": "fabriziosalmi/brandkit",
+      "owner": "fabriziosalmi",
+      "repo_short": "brandkit",
+      "pr": 15,
+      "pr_url": "https://github.com/fabriziosalmi/brandkit/pull/15",
+      "title": "Bump urllib3 to 2.7.0 (high)",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
     {
       "date": "2026-06-09T11:54:45+00:00",
       "ts": 1781006085,

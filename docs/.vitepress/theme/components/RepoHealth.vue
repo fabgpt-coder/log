@@ -15,7 +15,7 @@ type Row = {
   last_activity_ts: number
 }
 
-const { data, loaded } = usePRsData()
+const { data, loaded, error } = usePRsData()
 const rows = computed<Row[]>(() => data.value?.stats?.repo_health || [])
 
 type Key = keyof Row
@@ -50,6 +50,11 @@ function arrow(k: Key) {
   return sortDir.value === 'asc' ? '↑' : '↓'
 }
 
+function ariaSort(k: Key): 'ascending' | 'descending' | 'none' {
+  if (sortKey.value !== k) return 'none'
+  return sortDir.value === 'asc' ? 'ascending' : 'descending'
+}
+
 function fmtPct(v: number | null): string {
   if (v == null) return '—'
   return Math.round(v * 100) + '%'
@@ -68,18 +73,44 @@ function mergeBarClass(v: number | null): string {
 </script>
 
 <template>
-  <div class="repo-health-wrap" v-if="loaded && sorted.length">
+  <div v-if="error" class="data-err">Failed to load stats: {{ error }}</div>
+  <div class="repo-health-wrap" v-else-if="loaded && sorted.length">
     <table class="repo-health">
       <thead>
         <tr>
-          <th @click="setSort('repo_short')">Repo <span class="arrow">{{ arrow('repo_short') }}</span></th>
-          <th @click="setSort('total')" class="num">PRs <span class="arrow">{{ arrow('total') }}</span></th>
-          <th @click="setSort('merged')" class="num">Merged <span class="arrow">{{ arrow('merged') }}</span></th>
-          <th @click="setSort('closed')" class="num">Closed <span class="arrow">{{ arrow('closed') }}</span></th>
-          <th @click="setSort('open')" class="num">Open <span class="arrow">{{ arrow('open') }}</span></th>
-          <th @click="setSort('merge_rate')">Merge rate <span class="arrow">{{ arrow('merge_rate') }}</span></th>
-          <th @click="setSort('median_mttr_s')">Median MTTR <span class="arrow">{{ arrow('median_mttr_s') }}</span></th>
-          <th @click="setSort('last_activity_ts')">Last activity <span class="arrow">{{ arrow('last_activity_ts') }}</span></th>
+          <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('repo_short')"
+              @click="setSort('repo_short')" @keydown.enter.prevent="setSort('repo_short')" @keydown.space.prevent="setSort('repo_short')">
+            Repo <span class="arrow">{{ arrow('repo_short') }}</span>
+          </th>
+          <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('total')" class="num"
+              @click="setSort('total')" @keydown.enter.prevent="setSort('total')" @keydown.space.prevent="setSort('total')">
+            PRs <span class="arrow">{{ arrow('total') }}</span>
+          </th>
+          <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('merged')" class="num"
+              @click="setSort('merged')" @keydown.enter.prevent="setSort('merged')" @keydown.space.prevent="setSort('merged')">
+            Merged <span class="arrow">{{ arrow('merged') }}</span>
+          </th>
+          <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('closed')" class="num"
+              @click="setSort('closed')" @keydown.enter.prevent="setSort('closed')" @keydown.space.prevent="setSort('closed')">
+            Closed <span class="arrow">{{ arrow('closed') }}</span>
+          </th>
+          <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('open')" class="num"
+              @click="setSort('open')" @keydown.enter.prevent="setSort('open')" @keydown.space.prevent="setSort('open')">
+            Open <span class="arrow">{{ arrow('open') }}</span>
+          </th>
+          <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('merge_rate')"
+              @click="setSort('merge_rate')" @keydown.enter.prevent="setSort('merge_rate')" @keydown.space.prevent="setSort('merge_rate')"
+              title="merged / (merged + closed) — acceptance rate among resolved PRs">
+            Accept % <span class="arrow">{{ arrow('merge_rate') }}</span>
+          </th>
+          <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('median_mttr_s')"
+              @click="setSort('median_mttr_s')" @keydown.enter.prevent="setSort('median_mttr_s')" @keydown.space.prevent="setSort('median_mttr_s')">
+            Median MTTR <span class="arrow">{{ arrow('median_mttr_s') }}</span>
+          </th>
+          <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('last_activity_ts')"
+              @click="setSort('last_activity_ts')" @keydown.enter.prevent="setSort('last_activity_ts')" @keydown.space.prevent="setSort('last_activity_ts')">
+            Last activity <span class="arrow">{{ arrow('last_activity_ts') }}</span>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -115,6 +146,13 @@ function mergeBarClass(v: number | null): string {
 .repo-health-wrap {
   margin: 1rem 0 2rem;
   font-size: 13px;
+  overflow-x: auto;
+}
+
+.repo-health th:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: -2px;
+  border-radius: 4px;
 }
 
 .repo-health {

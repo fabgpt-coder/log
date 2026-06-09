@@ -4,9 +4,26 @@
   --vp-c-brand-3: #4ab84a;
 }
 
+.data-err {
+  color: #e86464;
+  font-size: 13px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(232, 100, 100, 0.4);
+  border-radius: 6px;
+  background: rgba(232, 100, 100, 0.08);
+  margin: 0.5rem 0;
+}
+
 .pr-table-wrap {
   margin: 1.25rem 0;
   font-size: 14px;
+  overflow-x: auto;  /* prevent horizontal page scroll on narrow viewports */
+}
+
+.pr-table th:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: -2px;
+  border-radius: 4px;
 }
 
 .pr-table-controls {

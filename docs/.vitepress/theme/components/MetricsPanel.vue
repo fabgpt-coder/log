@@ -9,7 +9,7 @@ type DailyPoint = {
   median_s: number | null
 }
 
-const { data, loaded } = usePRsData()
+const { data, loaded, error } = usePRsData()
 const mttr = computed(() => data.value?.stats?.mttr || { count: 0, mean_s: null, median_s: null, p90_s: null })
 const series = computed<DailyPoint[]>(() => data.value?.stats?.daily_series?.series || [])
 
@@ -102,7 +102,8 @@ const hovered = computed(() => hover.value != null ? series.value[hover.value] :
 </script>
 
 <template>
-  <div class="metrics-panel" v-if="loaded">
+  <div v-if="error" class="data-err">Failed to load stats: {{ error }}</div>
+  <div class="metrics-panel" v-else-if="loaded">
     <div class="mttr-cards">
       <div class="card">
         <div class="card-label">Median MTTR</div>
@@ -160,12 +161,13 @@ const hovered = computed(() => hover.value != null ? series.value[hover.value] :
         <!-- Line: median MTTR per day -->
         <path :d="linePath" class="line" fill="none" />
         <g class="dots">
-          <circle
-            v-for="(p, i) in series" :key="'d' + p.date"
-            v-if="p.median_s != null"
-            :cx="xFor(i)" :cy="yForMedian(p.median_s)"
-            r="2.5"
-          />
+          <template v-for="(p, i) in series" :key="'d' + p.date">
+            <circle
+              v-if="p.median_s != null"
+              :cx="xFor(i)" :cy="yForMedian(p.median_s)"
+              r="2.5"
+            />
+          </template>
         </g>
 
         <!-- X ticks -->

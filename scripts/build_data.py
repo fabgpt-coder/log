@@ -57,12 +57,28 @@ GH_TOKEN = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
 # GitHub fetch
 # ---------------------------------------------------------------------------
 
-def fetch_prs_from_github(author: str) -> list[dict]:
-    """Search every PR ever opened by `author`. Public repos only."""
+def fetch_prs_from_github(author: str) -> tuple[list[dict], dict]:
+    """Search every PR ever opened by `author`. Public repos only.
+
+    Returns (items, meta). meta has:
+      total_count   — GitHub's authoritative count (None if first call failed)
+      collected     — how many we actually fetched
+      truncated     — True if collected < total_count (hit the 1000-result cap
+                      or a 422 from the search API)
+      error         — string if anything failed, else None
+    """
     items: list[dict] = []
     per_page = 100
     page = 1
-    while True:
+    total_count: int | None = None
+    truncated = False
+    error: str | None = None
+
+    # GitHub Search API hard-caps at 1000 results regardless of pagination.
+    # Pages 11+ return HTTP 422. We stop at page 10 cleanly.
+    MAX_PAGES = 10
+
+    while page <= MAX_PAGES:
         params = urllib.parse.urlencode(
             {
                 "q": f"type:pr author:{author} is:public",
@@ -85,20 +101,35 @@ def fetch_prs_from_github(author: str) -> list[dict]:
             with urllib.request.urlopen(req, timeout=30) as resp:
                 payload = json.loads(resp.read())
         except urllib.error.HTTPError as e:
+            if e.code == 422 and page > 1:
+                # We've exceeded the 1000-result cap — page > 10 with per_page=100.
+                truncated = True
+                break
             body = e.read().decode("utf-8", errors="replace")[:400]
-            print(f"error: GitHub search failed: {e.code} {e.reason} — {body}",
-                  file=sys.stderr)
+            error = f"{e.code} {e.reason} — {body}"
+            print(f"error: GitHub search failed: {error}", file=sys.stderr)
             raise
+        if total_count is None:
+            total_count = payload.get("total_count")
         batch = payload.get("items", [])
         items.extend(batch)
         if len(batch) < per_page:
             break
         page += 1
-        if page > 20:  # 2000 PRs cap, well above any realistic backlog
-            print(f"warn: stopping pagination at page {page} (cap reached)",
-                  file=sys.stderr)
-            break
-    return items
+
+    if total_count is not None and len(items) < total_count:
+        truncated = True
+
+    meta = {
+        "total_count": total_count,
+        "collected": len(items),
+        "truncated": truncated,
+        "error": error,
+    }
+    if truncated:
+        print(f"warn: GitHub returned {total_count} but we only collected "
+              f"{len(items)} (search API caps at 1000)", file=sys.stderr)
+    return items, meta
 
 
 def normalize_gh_item(item: dict) -> dict | None:
@@ -435,7 +466,7 @@ def classify_title(title: str) -> str:
     head = low.split(":", 1)[0].strip()
     if head in _CONVENTIONAL:
         return head.capitalize()
-    first = re.split(r"[\s:\(\[]", low, 1)[0]
+    first = re.split(r"[\s:\(\[]", low, maxsplit=1)[0]
     if first in _ACTION_VERBS:
         return first.capitalize()
     return "Other"
@@ -761,13 +792,13 @@ features:
 
 def main() -> int:
     print(f"fetching PRs by author '{AGENT_LOGIN}'…", file=sys.stderr)
-    raw = fetch_prs_from_github(AGENT_LOGIN)
+    raw, fetch_meta = fetch_prs_from_github(AGENT_LOGIN)
     gh_records: list[dict] = []
     for item in raw:
         rec = normalize_gh_item(item)
         if rec is not None:
             gh_records.append(rec)
-    print(f"  got {len(gh_records)} PRs from GitHub", file=sys.stderr)
+    print(f"  got {len(gh_records)} PRs from GitHub (total_count={fetch_meta.get('total_count')}, truncated={fetch_meta.get('truncated')})", file=sys.stderr)
 
     if not ENTRIES_DIR.exists():
         ENTRIES_DIR.mkdir(parents=True)
@@ -787,7 +818,7 @@ def main() -> int:
     DATA_OUT.parent.mkdir(parents=True, exist_ok=True)
     DATA_OUT.write_text(
         json.dumps({"generated_at": today, "agent": AGENT_LOGIN,
-                    "stats": stats, "prs": merged}, indent=2),
+                    "fetch": fetch_meta, "stats": stats, "prs": merged}, indent=2),
         encoding="utf-8",
     )
 

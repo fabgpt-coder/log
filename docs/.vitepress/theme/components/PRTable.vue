@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { withBase } from 'vitepress'
+import { ref, computed, watch } from 'vue'
+import { usePRsData } from '../composables/usePRsData'
 
 type PR = {
   date: string
@@ -32,15 +32,8 @@ type PR = {
   source: string
 }
 
-type Payload = {
-  generated_at: string
-  stats: Record<string, any>
-  prs: PR[]
-}
-
-const all = ref<PR[]>([])
-const generatedAt = ref('')
-const loaded = ref(false)
+const { data, loaded, error } = usePRsData()
+const all = computed<PR[]>(() => (data.value?.prs || []) as PR[])
 
 const q = ref('')
 const repoFilter = ref('')
@@ -52,18 +45,9 @@ const sortDir = ref<'asc' | 'desc'>('desc')
 const pageSize = ref(50)
 const page = ref(1)
 
-onMounted(async () => {
-  try {
-    const res = await fetch(withBase('/prs.json'))
-    const j: Payload = await res.json()
-    all.value = j.prs || []
-    generatedAt.value = j.generated_at || ''
-  } catch (e) {
-    console.error('failed to load prs.json', e)
-  } finally {
-    loaded.value = true
-  }
-})
+// Reset to page 1 whenever any filter changes — otherwise a filter that
+// shrinks results below the current page leaves the table empty.
+watch([q, repoFilter, stateFilter], () => { page.value = 1 })
 
 const repoOptions = computed(() =>
   Array.from(new Set(all.value.map(p => p.repo_short).filter(Boolean))).sort()
@@ -125,6 +109,11 @@ function arrow(k: keyof PR | 'subs_pct') {
   return sortDir.value === 'asc' ? '↑' : '↓'
 }
 
+function ariaSort(k: keyof PR | 'subs_pct'): 'ascending' | 'descending' | 'none' {
+  if (sortKey.value !== k) return 'none'
+  return sortDir.value === 'asc' ? 'ascending' : 'descending'
+}
+
 function reset() {
   q.value = ''
   repoFilter.value = ''
@@ -169,18 +158,19 @@ function truncate(s: string, n = 80) {
 </script>
 
 <template>
-  <div class="pr-table-wrap">
+  <div v-if="error" class="data-err">Failed to load PRs: {{ error }}</div>
+  <div class="pr-table-wrap" v-else>
     <div class="pr-table-controls">
       <input
         v-model="q"
         type="search"
         placeholder="Search title, repo, PR#…"
       />
-      <select v-model="repoFilter" @change="page = 1">
+      <select v-model="repoFilter">
         <option value="">All repos</option>
         <option v-for="r in repoOptions" :key="r" :value="r">{{ r }}</option>
       </select>
-      <select v-model="stateFilter" @change="page = 1">
+      <select v-model="stateFilter">
         <option value="">All states</option>
         <option v-for="s in stateOptions" :key="s" :value="s">{{ s }}</option>
       </select>
@@ -191,14 +181,26 @@ function truncate(s: string, n = 80) {
     <table class="pr-table" v-if="loaded && sorted.length > 0">
       <thead>
         <tr>
-          <th @click="setSort('ts')">When <span class="arrow">{{ arrow('ts') }}</span></th>
-          <th @click="setSort('repo_short')">Repo · PR <span class="arrow">{{ arrow('repo_short') }}</span></th>
-          <th @click="setSort('title')">Title <span class="arrow">{{ arrow('title') }}</span></th>
-          <th @click="setSort('state')">State <span class="arrow">{{ arrow('state') }}</span></th>
+          <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('ts')"
+              @click="setSort('ts')" @keydown.enter.prevent="setSort('ts')" @keydown.space.prevent="setSort('ts')">
+            When <span class="arrow">{{ arrow('ts') }}</span>
+          </th>
+          <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('repo_short')"
+              @click="setSort('repo_short')" @keydown.enter.prevent="setSort('repo_short')" @keydown.space.prevent="setSort('repo_short')">
+            Repo · PR <span class="arrow">{{ arrow('repo_short') }}</span>
+          </th>
+          <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('title')"
+              @click="setSort('title')" @keydown.enter.prevent="setSort('title')" @keydown.space.prevent="setSort('title')">
+            Title <span class="arrow">{{ arrow('title') }}</span>
+          </th>
+          <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('state')"
+              @click="setSort('state')" @keydown.enter.prevent="setSort('state')" @keydown.space.prevent="setSort('state')">
+            State <span class="arrow">{{ arrow('state') }}</span>
+          </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="p in pageRows" :key="p.repo + '#' + p.pr">
+        <tr v-for="p in pageRows" :key="p.repo + '#' + (p.pr ?? '∅') + '#' + p.ts">
           <td class="when">{{ fmtDate(p.date) }}</td>
           <td>
             <span class="repo">{{ p.owner }}/</span><code>{{ p.repo_short }}</code>

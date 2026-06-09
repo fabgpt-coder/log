@@ -13,7 +13,7 @@ type Row = {
   ts: number
 }
 
-const { data, loaded } = usePRsData()
+const { data, loaded, error } = usePRsData()
 const rows = computed<Row[]>(() => data.value?.stats?.oldest_open || [])
 
 function truncate(s: string, n = 80): string {
@@ -23,7 +23,8 @@ function truncate(s: string, n = 80): string {
 </script>
 
 <template>
-  <div class="oldest-wrap" v-if="loaded && rows.length">
+  <div v-if="error" class="data-err">Failed to load stats: {{ error }}</div>
+  <div class="oldest-wrap" v-else-if="loaded && rows.length">
     <table class="oldest">
       <thead>
         <tr>

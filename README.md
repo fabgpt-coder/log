@@ -6,14 +6,14 @@ Public timeline of every pull request shipped by **[`fabgpt-coder`](https://gith
 
 ## Pulse — 2026-06-09
 
-last PR **4.8h** ago · last merge **4.8h** ago · **2** open · **2** stale (>7d)
+last PR **37s** ago · last merge **5.4h** ago · **7** open · **2** stale (>7d)
 
 ## At a glance
 
 | Metric | Value |
 |---|---|
-| PRs total | **223** |
-| State mix | merged 118 · open 2 · closed 103 |
+| PRs total | **228** |
+| State mix | merged 118 · open 7 · closed 103 |
 | Distinct repos | 41 |
 | MTTR (median) | **5m** · mean 10.9d · p90 47.3d (over 221 resolved) |
 | Activity span | 13 active days (2026-04-21 → 2026-06-09) |

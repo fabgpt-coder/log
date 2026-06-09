@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { usePRsData } from '../composables/usePRsData'
 
-const { data, loaded } = usePRsData()
+const { data, loaded, error } = usePRsData()
 
 const buckets = computed<[string, number][]>(() =>
   (data.value?.stats?.title_buckets || []) as [string, number][]
@@ -17,7 +17,8 @@ function pct(n: number): number {
 </script>
 
 <template>
-  <div class="bucket-wrap" v-if="loaded && buckets.length">
+  <div v-if="error" class="data-err">Failed to load stats: {{ error }}</div>
+  <div class="bucket-wrap" v-else-if="loaded && buckets.length">
     <ul class="bucket-list">
       <li v-for="[name, n] in buckets" :key="name">
         <div class="bucket-row">
