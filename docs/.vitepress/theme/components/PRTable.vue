@@ -44,10 +44,7 @@ const loaded = ref(false)
 
 const q = ref('')
 const repoFilter = ref('')
-const modelFilter = ref('')
 const stateFilter = ref('')
-const verdictFilter = ref('')
-const diaryOnly = ref(false)
 
 const sortKey = ref<keyof PR | 'subs_pct'>('ts')
 const sortDir = ref<'asc' | 'desc'>('desc')
@@ -71,35 +68,19 @@ onMounted(async () => {
 const repoOptions = computed(() =>
   Array.from(new Set(all.value.map(p => p.repo_short).filter(Boolean))).sort()
 )
-const modelOptions = computed(() =>
-  Array.from(new Set(all.value.map(p => p.model).filter(Boolean))).sort()
-)
 const stateOptions = computed(() =>
   Array.from(new Set(all.value.map(p => p.state).filter(Boolean))).sort()
-)
-const verdictOptions = computed(() =>
-  Array.from(new Set(all.value.map(p => p.verdict_class).filter(Boolean))).sort()
 )
 
 const filtered = computed(() => {
   const ql = q.value.trim().toLowerCase()
   return all.value.filter(p => {
     if (repoFilter.value && p.repo_short !== repoFilter.value) return false
-    if (modelFilter.value && p.model !== modelFilter.value) return false
     if (stateFilter.value && p.state !== stateFilter.value) return false
-    if (verdictFilter.value && p.verdict_class !== verdictFilter.value) return false
-    if (diaryOnly.value && !p.entry_path) return false
     if (!ql) return true
     return (
       p.repo.toLowerCase().includes(ql) ||
       (p.title || '').toLowerCase().includes(ql) ||
-      p.model.toLowerCase().includes(ql) ||
-      p.model_full.toLowerCase().includes(ql) ||
-      p.verdict.toLowerCase().includes(ql) ||
-      p.branch.toLowerCase().includes(ql) ||
-      p.endpoint.toLowerCase().includes(ql) ||
-      p.plan_source.toLowerCase().includes(ql) ||
-      p.guards.some(g => g.toLowerCase().includes(ql)) ||
       (p.pr !== null && String(p.pr).includes(ql))
     )
   })
@@ -147,10 +128,7 @@ function arrow(k: keyof PR | 'subs_pct') {
 function reset() {
   q.value = ''
   repoFilter.value = ''
-  modelFilter.value = ''
   stateFilter.value = ''
-  verdictFilter.value = ''
-  diaryOnly.value = false
   sortKey.value = 'ts'
   sortDir.value = 'desc'
   page.value = 1
@@ -159,11 +137,6 @@ function reset() {
 function fmtDate(iso: string) {
   if (!iso) return '—'
   return iso.slice(0, 16).replace('T', ' ')
-}
-
-function fmtSubs(p: PR) {
-  if (!p.subs_den) return '—'
-  return `${p.subs_num}/${p.subs_den}`
 }
 
 function verdictSymbol(cls: string) {
@@ -201,7 +174,7 @@ function truncate(s: string, n = 80) {
       <input
         v-model="q"
         type="search"
-        placeholder="Search title, repo, model, branch, guard, PR#…"
+        placeholder="Search title, repo, PR#…"
       />
       <select v-model="repoFilter" @change="page = 1">
         <option value="">All repos</option>
@@ -211,18 +184,6 @@ function truncate(s: string, n = 80) {
         <option value="">All states</option>
         <option v-for="s in stateOptions" :key="s" :value="s">{{ s }}</option>
       </select>
-      <select v-model="modelFilter" @change="page = 1">
-        <option value="">All models</option>
-        <option v-for="m in modelOptions" :key="m" :value="m">{{ m }}</option>
-      </select>
-      <select v-model="verdictFilter" @change="page = 1">
-        <option value="">All verdicts</option>
-        <option v-for="v in verdictOptions" :key="v" :value="v">{{ v }}</option>
-      </select>
-      <label class="diary-toggle">
-        <input type="checkbox" v-model="diaryOnly" @change="page = 1" />
-        Diary only
-      </label>
       <button class="reset" @click="reset">Reset</button>
       <span class="count">{{ sorted.length }} / {{ all.length }}</span>
     </div>
@@ -234,9 +195,6 @@ function truncate(s: string, n = 80) {
           <th @click="setSort('repo_short')">Repo · PR <span class="arrow">{{ arrow('repo_short') }}</span></th>
           <th @click="setSort('title')">Title <span class="arrow">{{ arrow('title') }}</span></th>
           <th @click="setSort('state')">State <span class="arrow">{{ arrow('state') }}</span></th>
-          <th @click="setSort('model')">Model <span class="arrow">{{ arrow('model') }}</span></th>
-          <th @click="setSort('subs_pct')">Subs <span class="arrow">{{ arrow('subs_pct') }}</span></th>
-          <th @click="setSort('verdict_class')">Verdict <span class="arrow">{{ arrow('verdict_class') }}</span></th>
         </tr>
       </thead>
       <tbody>
@@ -260,18 +218,6 @@ function truncate(s: string, n = 80) {
             <span class="verdict" :class="stateClass(p.state)">
               {{ verdictSymbol(p.state) }} {{ p.state }}
             </span>
-          </td>
-          <td><code v-if="p.model">{{ p.model }}</code><template v-else>—</template></td>
-          <td>{{ fmtSubs(p) }}<template v-if="p.subs_pct !== null"> ({{ p.subs_pct }}%)</template></td>
-          <td>
-            <template v-if="p.verdict_class && !['merged','closed','open','unknown'].includes(p.verdict_class)">
-              <span class="verdict" :class="'v-' + p.verdict_class">
-                {{ verdictSymbol(p.verdict_class) }} {{ p.verdict_class }}
-              </span>
-              <span class="verdict-text" v-if="p.verdict">{{ truncate(p.verdict, 60) }}</span>
-            </template>
-            <template v-else>—</template>
-            <a v-if="p.entry_url" :href="p.entry_url" target="_blank" rel="noopener" class="entry-link">entry ↗</a>
           </td>
         </tr>
       </tbody>
