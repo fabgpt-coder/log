@@ -38,6 +38,15 @@ from pathlib import Path
 
 import yaml
 
+
+def _atomic_write(path: Path, content: str) -> None:
+    """Write `content` to `path` atomically: write to a sibling tmp file, then
+    os.replace to swap. On POSIX, os.replace is atomic, so readers never see
+    a half-written file and the previous version remains intact on crash."""
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(content, encoding="utf-8")
+    os.replace(tmp, path)
+
 ROOT = Path(__file__).resolve().parent.parent
 ENTRIES_DIR = ROOT / "entries"
 DOCS_DIR = ROOT / "docs"
@@ -503,7 +512,6 @@ def compute_pulse(prs: list[dict]) -> dict:
             except (ValueError, KeyError):
                 pass
     return {
-        "now": now.isoformat(),
         "last_pr_at": last_pr_at.isoformat() if last_pr_at else None,
         "last_pr_age_s": int((now - last_pr_at).total_seconds()) if last_pr_at else None,
         "last_merge_at": last_merge_at.isoformat() if last_merge_at else None,
@@ -679,7 +687,21 @@ def render_stats_table(s: dict) -> str:
     return out
 
 
-def render_readme(stats: dict, today: str) -> str:
+def render_truncation_banner(fetch_meta: dict) -> str:
+    """If GitHub's search returned more than we collected, surface a banner so
+    operators notice silently-lost history."""
+    if not fetch_meta.get("truncated"):
+        return ""
+    total = fetch_meta.get("total_count") or "?"
+    collected = fetch_meta.get("collected") or 0
+    return (
+        f"\n> ⚠️ **History truncated.** GitHub reports **{total}** PRs but the "
+        f"search API caps results at 1000 — only the most recent **{collected}** "
+        f"are shown. Older PRs are missing from this dashboard.\n"
+    )
+
+
+def render_readme(stats: dict, fetch_meta: dict, today: str) -> str:
     diary_note = ""
     if stats.get("diary_count"):
         diary_note = (
@@ -693,7 +715,7 @@ def render_readme(stats: dict, today: str) -> str:
 Public timeline of every pull request shipped by **[`{AGENT_LOGIN}`](https://github.com/{AGENT_LOGIN})**, an AI coding agent operated by [@fabriziosalmi](https://github.com/fabriziosalmi). Each row is a real PR — merged, closed, or in-flight — across every public repo the agent has ever touched.{diary_note}
 
 > **Full browsable archive → [{SITE_URL.rstrip('/')}/]({SITE_URL})**
-
+{render_truncation_banner(fetch_meta)}
 ## Pulse — {today}
 
 {render_pulse_line(stats)}
@@ -709,7 +731,7 @@ Public timeline of every pull request shipped by **[`{AGENT_LOGIN}`](https://git
 """
 
 
-def render_homepage(stats: dict, today: str) -> str:
+def render_homepage(stats: dict, fetch_meta: dict, today: str) -> str:
     s = stats
     st = s["states"]
     subs = f"{s['subs_num']}/{s['subs_den']} ({s['subs_pct']}%)" if s["subs_den"] else "—"
@@ -750,7 +772,9 @@ features:
         if st.get(name, 0)
     ) or "—"
 
+    banner = render_truncation_banner(fetch_meta)
     body = f"""
+{banner}
 ## Pulse
 
 <PulseStrip />
@@ -816,15 +840,23 @@ def main() -> int:
     today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
 
     DATA_OUT.parent.mkdir(parents=True, exist_ok=True)
-    DATA_OUT.write_text(
-        json.dumps({"generated_at": today, "agent": AGENT_LOGIN,
-                    "fetch": fetch_meta, "stats": stats, "prs": merged}, indent=2),
-        encoding="utf-8",
-    )
-
     INDEX_OUT.parent.mkdir(parents=True, exist_ok=True)
-    INDEX_OUT.write_text(render_homepage(stats, today), encoding="utf-8")
-    README.write_text(render_readme(stats, today), encoding="utf-8")
+
+    # Render all three outputs in memory FIRST. Only after every render
+    # succeeds do we touch disk — and we touch all three atomically via
+    # tmp-write + os.replace, so a crash mid-render or mid-write can never
+    # leave a half-updated set of files for the commit step to ship.
+    json_payload = json.dumps(
+        {"generated_at": today, "agent": AGENT_LOGIN,
+         "fetch": fetch_meta, "stats": stats, "prs": merged},
+        indent=2,
+    )
+    index_md = render_homepage(stats, fetch_meta, today)
+    readme_md = render_readme(stats, fetch_meta, today)
+
+    _atomic_write(DATA_OUT, json_payload)
+    _atomic_write(INDEX_OUT, index_md)
+    _atomic_write(README, readme_md)
 
     print(f"wrote {DATA_OUT.relative_to(ROOT)} ({len(merged)} PRs)", file=sys.stderr)
     print(f"wrote {INDEX_OUT.relative_to(ROOT)}", file=sys.stderr)

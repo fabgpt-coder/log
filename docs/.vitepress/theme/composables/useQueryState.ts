@@ -55,15 +55,22 @@ export function strField(key: string, ref: Ref<string>): Field<string> {
   }
 }
 
-export function intField(key: string, ref: Ref<number>, def: number = 0): Field<number> {
+export function intField(
+  key: string,
+  ref: Ref<number>,
+  def: number = 0,
+  opts: { min?: number; max?: number } = {},
+): Field<number> {
+  const { min = -Infinity, max = Infinity } = opts
+  const clamp = (n: number) => Math.max(min, Math.min(max, n))
   return {
     key,
     ref,
     parse: (raw) => {
       const n = parseInt(raw ?? '', 10)
-      return Number.isFinite(n) ? n : def
+      return clamp(Number.isFinite(n) ? n : def)
     },
-    serialize: (v) => (v === def ? null : String(v)),
+    serialize: (v) => (v === def ? null : String(clamp(v))),
   }
 }
 

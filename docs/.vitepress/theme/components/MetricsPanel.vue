@@ -175,7 +175,7 @@ const hovered = computed(() => hover.value != null ? series.value[hover.value] :
             v-for="i in xTickIndices" :key="'xt' + i"
             :x="xFor(i)" :y="PAD_T + innerH + 14"
             text-anchor="middle"
-          >{{ fmtDateShort(series[i].date) }}</text>
+          >{{ fmtDateShort(series[i]?.date) }}</text>
         </g>
 
         <!-- Hover capture (one rect per column) -->
@@ -290,7 +290,7 @@ const hovered = computed(() => hover.value != null ? series.value[hover.value] :
   display: inline-block;
   width: 12px;
   height: 8px;
-  background: rgba(106, 208, 106, 0.55);
+  background: color-mix(in srgb, var(--log-c-open) 60%, transparent);
   margin-right: 0.2rem;
 }
 
@@ -298,7 +298,7 @@ const hovered = computed(() => hover.value != null ? series.value[hover.value] :
   display: inline-block;
   width: 14px;
   height: 2px;
-  background: #a78bfa;
+  background: var(--log-c-merged);
   margin-left: 0.5rem;
   margin-right: 0.2rem;
 }
@@ -327,16 +327,16 @@ const hovered = computed(() => hover.value != null ? series.value[hover.value] :
 }
 
 .chart .bars rect {
-  fill: rgba(106, 208, 106, 0.55);
+  fill: color-mix(in srgb, var(--log-c-open) 60%, transparent);
 }
 
 .chart .line {
-  stroke: #a78bfa;
+  stroke: var(--log-c-merged);
   stroke-width: 2;
 }
 
 .chart .dots circle {
-  fill: #a78bfa;
+  fill: var(--log-c-merged);
 }
 
 .chart .hover-mark line {

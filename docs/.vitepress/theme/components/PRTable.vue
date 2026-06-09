@@ -49,8 +49,8 @@ useQueryState([
   strField('q', qInput),
   strField('repo', repoFilter),
   strField('state', stateFilter),
-  intField('size', pageSize, 50),
-  intField('page', page, 1),
+  intField('size', pageSize, 50, { min: 25, max: 250 }),
+  intField('page', page, 1, { min: 1, max: 10_000 }),
 ])
 
 const repoOptions = computed(() =>
