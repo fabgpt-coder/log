@@ -42,6 +42,11 @@ jobs:
       - run: pip install --quiet pyyaml==6.*
 
       - name: Generate data + README + homepage
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AGENT_GH_LOGIN: fabgpt-coder
+          LOG_REPO: ${{ github.repository }}
+          SITE_URL: https://fabgpt-coder.github.io/log/
         run: python3 scripts/build_data.py
 
       - name: Commit generated files if changed

@@ -10,6 +10,11 @@ type PR = {
   owner: string
   pr: number | null
   pr_url: string
+  title: string
+  state: string
+  merged_at: string | null
+  closed_at: string | null
+  is_draft: boolean
   branch: string
   model: string
   model_full: string
@@ -24,6 +29,7 @@ type PR = {
   verdict_class: string
   entry_path: string
   entry_url: string
+  source: string
 }
 
 type Payload = {
@@ -39,7 +45,9 @@ const loaded = ref(false)
 const q = ref('')
 const repoFilter = ref('')
 const modelFilter = ref('')
+const stateFilter = ref('')
 const verdictFilter = ref('')
+const diaryOnly = ref(false)
 
 const sortKey = ref<keyof PR | 'subs_pct'>('ts')
 const sortDir = ref<'asc' | 'desc'>('desc')
@@ -66,6 +74,9 @@ const repoOptions = computed(() =>
 const modelOptions = computed(() =>
   Array.from(new Set(all.value.map(p => p.model).filter(Boolean))).sort()
 )
+const stateOptions = computed(() =>
+  Array.from(new Set(all.value.map(p => p.state).filter(Boolean))).sort()
+)
 const verdictOptions = computed(() =>
   Array.from(new Set(all.value.map(p => p.verdict_class).filter(Boolean))).sort()
 )
@@ -75,10 +86,13 @@ const filtered = computed(() => {
   return all.value.filter(p => {
     if (repoFilter.value && p.repo_short !== repoFilter.value) return false
     if (modelFilter.value && p.model !== modelFilter.value) return false
+    if (stateFilter.value && p.state !== stateFilter.value) return false
     if (verdictFilter.value && p.verdict_class !== verdictFilter.value) return false
+    if (diaryOnly.value && !p.entry_path) return false
     if (!ql) return true
     return (
       p.repo.toLowerCase().includes(ql) ||
+      (p.title || '').toLowerCase().includes(ql) ||
       p.model.toLowerCase().includes(ql) ||
       p.model_full.toLowerCase().includes(ql) ||
       p.verdict.toLowerCase().includes(ql) ||
@@ -134,7 +148,9 @@ function reset() {
   q.value = ''
   repoFilter.value = ''
   modelFilter.value = ''
+  stateFilter.value = ''
   verdictFilter.value = ''
+  diaryOnly.value = false
   sortKey.value = 'ts'
   sortDir.value = 'desc'
   page.value = 1
@@ -156,8 +172,26 @@ function verdictSymbol(cls: string) {
     partial: '◐',
     failed: '✕',
     milestone: '★',
+    merged: '✓',
+    closed: '✕',
+    open: '○',
+    unknown: '·',
     other: '·',
   } as Record<string, string>)[cls] || '·'
+}
+
+function stateClass(state: string) {
+  return ({
+    merged: 'v-merged',
+    closed: 'v-closed',
+    open: 'v-open',
+    unknown: 'v-other',
+  } as Record<string, string>)[state] || 'v-other'
+}
+
+function truncate(s: string, n = 80) {
+  if (!s) return ''
+  return s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s
 }
 </script>
 
@@ -167,11 +201,15 @@ function verdictSymbol(cls: string) {
       <input
         v-model="q"
         type="search"
-        placeholder="Search repo, model, branch, guard, verdict, PR#…"
+        placeholder="Search title, repo, model, branch, guard, PR#…"
       />
       <select v-model="repoFilter" @change="page = 1">
         <option value="">All repos</option>
         <option v-for="r in repoOptions" :key="r" :value="r">{{ r }}</option>
+      </select>
+      <select v-model="stateFilter" @change="page = 1">
+        <option value="">All states</option>
+        <option v-for="s in stateOptions" :key="s" :value="s">{{ s }}</option>
       </select>
       <select v-model="modelFilter" @change="page = 1">
         <option value="">All models</option>
@@ -181,6 +219,10 @@ function verdictSymbol(cls: string) {
         <option value="">All verdicts</option>
         <option v-for="v in verdictOptions" :key="v" :value="v">{{ v }}</option>
       </select>
+      <label class="diary-toggle">
+        <input type="checkbox" v-model="diaryOnly" @change="page = 1" />
+        Diary only
+      </label>
       <button class="reset" @click="reset">Reset</button>
       <span class="count">{{ sorted.length }} / {{ all.length }}</span>
     </div>
@@ -189,42 +231,47 @@ function verdictSymbol(cls: string) {
       <thead>
         <tr>
           <th @click="setSort('ts')">When <span class="arrow">{{ arrow('ts') }}</span></th>
-          <th @click="setSort('repo_short')">Repo <span class="arrow">{{ arrow('repo_short') }}</span></th>
-          <th @click="setSort('pr')">PR <span class="arrow">{{ arrow('pr') }}</span></th>
+          <th @click="setSort('repo_short')">Repo · PR <span class="arrow">{{ arrow('repo_short') }}</span></th>
+          <th @click="setSort('title')">Title <span class="arrow">{{ arrow('title') }}</span></th>
+          <th @click="setSort('state')">State <span class="arrow">{{ arrow('state') }}</span></th>
           <th @click="setSort('model')">Model <span class="arrow">{{ arrow('model') }}</span></th>
           <th @click="setSort('subs_pct')">Subs <span class="arrow">{{ arrow('subs_pct') }}</span></th>
-          <th>Guards</th>
           <th @click="setSort('verdict_class')">Verdict <span class="arrow">{{ arrow('verdict_class') }}</span></th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="p in pageRows" :key="p.entry_path">
+        <tr v-for="p in pageRows" :key="p.repo + '#' + p.pr">
           <td class="when">{{ fmtDate(p.date) }}</td>
           <td>
             <span class="repo">{{ p.owner }}/</span><code>{{ p.repo_short }}</code>
-          </td>
-          <td class="pr-num">
-            <a v-if="p.pr_url" :href="p.pr_url" target="_blank" rel="noopener">
+            &nbsp;
+            <a v-if="p.pr_url" :href="p.pr_url" target="_blank" rel="noopener" class="pr-num">
               #{{ p.pr ?? '—' }}
             </a>
-            <template v-else>—</template>
+            <template v-else>#{{ p.pr ?? '—' }}</template>
           </td>
-          <td><code>{{ p.model || '—' }}</code></td>
-          <td>{{ fmtSubs(p) }}<template v-if="p.subs_pct !== null"> ({{ p.subs_pct }}%)</template></td>
-          <td class="guards">
-            <template v-if="p.guards.length === 0">—</template>
-            <template v-else>
-              <code v-for="g in p.guards" :key="g" style="margin-right:0.25rem">{{ g }}</code>
-            </template>
+          <td class="title-cell">
+            <a v-if="p.pr_url" :href="p.pr_url" target="_blank" rel="noopener" :title="p.title">
+              {{ truncate(p.title, 80) || '—' }}
+            </a>
+            <template v-else>{{ truncate(p.title, 80) || '—' }}</template>
           </td>
           <td>
-            <span class="verdict" :class="'v-' + p.verdict_class">
-              {{ verdictSymbol(p.verdict_class) }} {{ p.verdict_class }}
+            <span class="verdict" :class="stateClass(p.state)">
+              {{ verdictSymbol(p.state) }} {{ p.state }}
             </span>
-            <span class="verdict-text">{{ p.verdict }}</span>
-            <span style="margin-left:0.4rem">
-              <a :href="p.entry_url" target="_blank" rel="noopener">entry ↗</a>
-            </span>
+          </td>
+          <td><code v-if="p.model">{{ p.model }}</code><template v-else>—</template></td>
+          <td>{{ fmtSubs(p) }}<template v-if="p.subs_pct !== null"> ({{ p.subs_pct }}%)</template></td>
+          <td>
+            <template v-if="p.verdict_class && !['merged','closed','open','unknown'].includes(p.verdict_class)">
+              <span class="verdict" :class="'v-' + p.verdict_class">
+                {{ verdictSymbol(p.verdict_class) }} {{ p.verdict_class }}
+              </span>
+              <span class="verdict-text" v-if="p.verdict">{{ truncate(p.verdict, 60) }}</span>
+            </template>
+            <template v-else>—</template>
+            <a v-if="p.entry_url" :href="p.entry_url" target="_blank" rel="noopener" class="entry-link">entry ↗</a>
           </td>
         </tr>
       </tbody>

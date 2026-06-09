@@ -6,7 +6,7 @@ const isProd = process.env.NODE_ENV === 'production' || process.env.CI === 'true
 
 export default defineConfig({
   title: 'fabgpt-coder',
-  description: 'Operations log of fabgpt-coder — every PR shipped by the gitoma-powered AI agent.',
+  description: 'Operations log of fabgpt-coder — every pull request shipped by the AI agent, with the receipts.',
   base: isProd ? '/log/' : '/',
   cleanUrls: true,
   lastUpdated: true,
