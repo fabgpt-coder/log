@@ -1,0 +1,89 @@
+name: build-site
+
+on:
+  schedule:
+    - cron: '17 5 * * *'   # daily at 05:17 UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_data.py'
+      - 'docs/**'
+      - '!docs/index.md'        # auto-generated, don't trigger on its own change
+      - '!docs/public/prs.json' # auto-generated
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/build-site.yml'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: build-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      commit_sha: ${{ steps.commit.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install --quiet pyyaml==6.*
+
+      - name: Generate data + README + homepage
+        run: python3 scripts/build_data.py
+
+      - name: Commit generated files if changed
+        id: commit
+        run: |
+          set -euo pipefail
+          git config user.name "fabgpt-coder[bot]"
+          git config user.email "fabgpt-coder@users.noreply.github.com"
+          git add README.md docs/index.md docs/public/prs.json
+          if git diff --cached --quiet; then
+            echo "no changes"
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "auto: daily rebuild"
+          git push
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - run: npm install --no-audit --no-fund
+
+      - name: Build VitePress
+        run: npm run docs:build
+        env:
+          NODE_ENV: production
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/.vitepress/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

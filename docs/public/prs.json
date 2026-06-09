@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-06-09",
+  "stats": {
+    "prs_total": 0,
+    "verdicts": {},
+    "subs_num": 0,
+    "subs_den": 0,
+    "subs_pct": null,
+    "guard_firings": 0,
+    "distinct_repos": 0,
+    "distinct_models": 0,
+    "top_models": [],
+    "top_repos": [],
+    "top_guards": [],
+    "first_day": null,
+    "last_day": null,
+    "active_days": 0
+  },
+  "prs": []
+}
