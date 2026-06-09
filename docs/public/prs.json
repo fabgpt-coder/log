@@ -245,11 +245,11 @@
       ]
     },
     "pulse": {
-      "now": "2026-06-09T17:44:33.421738+00:00",
+      "now": "2026-06-09T17:49:44.875346+00:00",
       "last_pr_at": "2026-06-09T17:20:06+00:00",
-      "last_pr_age_s": 1467,
+      "last_pr_age_s": 1778,
       "last_merge_at": "2026-06-09T17:26:08+00:00",
-      "last_merge_age_s": 1105,
+      "last_merge_age_s": 1416,
       "open_count": 2,
       "stale_count": 2,
       "stale_threshold_days": 7
