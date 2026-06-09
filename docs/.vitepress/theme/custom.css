@@ -33,21 +33,23 @@
 /* ============================================================ */
 /* /prs page — break out of the default 752px content cap        */
 /* ============================================================ */
+/* Beats VitePress's scoped `.content-container[data-v-...]` rule */
+/* by combining a parent class + multiple class selectors. Both   */
+/* the aside-on and aside-off (the only one we actually use) are  */
+/* covered for safety. !important on margin guarantees centering  */
+/* against any scoped-style override.                              */
 
-.Layout.prs-page .VPDoc .container,
-.Layout.prs-page .VPDoc .content,
-.Layout.prs-page .VPDoc .content-container {
+.Layout.prs-page .VPDoc .container {
   max-width: none;
+  padding-inline: 1.5rem;
 }
 
-.Layout.prs-page .VPDoc .content-container {
-  /* honor the user's viewport up to ~1600px, with a small gutter */
-  max-width: min(1600px, calc(100vw - 3rem));
-  margin-inline: auto;
-}
-
+.Layout.prs-page .VPDoc .content,
+.Layout.prs-page .VPDoc .content-container,
 .Layout.prs-page .VPDoc.has-aside .content-container {
-  max-width: min(1400px, calc(100vw - 17rem));
+  max-width: min(1600px, 100%);
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* ============================================================ */
@@ -73,7 +75,8 @@
   font-size: 14px;
 }
 
-/* Sticky filter bar — stays visible while paging through long tables */
+/* Sticky filter bar — stays visible while paging through long tables.
+   Backdrop-filter so content scrolling underneath is still legible. */
 .pr-table-controls {
   display: flex;
   flex-wrap: wrap;
@@ -82,9 +85,11 @@
   margin-bottom: 0.75rem;
   position: sticky;
   top: var(--vp-nav-height, 64px);
-  background: var(--vp-c-bg);
+  background: color-mix(in srgb, var(--vp-c-bg) 90%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   z-index: 9;
-  padding: 0.5rem 0;
+  padding: 0.6rem 0;
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
@@ -153,8 +158,6 @@
 .pr-table th:nth-child(4), .pr-table td:nth-child(4) { width: 10ch; }
 
 .pr-table th {
-  position: sticky;
-  top: calc(var(--vp-nav-height, 64px) + 3.25rem);  /* below the sticky filter bar */
   background: var(--vp-c-bg);
   cursor: pointer;
   user-select: none;
@@ -163,7 +166,6 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--vp-c-text-2);
-  z-index: 1;
 }
 
 .pr-table th:focus-visible {
