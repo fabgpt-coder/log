@@ -2,23 +2,23 @@
   "generated_at": "2026-06-09",
   "agent": "fabgpt-coder",
   "stats": {
-    "prs_total": 205,
+    "prs_total": 208,
     "diary_count": 0,
     "states": {
+      "open": 42,
       "closed": 61,
-      "merged": 105,
-      "open": 39
+      "merged": 105
     },
     "verdicts": {
+      "open": 42,
       "closed": 61,
-      "merged": 105,
-      "open": 39
+      "merged": 105
     },
     "subs_num": 0,
     "subs_den": 0,
     "subs_pct": null,
     "guard_firings": 0,
-    "distinct_repos": 36,
+    "distinct_repos": 37,
     "distinct_models": 0,
     "top_models": [],
     "top_repos": [
@@ -232,19 +232,19 @@
         },
         {
           "date": "2026-06-09",
-          "opened": 68,
+          "opened": 71,
           "resolved": 83,
           "median_s": 160
         }
       ]
     },
     "pulse": {
-      "now": "2026-06-09T11:52:49.553954+00:00",
-      "last_pr_at": "2026-06-09T10:48:11+00:00",
-      "last_pr_age_s": 3878,
+      "now": "2026-06-09T11:53:33.861768+00:00",
+      "last_pr_at": "2026-06-09T11:53:22+00:00",
+      "last_pr_age_s": 11,
       "last_merge_at": "2026-06-09T11:04:00+00:00",
-      "last_merge_age_s": 2929,
-      "open_count": 39,
+      "last_merge_age_s": 2973,
+      "open_count": 42,
       "stale_count": 39,
       "stale_threshold_days": 7
     },
@@ -380,6 +380,18 @@
         "merge_rate": 0.75,
         "median_mttr_s": 95,
         "last_activity_ts": 1780985981
+      },
+      {
+        "repo": "fabriziosalmi/brandkit",
+        "repo_short": "brandkit",
+        "owner": "fabriziosalmi",
+        "total": 3,
+        "merged": 0,
+        "closed": 0,
+        "open": 3,
+        "merge_rate": null,
+        "median_mttr_s": null,
+        "last_activity_ts": 1781006002
       },
       {
         "repo": "fabriziosalmi/zion",
@@ -795,7 +807,7 @@
       ],
       [
         "Bump",
-        24
+        27
       ],
       [
         "Add",
@@ -820,6 +832,93 @@
     ]
   },
   "prs": [
+    {
+      "date": "2026-06-09T11:53:22+00:00",
+      "ts": 1781006002,
+      "repo": "fabriziosalmi/brandkit",
+      "owner": "fabriziosalmi",
+      "repo_short": "brandkit",
+      "pr": 13,
+      "pr_url": "https://github.com/fabriziosalmi/brandkit/pull/13",
+      "title": "Bump protobuf to 6.33.5 (high)",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-06-09T11:53:16+00:00",
+      "ts": 1781005996,
+      "repo": "fabriziosalmi/brandkit",
+      "owner": "fabriziosalmi",
+      "repo_short": "brandkit",
+      "pr": 12,
+      "pr_url": "https://github.com/fabriziosalmi/brandkit/pull/12",
+      "title": "Bump pillow to 12.2.0 (high)",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-06-09T11:53:11+00:00",
+      "ts": 1781005991,
+      "repo": "fabriziosalmi/brandkit",
+      "owner": "fabriziosalmi",
+      "repo_short": "brandkit",
+      "pr": 11,
+      "pr_url": "https://github.com/fabriziosalmi/brandkit/pull/11",
+      "title": "Bump idna to 3.15 (medium)",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
     {
       "date": "2026-06-09T10:48:11+00:00",
       "ts": 1781002091,
