@@ -11,14 +11,14 @@
     "prs_total": 228,
     "diary_count": 0,
     "states": {
-      "open": 7,
-      "closed": 103,
-      "merged": 118
+      "merged": 122,
+      "closed": 104,
+      "open": 2
     },
     "verdicts": {
-      "open": 7,
-      "closed": 103,
-      "merged": 118
+      "merged": 122,
+      "closed": 104,
+      "open": 2
     },
     "subs_num": 0,
     "subs_den": 0,
@@ -54,10 +54,10 @@
     "last_day": "2026-06-09",
     "active_days": 13,
     "mttr": {
-      "count": 221,
-      "mean_s": 939813,
-      "median_s": 318,
-      "p90_s": 4086650
+      "count": 226,
+      "mean_s": 919024,
+      "median_s": 314,
+      "p90_s": 4084534
     },
     "daily_series": {
       "days": 30,
@@ -239,18 +239,18 @@
         {
           "date": "2026-06-09",
           "opened": 91,
-          "resolved": 138,
-          "median_s": 196
+          "resolved": 143,
+          "median_s": 186
         }
       ]
     },
     "pulse": {
-      "now": "2026-06-09T17:20:43.442129+00:00",
+      "now": "2026-06-09T17:44:33.421738+00:00",
       "last_pr_at": "2026-06-09T17:20:06+00:00",
-      "last_pr_age_s": 37,
-      "last_merge_at": "2026-06-09T11:56:33+00:00",
-      "last_merge_age_s": 19450,
-      "open_count": 7,
+      "last_pr_age_s": 1467,
+      "last_merge_at": "2026-06-09T17:26:08+00:00",
+      "last_merge_age_s": 1105,
+      "open_count": 2,
       "stale_count": 2,
       "stale_threshold_days": 7
     },
@@ -320,11 +320,11 @@
         "repo_short": "brandkit",
         "owner": "fabriziosalmi",
         "total": 6,
-        "merged": 4,
-        "closed": 0,
-        "open": 2,
-        "merge_rate": 1.0,
-        "median_mttr_s": 152,
+        "merged": 5,
+        "closed": 1,
+        "open": 0,
+        "merge_rate": 0.833,
+        "median_mttr_s": 150,
         "last_activity_ts": 1781025577
       },
       {
@@ -344,11 +344,11 @@
         "repo_short": "open-video-watermark",
         "owner": "fabriziosalmi",
         "total": 5,
-        "merged": 4,
+        "merged": 5,
         "closed": 0,
-        "open": 1,
+        "open": 0,
         "merge_rate": 1.0,
-        "median_mttr_s": 142,
+        "median_mttr_s": 141,
         "last_activity_ts": 1781025583
       },
       {
@@ -404,11 +404,11 @@
         "repo_short": "newsgator",
         "owner": "fabriziosalmi",
         "total": 4,
-        "merged": 3,
+        "merged": 4,
         "closed": 0,
-        "open": 1,
+        "open": 0,
         "merge_rate": 1.0,
-        "median_mttr_s": 198,
+        "median_mttr_s": 196,
         "last_activity_ts": 1781025606
       },
       {
@@ -416,11 +416,11 @@
         "repo_short": "zion",
         "owner": "fabriziosalmi",
         "total": 4,
-        "merged": 1,
+        "merged": 2,
         "closed": 2,
-        "open": 1,
-        "merge_rate": 0.333,
-        "median_mttr_s": 966,
+        "open": 0,
+        "merge_rate": 0.5,
+        "median_mttr_s": 667,
         "last_activity_ts": 1781025599
       },
       {
@@ -768,56 +768,6 @@
         "title": "\ud83e\udd16 [Gitoma] Improve gitoma-bench-blast: 2 quality improvements",
         "date": "2026-04-30T18:54:55+00:00",
         "ts": 1777575295
-      },
-      {
-        "repo": "fabriziosalmi/brandkit",
-        "repo_short": "brandkit",
-        "owner": "fabriziosalmi",
-        "pr": 15,
-        "pr_url": "https://github.com/fabriziosalmi/brandkit/pull/15",
-        "title": "Bump urllib3 to 2.7.0 (high)",
-        "date": "2026-06-09T17:19:31+00:00",
-        "ts": 1781025571
-      },
-      {
-        "repo": "fabriziosalmi/brandkit",
-        "repo_short": "brandkit",
-        "owner": "fabriziosalmi",
-        "pr": 16,
-        "pr_url": "https://github.com/fabriziosalmi/brandkit/pull/16",
-        "title": "Bump Werkzeug to 3.1.6 (medium)",
-        "date": "2026-06-09T17:19:37+00:00",
-        "ts": 1781025577
-      },
-      {
-        "repo": "fabriziosalmi/open-video-watermark",
-        "repo_short": "open-video-watermark",
-        "owner": "fabriziosalmi",
-        "pr": 14,
-        "pr_url": "https://github.com/fabriziosalmi/open-video-watermark/pull/14",
-        "title": "Bump black to 26.3.1 (high)",
-        "date": "2026-06-09T17:19:43+00:00",
-        "ts": 1781025583
-      },
-      {
-        "repo": "fabriziosalmi/zion",
-        "repo_short": "zion",
-        "owner": "fabriziosalmi",
-        "pr": 185,
-        "pr_url": "https://github.com/fabriziosalmi/zion/pull/185",
-        "title": "Bump 2 dependencies in Cargo.toml (high)",
-        "date": "2026-06-09T17:19:59+00:00",
-        "ts": 1781025599
-      },
-      {
-        "repo": "fabriziosalmi/newsgator",
-        "repo_short": "newsgator",
-        "owner": "fabriziosalmi",
-        "pr": 11,
-        "pr_url": "https://github.com/fabriziosalmi/newsgator/pull/11",
-        "title": "Add explicit dependency version constraints",
-        "date": "2026-06-09T17:20:06+00:00",
-        "ts": 1781025606
       }
     ],
     "title_buckets": [
@@ -865,9 +815,9 @@
       "pr": 11,
       "pr_url": "https://github.com/fabriziosalmi/newsgator/pull/11",
       "title": "Add explicit dependency version constraints",
-      "state": "open",
-      "merged_at": null,
-      "closed_at": null,
+      "state": "merged",
+      "merged_at": "2026-06-09T17:21:28Z",
+      "closed_at": "2026-06-09T17:21:28Z",
       "is_draft": false,
       "branch": "",
       "model": "",
@@ -880,7 +830,7 @@
       "subs_pct": null,
       "guards": [],
       "verdict": "",
-      "verdict_class": "open",
+      "verdict_class": "merged",
       "entry_path": "",
       "entry_url": "",
       "source": "github"
@@ -894,9 +844,9 @@
       "pr": 185,
       "pr_url": "https://github.com/fabriziosalmi/zion/pull/185",
       "title": "Bump 2 dependencies in Cargo.toml (high)",
-      "state": "open",
-      "merged_at": null,
-      "closed_at": null,
+      "state": "merged",
+      "merged_at": "2026-06-09T17:26:08Z",
+      "closed_at": "2026-06-09T17:26:08Z",
       "is_draft": false,
       "branch": "",
       "model": "",
@@ -909,7 +859,7 @@
       "subs_pct": null,
       "guards": [],
       "verdict": "",
-      "verdict_class": "open",
+      "verdict_class": "merged",
       "entry_path": "",
       "entry_url": "",
       "source": "github"
@@ -923,9 +873,9 @@
       "pr": 14,
       "pr_url": "https://github.com/fabriziosalmi/open-video-watermark/pull/14",
       "title": "Bump black to 26.3.1 (high)",
-      "state": "open",
-      "merged_at": null,
-      "closed_at": null,
+      "state": "merged",
+      "merged_at": "2026-06-09T17:21:31Z",
+      "closed_at": "2026-06-09T17:21:31Z",
       "is_draft": false,
       "branch": "",
       "model": "",
@@ -938,7 +888,7 @@
       "subs_pct": null,
       "guards": [],
       "verdict": "",
-      "verdict_class": "open",
+      "verdict_class": "merged",
       "entry_path": "",
       "entry_url": "",
       "source": "github"
@@ -952,9 +902,9 @@
       "pr": 16,
       "pr_url": "https://github.com/fabriziosalmi/brandkit/pull/16",
       "title": "Bump Werkzeug to 3.1.6 (medium)",
-      "state": "open",
+      "state": "closed",
       "merged_at": null,
-      "closed_at": null,
+      "closed_at": "2026-06-09T17:21:56Z",
       "is_draft": false,
       "branch": "",
       "model": "",
@@ -967,7 +917,7 @@
       "subs_pct": null,
       "guards": [],
       "verdict": "",
-      "verdict_class": "open",
+      "verdict_class": "closed",
       "entry_path": "",
       "entry_url": "",
       "source": "github"
@@ -981,9 +931,9 @@
       "pr": 15,
       "pr_url": "https://github.com/fabriziosalmi/brandkit/pull/15",
       "title": "Bump urllib3 to 2.7.0 (high)",
-      "state": "open",
-      "merged_at": null,
-      "closed_at": null,
+      "state": "merged",
+      "merged_at": "2026-06-09T17:21:18Z",
+      "closed_at": "2026-06-09T17:21:18Z",
       "is_draft": false,
       "branch": "",
       "model": "",
@@ -996,7 +946,7 @@
       "subs_pct": null,
       "guards": [],
       "verdict": "",
-      "verdict_class": "open",
+      "verdict_class": "merged",
       "entry_path": "",
       "entry_url": "",
       "source": "github"

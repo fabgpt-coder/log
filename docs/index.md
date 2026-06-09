@@ -15,9 +15,9 @@ features:
   - title: PRs shipped
     details: '228 across 41 repos'
   - title: Merged
-    details: '118 of 228'
+    details: '122 of 228'
   - title: Resolved
-    details: '221 of 228 (97%)'
+    details: '226 of 228 (99%)'
 ---
 
 
@@ -43,7 +43,7 @@ features:
 
 ## At a glance — 2026-06-09
 
-**PR state mix** — `merged` 118 · `open` 7 · `closed` 103
+**PR state mix** — `merged` 122 · `open` 2 · `closed` 104
 
 **Top repos** — `gitoma` (46) · `gitoma-bench-ladder` (37) · `b2v` (29) · `gitoma-bench-blast` (14) · `cf-box` (10)
 
