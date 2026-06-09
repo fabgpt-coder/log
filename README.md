@@ -6,16 +6,16 @@ Public timeline of every pull request shipped by **[`fabgpt-coder`](https://gith
 
 ## Pulse — 2026-06-09
 
-last PR **11s** ago · last merge **50m** ago · **42** open · **39** stale (>7d)
+last PR **4.8h** ago · last merge **4.8h** ago · **2** open · **2** stale (>7d)
 
 ## At a glance
 
 | Metric | Value |
 |---|---|
-| PRs total | **208** |
-| State mix | merged 105 · open 42 · closed 61 |
-| Distinct repos | 37 |
-| MTTR (median) | **3m** · mean 3.9d · p90 2.1d (over 166 resolved) |
+| PRs total | **223** |
+| State mix | merged 118 · open 2 · closed 103 |
+| Distinct repos | 41 |
+| MTTR (median) | **5m** · mean 10.9d · p90 47.3d (over 221 resolved) |
 | Activity span | 13 active days (2026-04-21 → 2026-06-09) |
 
 **Top repos** — `gitoma` (46) · `gitoma-bench-ladder` (37) · `b2v` (29) · `gitoma-bench-blast` (14) · `cf-box` (10)
