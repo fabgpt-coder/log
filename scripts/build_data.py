@@ -410,6 +410,133 @@ def compute_daily_series(prs: list[dict], days: int = 30) -> dict:
     return {"days": days, "series": series}
 
 
+# Title classification — bucket every PR by leading prefix.
+
+_CONVENTIONAL = ("feat", "fix", "chore", "docs", "refactor",
+                 "test", "build", "ci", "perf", "style", "revert")
+_ACTION_VERBS = {
+    "add", "fix", "update", "refactor", "remove", "delete", "improve",
+    "replace", "introduce", "implement", "enhance", "optimize", "support",
+    "enable", "disable", "prevent", "restore", "rename", "move", "document",
+    "drop", "bump", "upgrade", "migrate", "extract", "inline", "rewrite",
+    "clean", "create", "make", "use", "allow", "fall", "ensure", "handle",
+}
+
+
+def classify_title(title: str) -> str:
+    t = (title or "").strip()
+    if not t:
+        return "—"
+    low = t.lower()
+    if "[gitoma]" in low[:30]:
+        return "🤖 [Gitoma]"
+    if t.startswith("🤖"):
+        return "🤖 bot"
+    head = low.split(":", 1)[0].strip()
+    if head in _CONVENTIONAL:
+        return head.capitalize()
+    first = re.split(r"[\s:\(\[]", low, 1)[0]
+    if first in _ACTION_VERBS:
+        return first.capitalize()
+    return "Other"
+
+
+def compute_pulse(prs: list[dict]) -> dict:
+    now = dt.datetime.now(dt.timezone.utc)
+    stale_threshold = now - dt.timedelta(days=7)
+    last_pr_at = None
+    last_merge_at = None
+    open_count = 0
+    stale_count = 0
+    for p in prs:
+        if p.get("date"):
+            try:
+                d = dt.datetime.fromisoformat(p["date"])
+                if last_pr_at is None or d > last_pr_at:
+                    last_pr_at = d
+            except ValueError:
+                pass
+        if p.get("merged_at"):
+            try:
+                m = dt.datetime.fromisoformat(str(p["merged_at"]).replace("Z", "+00:00"))
+                if last_merge_at is None or m > last_merge_at:
+                    last_merge_at = m
+            except ValueError:
+                pass
+        if p.get("state") == "open":
+            open_count += 1
+            try:
+                d = dt.datetime.fromisoformat(p["date"])
+                if d < stale_threshold:
+                    stale_count += 1
+            except (ValueError, KeyError):
+                pass
+    return {
+        "now": now.isoformat(),
+        "last_pr_at": last_pr_at.isoformat() if last_pr_at else None,
+        "last_pr_age_s": int((now - last_pr_at).total_seconds()) if last_pr_at else None,
+        "last_merge_at": last_merge_at.isoformat() if last_merge_at else None,
+        "last_merge_age_s": int((now - last_merge_at).total_seconds()) if last_merge_at else None,
+        "open_count": open_count,
+        "stale_count": stale_count,
+        "stale_threshold_days": 7,
+    }
+
+
+def compute_repo_health(prs: list[dict]) -> list[dict]:
+    by_repo: dict[str, list[dict]] = {}
+    for p in prs:
+        repo = p.get("repo")
+        if repo:
+            by_repo.setdefault(repo, []).append(p)
+    rows = []
+    for repo, items in by_repo.items():
+        states = Counter(p.get("state") for p in items)
+        merged = states.get("merged", 0)
+        closed = states.get("closed", 0)
+        opened = states.get("open", 0)
+        resolved = merged + closed
+        secs = sorted(s for s in (_resolution_seconds(p) for p in items) if s is not None)
+        last_ts = max((p.get("ts", 0) for p in items), default=0)
+        rows.append({
+            "repo": repo,
+            "repo_short": repo.split("/", 1)[1] if "/" in repo else repo,
+            "owner": repo.split("/", 1)[0] if "/" in repo else "",
+            "total": len(items),
+            "merged": merged,
+            "closed": closed,
+            "open": opened,
+            "merge_rate": round(merged / resolved, 3) if resolved else None,
+            "median_mttr_s": _median(secs) if secs else None,
+            "last_activity_ts": last_ts,
+        })
+    rows.sort(key=lambda r: r["total"], reverse=True)
+    return rows
+
+
+def compute_oldest_open(prs: list[dict], n: int = 10) -> list[dict]:
+    open_prs = [p for p in prs if p.get("state") == "open" and p.get("date")]
+    open_prs.sort(key=lambda p: p.get("ts", 0))
+    out = []
+    for p in open_prs[:n]:
+        out.append({
+            "repo": p["repo"],
+            "repo_short": p["repo_short"],
+            "owner": p["owner"],
+            "pr": p["pr"],
+            "pr_url": p["pr_url"],
+            "title": p["title"],
+            "date": p["date"],
+            "ts": p["ts"],
+        })
+    return out
+
+
+def compute_title_buckets(prs: list[dict]) -> list[list]:
+    c = Counter(classify_title(p.get("title", "")) for p in prs)
+    return [[name, n] for name, n in c.most_common()]
+
+
 def compute_stats(prs: list[dict]) -> dict:
     verdicts = Counter(p.get("verdict_class") or "open" for p in prs)
     states = Counter(p.get("state") or "unknown" for p in prs)
@@ -442,6 +569,10 @@ def compute_stats(prs: list[dict]) -> dict:
         "active_days": len(days),
         "mttr": compute_mttr(prs),
         "daily_series": compute_daily_series(prs, days=30),
+        "pulse": compute_pulse(prs),
+        "repo_health": compute_repo_health(prs),
+        "oldest_open": compute_oldest_open(prs, n=10),
+        "title_buckets": compute_title_buckets(prs),
     }
 
 
@@ -459,6 +590,20 @@ def _human_duration(secs: int | None) -> str:
     if secs < 86400:
         return f"{secs / 3600:.1f}h"
     return f"{secs / 86400:.1f}d"
+
+
+def render_pulse_line(s: dict) -> str:
+    p = s.get("pulse", {})
+    parts = []
+    if p.get("last_pr_age_s") is not None:
+        parts.append(f"last PR **{_human_duration(p['last_pr_age_s'])}** ago")
+    if p.get("last_merge_age_s") is not None:
+        parts.append(f"last merge **{_human_duration(p['last_merge_age_s'])}** ago")
+    parts.append(f"**{p.get('open_count', 0)}** open")
+    stale = p.get("stale_count", 0)
+    if stale:
+        parts.append(f"**{stale}** stale (>{p.get('stale_threshold_days', 7)}d)")
+    return " · ".join(parts) if parts else "—"
 
 
 def render_stats_table(s: dict) -> str:
@@ -504,15 +649,25 @@ def render_stats_table(s: dict) -> str:
 
 
 def render_readme(stats: dict, today: str) -> str:
+    diary_note = ""
+    if stats.get("diary_count"):
+        diary_note = (
+            "\n\nWhen the agent ships a richer diary entry alongside a PR "
+            "(model, endpoint, subtasks completed, guards that fired, verdict), "
+            "it gets surfaced too."
+        )
+
     return f"""# fabgpt-coder — operations log
 
-Public timeline of every pull request shipped by **[`{AGENT_LOGIN}`](https://github.com/{AGENT_LOGIN})**, an AI coding agent operated by [@fabriziosalmi](https://github.com/fabriziosalmi). Each row is a real PR — merged, closed, or in-flight — across every public repo the agent has ever touched.
-
-When the agent ships a richer diary entry alongside a PR (model, endpoint, subtasks completed, guards that fired, verdict), it gets surfaced too.
+Public timeline of every pull request shipped by **[`{AGENT_LOGIN}`](https://github.com/{AGENT_LOGIN})**, an AI coding agent operated by [@fabriziosalmi](https://github.com/fabriziosalmi). Each row is a real PR — merged, closed, or in-flight — across every public repo the agent has ever touched.{diary_note}
 
 > **Full browsable archive → [{SITE_URL.rstrip('/')}/]({SITE_URL})**
 
-## At a glance — {today}
+## Pulse — {today}
+
+{render_pulse_line(stats)}
+
+## At a glance
 
 {render_stats_table(stats)}
 ---
@@ -565,9 +720,25 @@ features:
     ) or "—"
 
     body = f"""
+## Pulse
+
+<PulseStrip />
+
 ## MTTR & throughput
 
 <MetricsPanel />
+
+## Per-repo health
+
+<RepoHealth />
+
+## Oldest open PRs
+
+<OldestOpen />
+
+## What kind of work
+
+<TitleBuckets />
 
 ## At a glance — {today}
 

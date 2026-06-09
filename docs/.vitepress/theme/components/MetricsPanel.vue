@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { withBase } from 'vitepress'
+import { ref, computed } from 'vue'
+import { usePRsData, humanDuration } from '../composables/usePRsData'
 
 type DailyPoint = {
   date: string
@@ -9,52 +9,11 @@ type DailyPoint = {
   median_s: number | null
 }
 
-type Mttr = {
-  count: number
-  mean_s: number | null
-  median_s: number | null
-  p90_s: number | null
-}
-
-type Payload = {
-  generated_at: string
-  stats: {
-    mttr: Mttr
-    daily_series: { days: number, series: DailyPoint[] }
-    prs_total: number
-  }
-}
-
-const mttr = ref<Mttr>({ count: 0, mean_s: null, median_s: null, p90_s: null })
-const series = ref<DailyPoint[]>([])
-const total = ref(0)
-const generatedAt = ref('')
-const loaded = ref(false)
+const { data, loaded } = usePRsData()
+const mttr = computed(() => data.value?.stats?.mttr || { count: 0, mean_s: null, median_s: null, p90_s: null })
+const series = computed<DailyPoint[]>(() => data.value?.stats?.daily_series?.series || [])
 
 const hover = ref<number | null>(null)
-
-onMounted(async () => {
-  try {
-    const res = await fetch(withBase('/prs.json'))
-    const j: Payload = await res.json()
-    mttr.value = j.stats.mttr
-    series.value = j.stats.daily_series.series || []
-    total.value = j.stats.prs_total
-    generatedAt.value = j.generated_at
-  } catch (e) {
-    console.error('failed to load prs.json', e)
-  } finally {
-    loaded.value = true
-  }
-})
-
-function humanDuration(s: number | null): string {
-  if (s == null) return '—'
-  if (s < 60) return `${s}s`
-  if (s < 3600) return `${Math.round(s / 60)}m`
-  if (s < 86400) return `${(s / 3600).toFixed(1)}h`
-  return `${(s / 86400).toFixed(1)}d`
-}
 
 function fmtDateShort(iso: string): string {
   return iso.slice(5)  // MM-DD
