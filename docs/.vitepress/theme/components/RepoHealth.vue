@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { usePRsData, humanDuration, ageFromTs } from '../composables/usePRsData'
+import { computed } from 'vue'
+import { usePRsData } from '../composables/usePRsData'
+import { useSortableTable } from '../composables/useSortableTable'
+import { humanDuration, ageFromTs, fmtPct } from '../composables/formatters'
 
 type Row = {
   repo: string
@@ -16,49 +18,9 @@ type Row = {
 }
 
 const { data, loaded, error } = usePRsData()
-const rows = computed<Row[]>(() => data.value?.stats?.repo_health || [])
+const rows = computed<Row[]>(() => (data.value?.stats?.repo_health || []) as Row[])
 
-type Key = keyof Row
-const sortKey = ref<Key>('total')
-const sortDir = ref<'asc' | 'desc'>('desc')
-
-function setSort(k: Key) {
-  if (sortKey.value === k) sortDir.value = sortDir.value === 'asc' ? 'desc' : 'asc'
-  else {
-    sortKey.value = k
-    sortDir.value = k === 'repo_short' ? 'asc' : 'desc'
-  }
-}
-
-const sorted = computed(() => {
-  const k = sortKey.value
-  const dir = sortDir.value === 'asc' ? 1 : -1
-  return [...rows.value].sort((a, b) => {
-    const av = (a as any)[k]
-    const bv = (b as any)[k]
-    if (av == null && bv == null) return 0
-    if (av == null) return 1
-    if (bv == null) return -1
-    if (av < bv) return -1 * dir
-    if (av > bv) return 1 * dir
-    return 0
-  })
-})
-
-function arrow(k: Key) {
-  if (sortKey.value !== k) return ''
-  return sortDir.value === 'asc' ? '↑' : '↓'
-}
-
-function ariaSort(k: Key): 'ascending' | 'descending' | 'none' {
-  if (sortKey.value !== k) return 'none'
-  return sortDir.value === 'asc' ? 'ascending' : 'descending'
-}
-
-function fmtPct(v: number | null): string {
-  if (v == null) return '—'
-  return Math.round(v * 100) + '%'
-}
+const { sorted, setSort, arrow, ariaSort } = useSortableTable<Row>(rows, 'total', 'desc')
 
 function repoHref(repo: string) {
   return `https://github.com/${repo}`
@@ -79,61 +41,77 @@ function mergeBarClass(v: number | null): string {
       <thead>
         <tr>
           <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('repo_short')"
-              @click="setSort('repo_short')" @keydown.enter.prevent="setSort('repo_short')" @keydown.space.prevent="setSort('repo_short')">
+              @click="setSort('repo_short')"
+              @keydown.enter.prevent="setSort('repo_short')"
+              @keydown.space.prevent="setSort('repo_short')">
             Repo <span class="arrow">{{ arrow('repo_short') }}</span>
           </th>
           <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('total')" class="num"
-              @click="setSort('total')" @keydown.enter.prevent="setSort('total')" @keydown.space.prevent="setSort('total')">
+              @click="setSort('total')"
+              @keydown.enter.prevent="setSort('total')"
+              @keydown.space.prevent="setSort('total')">
             PRs <span class="arrow">{{ arrow('total') }}</span>
           </th>
           <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('merged')" class="num"
-              @click="setSort('merged')" @keydown.enter.prevent="setSort('merged')" @keydown.space.prevent="setSort('merged')">
+              @click="setSort('merged')"
+              @keydown.enter.prevent="setSort('merged')"
+              @keydown.space.prevent="setSort('merged')">
             Merged <span class="arrow">{{ arrow('merged') }}</span>
           </th>
           <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('closed')" class="num"
-              @click="setSort('closed')" @keydown.enter.prevent="setSort('closed')" @keydown.space.prevent="setSort('closed')">
+              @click="setSort('closed')"
+              @keydown.enter.prevent="setSort('closed')"
+              @keydown.space.prevent="setSort('closed')">
             Closed <span class="arrow">{{ arrow('closed') }}</span>
           </th>
           <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('open')" class="num"
-              @click="setSort('open')" @keydown.enter.prevent="setSort('open')" @keydown.space.prevent="setSort('open')">
+              @click="setSort('open')"
+              @keydown.enter.prevent="setSort('open')"
+              @keydown.space.prevent="setSort('open')">
             Open <span class="arrow">{{ arrow('open') }}</span>
           </th>
           <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('merge_rate')"
-              @click="setSort('merge_rate')" @keydown.enter.prevent="setSort('merge_rate')" @keydown.space.prevent="setSort('merge_rate')"
+              @click="setSort('merge_rate')"
+              @keydown.enter.prevent="setSort('merge_rate')"
+              @keydown.space.prevent="setSort('merge_rate')"
               title="merged / (merged + closed) — acceptance rate among resolved PRs">
             Accept % <span class="arrow">{{ arrow('merge_rate') }}</span>
           </th>
           <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('median_mttr_s')"
-              @click="setSort('median_mttr_s')" @keydown.enter.prevent="setSort('median_mttr_s')" @keydown.space.prevent="setSort('median_mttr_s')">
+              @click="setSort('median_mttr_s')"
+              @keydown.enter.prevent="setSort('median_mttr_s')"
+              @keydown.space.prevent="setSort('median_mttr_s')">
             Median MTTR <span class="arrow">{{ arrow('median_mttr_s') }}</span>
           </th>
           <th scope="col" tabindex="0" role="button" :aria-sort="ariaSort('last_activity_ts')"
-              @click="setSort('last_activity_ts')" @keydown.enter.prevent="setSort('last_activity_ts')" @keydown.space.prevent="setSort('last_activity_ts')">
+              @click="setSort('last_activity_ts')"
+              @keydown.enter.prevent="setSort('last_activity_ts')"
+              @keydown.space.prevent="setSort('last_activity_ts')">
             Last activity <span class="arrow">{{ arrow('last_activity_ts') }}</span>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="r in sorted" :key="r.repo">
-          <td>
+          <td data-label="Repo">
             <a :href="repoHref(r.repo)" target="_blank" rel="noopener">
               <span class="owner">{{ r.owner }}/</span><code>{{ r.repo_short }}</code>
             </a>
           </td>
-          <td class="num">{{ r.total }}</td>
-          <td class="num">{{ r.merged }}</td>
-          <td class="num">{{ r.closed }}</td>
-          <td class="num">{{ r.open }}</td>
-          <td>
+          <td class="num" data-label="PRs">{{ r.total }}</td>
+          <td class="num" data-label="Merged">{{ r.merged }}</td>
+          <td class="num" data-label="Closed">{{ r.closed }}</td>
+          <td class="num" data-label="Open">{{ r.open }}</td>
+          <td data-label="Accept %">
             <div class="rate">
               <div class="bar" :class="mergeBarClass(r.merge_rate)">
-                <div class="fill" :style="{ width: r.merge_rate != null ? (r.merge_rate * 100) + '%' : '0%' }"></div>
+                <div class="fill" :style="{ width: r.merge_rate != null ? (r.merge_rate * 100).toFixed(1) + '%' : '0%' }"></div>
               </div>
               <span class="rate-text">{{ fmtPct(r.merge_rate) }}</span>
             </div>
           </td>
-          <td>{{ humanDuration(r.median_mttr_s) }}</td>
-          <td class="when">{{ ageFromTs(r.last_activity_ts) }} ago</td>
+          <td data-label="Median MTTR">{{ humanDuration(r.median_mttr_s) }}</td>
+          <td class="when" data-label="Last activity">{{ ageFromTs(r.last_activity_ts) }} ago</td>
         </tr>
       </tbody>
     </table>
@@ -203,7 +181,7 @@ function mergeBarClass(v: number | null): string {
 }
 
 .repo-health .owner {
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-text-2);
   font-size: 12px;
 }
 
@@ -235,21 +213,10 @@ function mergeBarClass(v: number | null): string {
   border-radius: 3px;
 }
 
-.bar-good .fill {
-  background: #6ad06a;
-}
-
-.bar-ok .fill {
-  background: #d9a949;
-}
-
-.bar-warn .fill {
-  background: #e86464;
-}
-
-.bar-neutral .fill {
-  background: var(--vp-c-text-3);
-}
+.bar-good .fill { background: #6ad06a; }
+.bar-ok .fill   { background: #d9a949; }
+.bar-warn .fill { background: #e86464; }
+.bar-neutral .fill { background: var(--vp-c-text-3); }
 
 .rate-text {
   font-size: 12px;
@@ -260,11 +227,53 @@ function mergeBarClass(v: number | null): string {
 .when {
   color: var(--vp-c-text-2);
   font-size: 12px;
+  white-space: nowrap;
 }
 
 .loading {
   color: var(--vp-c-text-2);
   font-size: 13px;
   padding: 0.5rem 0;
+}
+
+/* Mobile: stack as cards. Each row becomes a labeled block. */
+@media (max-width: 720px) {
+  .repo-health,
+  .repo-health thead,
+  .repo-health tbody,
+  .repo-health tr,
+  .repo-health td {
+    display: block;
+    width: 100%;
+  }
+  .repo-health thead {
+    position: absolute;
+    left: -9999px;  /* visually hidden but still in tree for AT */
+  }
+  .repo-health tr {
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0.5rem;
+  }
+  .repo-health td {
+    border: none;
+    padding: 0.25rem 0;
+    display: grid;
+    grid-template-columns: 11ch 1fr;
+    gap: 0.5rem;
+    text-align: left !important;
+    align-items: center;
+  }
+  .repo-health td::before {
+    content: attr(data-label);
+    color: var(--vp-c-text-2);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+  }
+  .repo-health td.num { text-align: left !important; }
+  .repo-health tr:hover td { background: transparent; }
 }
 </style>

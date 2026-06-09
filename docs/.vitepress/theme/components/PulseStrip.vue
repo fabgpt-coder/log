@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { usePRsData, humanDuration } from '../composables/usePRsData'
+import { usePRsData } from '../composables/usePRsData'
+import { humanDuration } from '../composables/formatters'
 
 const { data, loaded, error } = usePRsData()
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { usePRsData, humanDuration } from '../composables/usePRsData'
+import { usePRsData } from '../composables/usePRsData'
+import { humanDuration, fmtDateShort } from '../composables/formatters'
 
 type DailyPoint = {
   date: string
@@ -15,9 +16,6 @@ const series = computed<DailyPoint[]>(() => data.value?.stats?.daily_series?.ser
 
 const hover = ref<number | null>(null)
 
-function fmtDateShort(iso: string): string {
-  return iso.slice(5)  // MM-DD
-}
 
 // --- chart layout --------------------------------------------------------
 const W = 720

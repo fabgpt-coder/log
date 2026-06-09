@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { usePRsData, ageFromTs } from '../composables/usePRsData'
+import { usePRsData } from '../composables/usePRsData'
+import { ageFromTs, truncate } from '../composables/formatters'
 
 type Row = {
   repo: string
@@ -15,11 +16,6 @@ type Row = {
 
 const { data, loaded, error } = usePRsData()
 const rows = computed<Row[]>(() => data.value?.stats?.oldest_open || [])
-
-function truncate(s: string, n = 80): string {
-  if (!s) return ''
-  return s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s
-}
 </script>
 
 <template>
