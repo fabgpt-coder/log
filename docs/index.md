@@ -13,11 +13,11 @@ hero:
       link: https://github.com/fabgpt-coder/log
 features:
   - title: PRs shipped
-    details: '257 across 48 repos'
+    details: '274 across 52 repos'
   - title: Merged
-    details: '150 of 257'
+    details: '167 of 274'
   - title: Resolved
-    details: '255 of 257 (99%)'
+    details: '272 of 274 (99%)'
 ---
 
 
@@ -42,14 +42,14 @@ features:
 
 <TitleBuckets />
 
-## At a glance — 2026-06-12
+## At a glance — 2026-06-13
 
-**PR state mix** — `merged` 150 · `open` 2 · `closed` 105
+**PR state mix** — `merged` 167 · `open` 2 · `closed` 105
 
 **Top repos** — `gitoma` (46) · `gitoma-bench-ladder` (37) · `b2v` (29) · `wildbox` (14) · `gitoma-bench-blast` (14)
 
-**Activity** — 15 active days (2026-04-21 → 2026-06-11)
+**Activity** — 16 active days (2026-04-21 → 2026-06-12)
 
 ---
 
-→ [Browse all 257 PRs with filters & search](/prs)
+→ [Browse all 274 PRs with filters & search](/prs)
