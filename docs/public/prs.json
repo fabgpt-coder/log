@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-06-16",
+  "generated_at": "2026-06-17",
   "agent": "fabgpt-coder",
   "fetch": {
-    "total_count": 244,
-    "collected": 244,
+    "total_count": 247,
+    "collected": 247,
     "truncated": false,
     "error": null
   },
   "stats": {
-    "prs_total": 244,
+    "prs_total": 247,
     "diary_count": 0,
     "states": {
-      "merged": 184,
+      "merged": 187,
       "open": 2,
       "closed": 58
     },
     "verdicts": {
-      "merged": 184,
+      "merged": 187,
       "open": 2,
       "closed": 58
     },
@@ -38,7 +38,7 @@
       ],
       [
         "wildbox",
-        19
+        20
       ],
       [
         "cf-box",
@@ -51,23 +51,17 @@
     ],
     "top_guards": [],
     "first_day": "2026-04-21",
-    "last_day": "2026-06-15",
-    "active_days": 19,
+    "last_day": "2026-06-16",
+    "active_days": 20,
     "mttr": {
-      "count": 242,
-      "mean_s": 228105,
-      "median_s": 160,
+      "count": 245,
+      "mean_s": 225334,
+      "median_s": 161,
       "p90_s": 78354
     },
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-05-18",
-          "opened": 0,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-05-19",
           "opened": 0,
@@ -238,6 +232,12 @@
         },
         {
           "date": "2026-06-16",
+          "opened": 3,
+          "resolved": 3,
+          "median_s": 2475
+        },
+        {
+          "date": "2026-06-17",
           "opened": 0,
           "resolved": 0,
           "median_s": null
@@ -245,10 +245,10 @@
       ]
     },
     "pulse": {
-      "last_pr_at": "2026-06-15T22:00:59+00:00",
-      "last_pr_age_s": 44397,
-      "last_merge_at": "2026-06-15T22:31:44+00:00",
-      "last_merge_age_s": 42552,
+      "last_pr_at": "2026-06-16T21:27:25+00:00",
+      "last_pr_age_s": 45317,
+      "last_merge_at": "2026-06-16T21:29:04+00:00",
+      "last_merge_age_s": 45218,
       "open_count": 2,
       "stale_count": 0,
       "stale_threshold_days": 7
@@ -282,13 +282,13 @@
         "repo": "fabriziosalmi/wildbox",
         "repo_short": "wildbox",
         "owner": "fabriziosalmi",
-        "total": 19,
-        "merged": 15,
+        "total": 20,
+        "merged": 16,
         "closed": 4,
         "open": 0,
-        "merge_rate": 0.789,
-        "median_mttr_s": 153,
-        "last_activity_ts": 1781560859
+        "merge_rate": 0.8,
+        "median_mttr_s": 165,
+        "last_activity_ts": 1781638779
       },
       {
         "repo": "fabriziosalmi/cf-box",
@@ -327,6 +327,18 @@
         "last_activity_ts": 1781297214
       },
       {
+        "repo": "fabriziosalmi/proximity",
+        "repo_short": "proximity",
+        "owner": "fabriziosalmi",
+        "total": 7,
+        "merged": 6,
+        "closed": 1,
+        "open": 0,
+        "merge_rate": 0.857,
+        "median_mttr_s": 137,
+        "last_activity_ts": 1781638785
+      },
+      {
         "repo": "fabriziosalmi/websites-monitor",
         "repo_short": "websites-monitor",
         "owner": "fabriziosalmi",
@@ -363,16 +375,16 @@
         "last_activity_ts": 1781456490
       },
       {
-        "repo": "fabriziosalmi/proximity",
-        "repo_short": "proximity",
+        "repo": "fabriziosalmi/open-bpm",
+        "repo_short": "open-bpm",
         "owner": "fabriziosalmi",
-        "total": 6,
+        "total": 5,
         "merged": 5,
-        "closed": 1,
+        "closed": 0,
         "open": 0,
-        "merge_rate": 0.833,
-        "median_mttr_s": 135,
-        "last_activity_ts": 1781201851
+        "merge_rate": 1.0,
+        "median_mttr_s": 99,
+        "last_activity_ts": 1781645245
       },
       {
         "repo": "fabriziosalmi/open-video-watermark",
@@ -445,18 +457,6 @@
         "merge_rate": 1.0,
         "median_mttr_s": 150,
         "last_activity_ts": 1781560793
-      },
-      {
-        "repo": "fabriziosalmi/open-bpm",
-        "repo_short": "open-bpm",
-        "owner": "fabriziosalmi",
-        "total": 4,
-        "merged": 4,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 310,
-        "last_activity_ts": 1781297208
       },
       {
         "repo": "fabriziosalmi/newsgator",
@@ -932,7 +932,7 @@
       ],
       [
         "Bump",
-        67
+        69
       ],
       [
         "\ud83e\udd16 [Gitoma]",
@@ -940,7 +940,7 @@
       ],
       [
         "Add",
-        33
+        34
       ],
       [
         "Fix",
@@ -961,6 +961,93 @@
     ]
   },
   "prs": [
+    {
+      "date": "2026-06-16T21:27:25+00:00",
+      "ts": 1781645245,
+      "repo": "fabriziosalmi/open-bpm",
+      "owner": "fabriziosalmi",
+      "repo_short": "open-bpm",
+      "pr": 5,
+      "pr_url": "https://github.com/fabriziosalmi/open-bpm/pull/5",
+      "title": "Add explicit handling for empty TSV files",
+      "state": "merged",
+      "merged_at": "2026-06-16T21:29:04Z",
+      "closed_at": "2026-06-16T21:29:04Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-06-16T19:39:45+00:00",
+      "ts": 1781638785,
+      "repo": "fabriziosalmi/proximity",
+      "owner": "fabriziosalmi",
+      "repo_short": "proximity",
+      "pr": 32,
+      "pr_url": "https://github.com/fabriziosalmi/proximity/pull/32",
+      "title": "Bump daphne to 4.2.2 (medium)",
+      "state": "merged",
+      "merged_at": "2026-06-16T20:21:00Z",
+      "closed_at": "2026-06-16T20:21:00Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-06-16T19:39:39+00:00",
+      "ts": 1781638779,
+      "repo": "fabriziosalmi/wildbox",
+      "owner": "fabriziosalmi",
+      "repo_short": "wildbox",
+      "pr": 95,
+      "pr_url": "https://github.com/fabriziosalmi/wildbox/pull/95",
+      "title": "Bump aiohttp to 3.14.1 (medium)",
+      "state": "merged",
+      "merged_at": "2026-06-16T20:24:22Z",
+      "closed_at": "2026-06-16T20:24:22Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
     {
       "date": "2026-06-15T22:00:59+00:00",
       "ts": 1781560859,
