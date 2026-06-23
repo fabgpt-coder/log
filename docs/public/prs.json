@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-06-22",
+  "generated_at": "2026-06-23",
   "agent": "fabgpt-coder",
   "fetch": {
-    "total_count": 247,
-    "collected": 247,
+    "total_count": 252,
+    "collected": 252,
     "truncated": false,
     "error": null
   },
   "stats": {
-    "prs_total": 247,
+    "prs_total": 252,
     "diary_count": 0,
     "states": {
-      "merged": 187,
+      "merged": 192,
       "open": 2,
       "closed": 58
     },
     "verdicts": {
-      "merged": 187,
+      "merged": 192,
       "open": 2,
       "closed": 58
     },
@@ -51,23 +51,17 @@
     ],
     "top_guards": [],
     "first_day": "2026-04-21",
-    "last_day": "2026-06-16",
-    "active_days": 20,
+    "last_day": "2026-06-22",
+    "active_days": 21,
     "mttr": {
-      "count": 245,
-      "mean_s": 225334,
-      "median_s": 161,
-      "p90_s": 78354
+      "count": 250,
+      "mean_s": 220830,
+      "median_s": 159,
+      "p90_s": 76861
     },
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-05-24",
-          "opened": 0,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-05-25",
           "opened": 0,
@@ -238,6 +232,12 @@
         },
         {
           "date": "2026-06-22",
+          "opened": 5,
+          "resolved": 5,
+          "median_s": 116
+        },
+        {
+          "date": "2026-06-23",
           "opened": 0,
           "resolved": 0,
           "median_s": null
@@ -245,12 +245,12 @@
       ]
     },
     "pulse": {
-      "last_pr_at": "2026-06-16T21:27:25+00:00",
-      "last_pr_age_s": 479976,
-      "last_merge_at": "2026-06-16T21:29:04+00:00",
-      "last_merge_age_s": 479877,
+      "last_pr_at": "2026-06-22T12:22:57+00:00",
+      "last_pr_age_s": 72886,
+      "last_merge_at": "2026-06-22T12:29:01+00:00",
+      "last_merge_age_s": 72522,
       "open_count": 2,
-      "stale_count": 1,
+      "stale_count": 2,
       "stale_threshold_days": 7
     },
     "repo_health": [
@@ -363,6 +363,30 @@
         "last_activity_ts": 1781046527
       },
       {
+        "repo": "fabriziosalmi/open-bpm",
+        "repo_short": "open-bpm",
+        "owner": "fabriziosalmi",
+        "total": 6,
+        "merged": 6,
+        "closed": 0,
+        "open": 0,
+        "merge_rate": 1.0,
+        "median_mttr_s": 107,
+        "last_activity_ts": 1782130966
+      },
+      {
+        "repo": "fabriziosalmi/open-video-watermark",
+        "repo_short": "open-video-watermark",
+        "owner": "fabriziosalmi",
+        "total": 6,
+        "merged": 6,
+        "closed": 0,
+        "open": 0,
+        "merge_rate": 1.0,
+        "median_mttr_s": 140,
+        "last_activity_ts": 1782130951
+      },
+      {
         "repo": "fabriziosalmi/zion",
         "repo_short": "zion",
         "owner": "fabriziosalmi",
@@ -373,30 +397,6 @@
         "merge_rate": 0.6,
         "median_mttr_s": 369,
         "last_activity_ts": 1781456490
-      },
-      {
-        "repo": "fabriziosalmi/open-bpm",
-        "repo_short": "open-bpm",
-        "owner": "fabriziosalmi",
-        "total": 5,
-        "merged": 5,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 99,
-        "last_activity_ts": 1781645245
-      },
-      {
-        "repo": "fabriziosalmi/open-video-watermark",
-        "repo_short": "open-video-watermark",
-        "owner": "fabriziosalmi",
-        "total": 5,
-        "merged": 5,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 141,
-        "last_activity_ts": 1781025583
       },
       {
         "repo": "fabriziosalmi/nginx-waf-ai",
@@ -435,6 +435,18 @@
         "last_activity_ts": 1777401178
       },
       {
+        "repo": "fabriziosalmi/aimp",
+        "repo_short": "aimp",
+        "owner": "fabriziosalmi",
+        "total": 4,
+        "merged": 4,
+        "closed": 0,
+        "open": 0,
+        "merge_rate": 1.0,
+        "median_mttr_s": 91,
+        "last_activity_ts": 1782130958
+      },
+      {
         "repo": "fabriziosalmi/llmproxy",
         "repo_short": "llmproxy",
         "owner": "fabriziosalmi",
@@ -469,6 +481,30 @@
         "merge_rate": 1.0,
         "median_mttr_s": 196,
         "last_activity_ts": 1781025606
+      },
+      {
+        "repo": "fabriziosalmi/blacklists",
+        "repo_short": "blacklists",
+        "owner": "fabriziosalmi",
+        "total": 3,
+        "merged": 3,
+        "closed": 0,
+        "open": 0,
+        "merge_rate": 1.0,
+        "median_mttr_s": 112,
+        "last_activity_ts": 1782130977
+      },
+      {
+        "repo": "fabriziosalmi/audiogen",
+        "repo_short": "audiogen",
+        "owner": "fabriziosalmi",
+        "total": 3,
+        "merged": 3,
+        "closed": 0,
+        "open": 0,
+        "merge_rate": 1.0,
+        "median_mttr_s": 58,
+        "last_activity_ts": 1782130971
       },
       {
         "repo": "fabriziosalmi/logos",
@@ -517,18 +553,6 @@
         "merge_rate": 1.0,
         "median_mttr_s": 116,
         "last_activity_ts": 1781201857
-      },
-      {
-        "repo": "fabriziosalmi/aimp",
-        "repo_short": "aimp",
-        "owner": "fabriziosalmi",
-        "total": 3,
-        "merged": 3,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 91,
-        "last_activity_ts": 1780992670
       },
       {
         "repo": "fabriziosalmi/gitoma-bench-quality",
@@ -627,18 +651,6 @@
         "last_activity_ts": 1781297202
       },
       {
-        "repo": "fabriziosalmi/blacklists",
-        "repo_short": "blacklists",
-        "owner": "fabriziosalmi",
-        "total": 2,
-        "merged": 2,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 269,
-        "last_activity_ts": 1781291719
-      },
-      {
         "repo": "fabriziosalmi/audiolibri",
         "repo_short": "audiolibri",
         "owner": "fabriziosalmi",
@@ -661,18 +673,6 @@
         "merge_rate": 0.5,
         "median_mttr_s": 124,
         "last_activity_ts": 1781187319
-      },
-      {
-        "repo": "fabriziosalmi/audiogen",
-        "repo_short": "audiogen",
-        "owner": "fabriziosalmi",
-        "total": 2,
-        "merged": 2,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 37,
-        "last_activity_ts": 1781164083
       },
       {
         "repo": "fabriziosalmi/proxymate",
@@ -932,7 +932,7 @@
       ],
       [
         "Bump",
-        69
+        71
       ],
       [
         "\ud83e\udd16 [Gitoma]",
@@ -940,7 +940,7 @@
       ],
       [
         "Add",
-        34
+        37
       ],
       [
         "Fix",
@@ -961,6 +961,151 @@
     ]
   },
   "prs": [
+    {
+      "date": "2026-06-22T12:22:57+00:00",
+      "ts": 1782130977,
+      "repo": "fabriziosalmi/blacklists",
+      "owner": "fabriziosalmi",
+      "repo_short": "blacklists",
+      "pr": 32,
+      "pr_url": "https://github.com/fabriziosalmi/blacklists/pull/32",
+      "title": "Add robustness against malformed or empty lines in input",
+      "state": "merged",
+      "merged_at": "2026-06-22T12:24:49Z",
+      "closed_at": "2026-06-22T12:24:49Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-06-22T12:22:51+00:00",
+      "ts": 1782130971,
+      "repo": "fabriziosalmi/audiogen",
+      "owner": "fabriziosalmi",
+      "repo_short": "audiogen",
+      "pr": 3,
+      "pr_url": "https://github.com/fabriziosalmi/audiogen/pull/3",
+      "title": "Add validation for non-empty feature matrix after dropping columns",
+      "state": "merged",
+      "merged_at": "2026-06-22T12:24:46Z",
+      "closed_at": "2026-06-22T12:24:46Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-06-22T12:22:46+00:00",
+      "ts": 1782130966,
+      "repo": "fabriziosalmi/open-bpm",
+      "owner": "fabriziosalmi",
+      "repo_short": "open-bpm",
+      "pr": 6,
+      "pr_url": "https://github.com/fabriziosalmi/open-bpm/pull/6",
+      "title": "Add robustness check for duplicate track_ids in input files",
+      "state": "merged",
+      "merged_at": "2026-06-22T12:24:42Z",
+      "closed_at": "2026-06-22T12:24:42Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-06-22T12:22:38+00:00",
+      "ts": 1782130958,
+      "repo": "fabriziosalmi/aimp",
+      "owner": "fabriziosalmi",
+      "repo_short": "aimp",
+      "pr": 7,
+      "pr_url": "https://github.com/fabriziosalmi/aimp/pull/7",
+      "title": "Bump msgpack to 1.2.1 (high)",
+      "state": "merged",
+      "merged_at": "2026-06-22T12:29:01Z",
+      "closed_at": "2026-06-22T12:29:01Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-06-22T12:22:31+00:00",
+      "ts": 1782130951,
+      "repo": "fabriziosalmi/open-video-watermark",
+      "owner": "fabriziosalmi",
+      "repo_short": "open-video-watermark",
+      "pr": 15,
+      "pr_url": "https://github.com/fabriziosalmi/open-video-watermark/pull/15",
+      "title": "Bump yt-dlp to 2026.6.9 (high)",
+      "state": "merged",
+      "merged_at": "2026-06-22T12:24:39Z",
+      "closed_at": "2026-06-22T12:24:39Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
     {
       "date": "2026-06-16T21:27:25+00:00",
       "ts": 1781645245,
