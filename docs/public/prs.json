@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23",
+  "generated_at": "2026-06-24",
   "agent": "fabgpt-coder",
   "fetch": {
     "total_count": 252,
@@ -11,13 +11,13 @@
     "prs_total": 252,
     "diary_count": 0,
     "states": {
-      "merged": 192,
-      "open": 2,
+      "merged": 193,
+      "open": 1,
       "closed": 58
     },
     "verdicts": {
-      "merged": 192,
-      "open": 2,
+      "merged": 193,
+      "open": 1,
       "closed": 58
     },
     "subs_num": 0,
@@ -54,20 +54,14 @@
     "last_day": "2026-06-22",
     "active_days": 21,
     "mttr": {
-      "count": 250,
-      "mean_s": 220830,
-      "median_s": 159,
-      "p90_s": 76861
+      "count": 251,
+      "mean_s": 222977,
+      "median_s": 160,
+      "p90_s": 78354
     },
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-05-25",
-          "opened": 0,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-05-26",
           "opened": 0,
@@ -241,16 +235,22 @@
           "opened": 0,
           "resolved": 0,
           "median_s": null
+        },
+        {
+          "date": "2026-06-24",
+          "opened": 0,
+          "resolved": 1,
+          "median_s": 759701
         }
       ]
     },
     "pulse": {
       "last_pr_at": "2026-06-22T12:22:57+00:00",
-      "last_pr_age_s": 72886,
-      "last_merge_at": "2026-06-22T12:29:01+00:00",
-      "last_merge_age_s": 72522,
-      "open_count": 2,
-      "stale_count": 2,
+      "last_pr_age_s": 159014,
+      "last_merge_at": "2026-06-24T07:13:14+00:00",
+      "last_merge_age_s": 4797,
+      "open_count": 1,
+      "stale_count": 1,
       "stale_threshold_days": 7
     },
     "repo_health": [
@@ -715,11 +715,11 @@
         "repo_short": "certmate",
         "owner": "fabriziosalmi",
         "total": 1,
-        "merged": 0,
+        "merged": 1,
         "closed": 0,
-        "open": 1,
-        "merge_rate": null,
-        "median_mttr_s": null,
+        "open": 0,
+        "merge_rate": 1.0,
+        "median_mttr_s": 759701,
         "last_activity_ts": 1781525493
       },
       {
@@ -913,16 +913,6 @@
         "title": "Add validation to ensure NEW version is newer than OLD",
         "date": "2026-06-14T17:01:30+00:00",
         "ts": 1781456490
-      },
-      {
-        "repo": "fabriziosalmi/certmate",
-        "repo_short": "certmate",
-        "owner": "fabriziosalmi",
-        "pr": 315,
-        "pr_url": "https://github.com/fabriziosalmi/certmate/pull/315",
-        "title": "chore(agssh): declare AGSSH conformance (.airgap.yml) \u2014 L2, Bronze target",
-        "date": "2026-06-15T12:11:33+00:00",
-        "ts": 1781525493
       }
     ],
     "title_buckets": [
@@ -1492,9 +1482,9 @@
       "pr": 315,
       "pr_url": "https://github.com/fabriziosalmi/certmate/pull/315",
       "title": "chore(agssh): declare AGSSH conformance (.airgap.yml) \u2014 L2, Bronze target",
-      "state": "open",
-      "merged_at": null,
-      "closed_at": null,
+      "state": "merged",
+      "merged_at": "2026-06-24T07:13:14Z",
+      "closed_at": "2026-06-24T07:13:14Z",
       "is_draft": false,
       "branch": "",
       "model": "",
@@ -1507,7 +1497,7 @@
       "subs_pct": null,
       "guards": [],
       "verdict": "",
-      "verdict_class": "open",
+      "verdict_class": "merged",
       "entry_path": "",
       "entry_url": "",
       "source": "github"

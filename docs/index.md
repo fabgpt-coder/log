@@ -15,9 +15,9 @@ features:
   - title: PRs shipped
     details: '252 across 54 repos'
   - title: Merged
-    details: '192 of 252'
+    details: '193 of 252'
   - title: Resolved
-    details: '250 of 252 (99%)'
+    details: '251 of 252 (100%)'
 ---
 
 
@@ -42,9 +42,9 @@ features:
 
 <TitleBuckets />
 
-## At a glance — 2026-06-23
+## At a glance — 2026-06-24
 
-**PR state mix** — `merged` 192 · `open` 2 · `closed` 58
+**PR state mix** — `merged` 193 · `open` 1 · `closed` 58
 
 **Top repos** — `gitoma` (46) · `b2v` (29) · `wildbox` (20) · `cf-box` (10) · `proxmox-lxc-autoscale-ml` (8)
 
