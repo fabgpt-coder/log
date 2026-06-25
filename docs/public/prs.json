@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-06-24",
+  "generated_at": "2026-06-25",
   "agent": "fabgpt-coder",
   "fetch": {
-    "total_count": 252,
-    "collected": 252,
+    "total_count": 254,
+    "collected": 254,
     "truncated": false,
     "error": null
   },
   "stats": {
-    "prs_total": 252,
+    "prs_total": 254,
     "diary_count": 0,
     "states": {
-      "merged": 193,
+      "merged": 195,
       "open": 1,
       "closed": 58
     },
     "verdicts": {
-      "merged": 193,
+      "merged": 195,
       "open": 1,
       "closed": 58
     },
@@ -51,23 +51,17 @@
     ],
     "top_guards": [],
     "first_day": "2026-04-21",
-    "last_day": "2026-06-22",
-    "active_days": 21,
+    "last_day": "2026-06-24",
+    "active_days": 22,
     "mttr": {
-      "count": 251,
-      "mean_s": 222977,
-      "median_s": 160,
+      "count": 253,
+      "mean_s": 221217,
+      "median_s": 161,
       "p90_s": 78354
     },
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-05-26",
-          "opened": 0,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-05-27",
           "opened": 0,
@@ -238,17 +232,23 @@
         },
         {
           "date": "2026-06-24",
+          "opened": 2,
+          "resolved": 3,
+          "median_s": 347
+        },
+        {
+          "date": "2026-06-25",
           "opened": 0,
-          "resolved": 1,
-          "median_s": 759701
+          "resolved": 0,
+          "median_s": null
         }
       ]
     },
     "pulse": {
-      "last_pr_at": "2026-06-22T12:22:57+00:00",
-      "last_pr_age_s": 159014,
-      "last_merge_at": "2026-06-24T07:13:14+00:00",
-      "last_merge_age_s": 4797,
+      "last_pr_at": "2026-06-24T20:50:45+00:00",
+      "last_pr_age_s": 42028,
+      "last_merge_at": "2026-06-24T20:56:32+00:00",
+      "last_merge_age_s": 41681,
       "open_count": 1,
       "stale_count": 1,
       "stale_threshold_days": 7
@@ -399,6 +399,18 @@
         "last_activity_ts": 1781456490
       },
       {
+        "repo": "fabriziosalmi/nis2-public",
+        "repo_short": "nis2-public",
+        "owner": "fabriziosalmi",
+        "total": 5,
+        "merged": 5,
+        "closed": 0,
+        "open": 0,
+        "merge_rate": 1.0,
+        "median_mttr_s": 216,
+        "last_activity_ts": 1782334245
+      },
+      {
         "repo": "fabriziosalmi/nginx-waf-ai",
         "repo_short": "nginx-waf-ai",
         "owner": "fabriziosalmi",
@@ -457,18 +469,6 @@
         "merge_rate": 1.0,
         "median_mttr_s": 823,
         "last_activity_ts": 1781560821
-      },
-      {
-        "repo": "fabriziosalmi/nis2-public",
-        "repo_short": "nis2-public",
-        "owner": "fabriziosalmi",
-        "total": 4,
-        "merged": 4,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 150,
-        "last_activity_ts": 1781560793
       },
       {
         "repo": "fabriziosalmi/newsgator",
@@ -565,6 +565,18 @@
         "merge_rate": 0.0,
         "median_mttr_s": 5036,
         "last_activity_ts": 1777492462
+      },
+      {
+        "repo": "fabriziosalmi/l0-cache",
+        "repo_short": "l0-cache",
+        "owner": "fabriziosalmi",
+        "total": 2,
+        "merged": 2,
+        "closed": 0,
+        "open": 0,
+        "merge_rate": 1.0,
+        "median_mttr_s": 278,
+        "last_activity_ts": 1782334238
       },
       {
         "repo": "fabriziosalmi/lws",
@@ -855,18 +867,6 @@
         "last_activity_ts": 1780777683
       },
       {
-        "repo": "fabriziosalmi/l0-cache",
-        "repo_short": "l0-cache",
-        "owner": "fabriziosalmi",
-        "total": 1,
-        "merged": 1,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 338,
-        "last_activity_ts": 1780772419
-      },
-      {
         "repo": "fabriziosalmi/nis2-model",
         "repo_short": "nis2-model",
         "owner": "fabriziosalmi",
@@ -930,7 +930,7 @@
       ],
       [
         "Add",
-        37
+        39
       ],
       [
         "Fix",
@@ -951,6 +951,64 @@
     ]
   },
   "prs": [
+    {
+      "date": "2026-06-24T20:50:45+00:00",
+      "ts": 1782334245,
+      "repo": "fabriziosalmi/nis2-public",
+      "owner": "fabriziosalmi",
+      "repo_short": "nis2-public",
+      "pr": 137,
+      "pr_url": "https://github.com/fabriziosalmi/nis2-public/pull/137",
+      "title": "Add test for missing items key in bulk-update payload",
+      "state": "merged",
+      "merged_at": "2026-06-24T20:56:32Z",
+      "closed_at": "2026-06-24T20:56:32Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-06-24T20:50:38+00:00",
+      "ts": 1782334238,
+      "repo": "fabriziosalmi/l0-cache",
+      "owner": "fabriziosalmi",
+      "repo_short": "l0-cache",
+      "pr": 5,
+      "pr_url": "https://github.com/fabriziosalmi/l0-cache/pull/5",
+      "title": "Add input validation for `since_is_valid` to reject empty strings",
+      "state": "merged",
+      "merged_at": "2026-06-24T20:54:16Z",
+      "closed_at": "2026-06-24T20:54:16Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
     {
       "date": "2026-06-22T12:22:57+00:00",
       "ts": 1782130977,
