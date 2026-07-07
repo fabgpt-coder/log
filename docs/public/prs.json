@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06",
+  "generated_at": "2026-07-07",
   "agent": "fabgpt-coder",
   "fetch": {
     "total_count": 254,
@@ -12,13 +12,11 @@
     "diary_count": 0,
     "states": {
       "merged": 195,
-      "open": 1,
-      "closed": 58
+      "closed": 59
     },
     "verdicts": {
       "merged": 195,
-      "open": 1,
-      "closed": 58
+      "closed": 59
     },
     "subs_num": 0,
     "subs_den": 0,
@@ -54,20 +52,14 @@
     "last_day": "2026-06-24",
     "active_days": 22,
     "mttr": {
-      "count": 253,
-      "mean_s": 221217,
+      "count": 254,
+      "mean_s": 227803,
       "median_s": 161,
-      "p90_s": 78354
+      "p90_s": 85130
     },
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-06-07",
-          "opened": 0,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-06-08",
           "opened": 32,
@@ -239,6 +231,12 @@
         {
           "date": "2026-07-06",
           "opened": 0,
+          "resolved": 1,
+          "median_s": 1894061
+        },
+        {
+          "date": "2026-07-07",
+          "opened": 0,
           "resolved": 0,
           "median_s": null
         }
@@ -246,11 +244,11 @@
     },
     "pulse": {
       "last_pr_at": "2026-06-24T20:50:45+00:00",
-      "last_pr_age_s": 994748,
+      "last_pr_age_s": 1079402,
       "last_merge_at": "2026-06-24T20:56:32+00:00",
-      "last_merge_age_s": 994401,
-      "open_count": 1,
-      "stale_count": 1,
+      "last_merge_age_s": 1079055,
+      "open_count": 0,
+      "stale_count": 0,
       "stale_threshold_days": 7
     },
     "repo_health": [
@@ -392,10 +390,10 @@
         "owner": "fabriziosalmi",
         "total": 6,
         "merged": 3,
-        "closed": 2,
-        "open": 1,
-        "merge_rate": 0.6,
-        "median_mttr_s": 369,
+        "closed": 3,
+        "open": 0,
+        "merge_rate": 0.5,
+        "median_mttr_s": 667,
         "last_activity_ts": 1781456490
       },
       {
@@ -567,8 +565,8 @@
         "last_activity_ts": 1777492462
       },
       {
-        "repo": "fabriziosalmi/l0-cache",
-        "repo_short": "l0-cache",
+        "repo": "fabriziosalmi/l0-compressor",
+        "repo_short": "l0-compressor",
         "owner": "fabriziosalmi",
         "total": 2,
         "merged": 2,
@@ -903,18 +901,7 @@
         "last_activity_ts": 1777416657
       }
     ],
-    "oldest_open": [
-      {
-        "repo": "fabriziosalmi/zion",
-        "repo_short": "zion",
-        "owner": "fabriziosalmi",
-        "pr": 187,
-        "pr_url": "https://github.com/fabriziosalmi/zion/pull/187",
-        "title": "Add validation to ensure NEW version is newer than OLD",
-        "date": "2026-06-14T17:01:30+00:00",
-        "ts": 1781456490
-      }
-    ],
+    "oldest_open": [],
     "title_buckets": [
       [
         "Other",
@@ -983,11 +970,11 @@
     {
       "date": "2026-06-24T20:50:38+00:00",
       "ts": 1782334238,
-      "repo": "fabriziosalmi/l0-cache",
+      "repo": "fabriziosalmi/l0-compressor",
       "owner": "fabriziosalmi",
-      "repo_short": "l0-cache",
+      "repo_short": "l0-compressor",
       "pr": 5,
-      "pr_url": "https://github.com/fabriziosalmi/l0-cache/pull/5",
+      "pr_url": "https://github.com/fabriziosalmi/l0-compressor/pull/5",
       "title": "Add input validation for `since_is_valid` to reject empty strings",
       "state": "merged",
       "merged_at": "2026-06-24T20:54:16Z",
@@ -1656,9 +1643,9 @@
       "pr": 187,
       "pr_url": "https://github.com/fabriziosalmi/zion/pull/187",
       "title": "Add validation to ensure NEW version is newer than OLD",
-      "state": "open",
+      "state": "closed",
       "merged_at": null,
-      "closed_at": null,
+      "closed_at": "2026-07-06T15:09:11Z",
       "is_draft": false,
       "branch": "",
       "model": "",
@@ -1671,7 +1658,7 @@
       "subs_pct": null,
       "guards": [],
       "verdict": "",
-      "verdict_class": "open",
+      "verdict_class": "closed",
       "entry_path": "",
       "entry_url": "",
       "source": "github"
@@ -7044,11 +7031,11 @@
     {
       "date": "2026-06-06T19:00:19+00:00",
       "ts": 1780772419,
-      "repo": "fabriziosalmi/l0-cache",
+      "repo": "fabriziosalmi/l0-compressor",
       "owner": "fabriziosalmi",
-      "repo_short": "l0-cache",
+      "repo_short": "l0-compressor",
       "pr": 4,
-      "pr_url": "https://github.com/fabriziosalmi/l0-cache/pull/4",
+      "pr_url": "https://github.com/fabriziosalmi/l0-compressor/pull/4",
       "title": "Guard against empty git output to prevent invalid hash",
       "state": "merged",
       "merged_at": "2026-06-06T19:05:57Z",
