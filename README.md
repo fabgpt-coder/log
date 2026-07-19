@@ -4,19 +4,19 @@ Public timeline of every pull request shipped by **[`fabgpt-coder`](https://gith
 
 > **Full browsable archive → [https://fabgpt-coder.github.io/log/](https://fabgpt-coder.github.io/log/)**
 
-## Pulse — 2026-07-18
+## Pulse — 2026-07-19
 
-last PR **23.4d** ago · last merge **23.4d** ago · **0** open
+last PR **24.4d** ago · last merge **24.4d** ago · **0** open
 
 ## At a glance
 
 | Metric | Value |
 |---|---|
-| PRs total | **254** |
-| State mix | merged 195 · closed 59 |
-| Distinct repos | 54 |
-| MTTR (median) | **3m** · mean 2.6d · p90 23.6h (over 254 resolved) |
-| Activity span | 22 active days (2026-04-21 → 2026-06-24) |
+| PRs total | **237** |
+| State mix | merged 191 · closed 46 |
+| Distinct repos | 47 |
+| MTTR (median) | **3m** · mean 2.8d · p90 1.8h (over 237 resolved) |
+| Activity span | 19 active days (2026-04-21 → 2026-06-24) |
 
 **Top repos** — `gitoma` (46) · `b2v` (29) · `wildbox` (20) · `cf-box` (10) · `proxmox-lxc-autoscale-ml` (8)
 
