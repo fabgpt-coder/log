@@ -1,20 +1,22 @@
 {
-  "generated_at": "2026-07-22",
+  "generated_at": "2026-07-23",
   "agent": "fabgpt-coder",
   "fetch": {
-    "total_count": 237,
-    "collected": 237,
+    "total_count": 238,
+    "collected": 238,
     "truncated": false,
     "error": null
   },
   "stats": {
-    "prs_total": 237,
+    "prs_total": 238,
     "diary_count": 0,
     "states": {
+      "open": 1,
       "merged": 191,
       "closed": 46
     },
     "verdicts": {
+      "open": 1,
       "merged": 191,
       "closed": 46
     },
@@ -36,7 +38,7 @@
       ],
       [
         "wildbox",
-        20
+        21
       ],
       [
         "cf-box",
@@ -49,8 +51,8 @@
     ],
     "top_guards": [],
     "first_day": "2026-04-21",
-    "last_day": "2026-06-24",
-    "active_days": 19,
+    "last_day": "2026-07-22",
+    "active_days": 20,
     "mttr": {
       "count": 237,
       "mean_s": 239632,
@@ -60,12 +62,6 @@
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-06-23",
-          "opened": 0,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-06-24",
           "opened": 2,
@@ -236,6 +232,12 @@
         },
         {
           "date": "2026-07-22",
+          "opened": 1,
+          "resolved": 0,
+          "median_s": null
+        },
+        {
+          "date": "2026-07-23",
           "opened": 0,
           "resolved": 0,
           "median_s": null
@@ -243,11 +245,11 @@
       ]
     },
     "pulse": {
-      "last_pr_at": "2026-06-24T20:50:45+00:00",
-      "last_pr_age_s": 2371891,
+      "last_pr_at": "2026-07-22T22:48:00+00:00",
+      "last_pr_age_s": 32147,
       "last_merge_at": "2026-06-24T20:56:32+00:00",
-      "last_merge_age_s": 2371544,
-      "open_count": 0,
+      "last_merge_age_s": 2458035,
+      "open_count": 1,
       "stale_count": 0,
       "stale_threshold_days": 7
     },
@@ -280,13 +282,13 @@
         "repo": "fabriziosalmi/wildbox",
         "repo_short": "wildbox",
         "owner": "fabriziosalmi",
-        "total": 20,
+        "total": 21,
         "merged": 16,
         "closed": 4,
-        "open": 0,
+        "open": 1,
         "merge_rate": 0.8,
         "median_mttr_s": 165,
-        "last_activity_ts": 1781638779
+        "last_activity_ts": 1784760480
       },
       {
         "repo": "fabriziosalmi/cf-box",
@@ -817,7 +819,18 @@
         "last_activity_ts": 1780768125
       }
     ],
-    "oldest_open": [],
+    "oldest_open": [
+      {
+        "repo": "fabriziosalmi/wildbox",
+        "repo_short": "wildbox",
+        "owner": "fabriziosalmi",
+        "pr": 303,
+        "pr_url": "https://github.com/fabriziosalmi/wildbox/pull/303",
+        "title": "Remove unused import and fix type hint for session parameter",
+        "date": "2026-07-22T22:48:00+00:00",
+        "ts": 1784760480
+      }
+    ],
     "title_buckets": [
       [
         "Other",
@@ -845,7 +858,7 @@
       ],
       [
         "Remove",
-        2
+        3
       ],
       [
         "Ensure",
@@ -854,6 +867,35 @@
     ]
   },
   "prs": [
+    {
+      "date": "2026-07-22T22:48:00+00:00",
+      "ts": 1784760480,
+      "repo": "fabriziosalmi/wildbox",
+      "owner": "fabriziosalmi",
+      "repo_short": "wildbox",
+      "pr": 303,
+      "pr_url": "https://github.com/fabriziosalmi/wildbox/pull/303",
+      "title": "Remove unused import and fix type hint for session parameter",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
     {
       "date": "2026-06-24T20:50:45+00:00",
       "ts": 1782334245,
