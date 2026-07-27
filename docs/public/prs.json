@@ -1,20 +1,22 @@
 {
-  "generated_at": "2026-07-26",
+  "generated_at": "2026-07-27",
   "agent": "fabgpt-coder",
   "fetch": {
-    "total_count": 283,
-    "collected": 283,
+    "total_count": 286,
+    "collected": 286,
     "truncated": false,
     "error": null
   },
   "stats": {
-    "prs_total": 283,
+    "prs_total": 286,
     "diary_count": 0,
     "states": {
+      "open": 3,
       "merged": 226,
       "closed": 57
     },
     "verdicts": {
+      "open": 3,
       "merged": 226,
       "closed": 57
     },
@@ -36,21 +38,21 @@
       ],
       [
         "wildbox",
-        21
+        22
       ],
       [
         "cf-box",
         13
       ],
       [
-        "websites-monitor",
-        9
+        "proxmox-lxc-autoscale-ml",
+        10
       ]
     ],
     "top_guards": [],
     "first_day": "2026-04-21",
-    "last_day": "2026-07-25",
-    "active_days": 22,
+    "last_day": "2026-07-27",
+    "active_days": 23,
     "mttr": {
       "count": 283,
       "mean_s": 201414,
@@ -60,12 +62,6 @@
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-06-27",
-          "opened": 0,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-06-28",
           "opened": 0,
@@ -239,15 +235,21 @@
           "opened": 0,
           "resolved": 0,
           "median_s": null
+        },
+        {
+          "date": "2026-07-27",
+          "opened": 3,
+          "resolved": 0,
+          "median_s": null
         }
       ]
     },
     "pulse": {
-      "last_pr_at": "2026-07-25T09:42:57+00:00",
-      "last_pr_age_s": 79339,
+      "last_pr_at": "2026-07-27T08:29:06+00:00",
+      "last_pr_age_s": 1055,
       "last_merge_at": "2026-07-25T10:00:40+00:00",
-      "last_merge_age_s": 78276,
-      "open_count": 0,
+      "last_merge_age_s": 168361,
+      "open_count": 3,
       "stale_count": 0,
       "stale_threshold_days": 7
     },
@@ -280,13 +282,13 @@
         "repo": "fabriziosalmi/wildbox",
         "repo_short": "wildbox",
         "owner": "fabriziosalmi",
-        "total": 21,
+        "total": 22,
         "merged": 16,
         "closed": 5,
-        "open": 0,
+        "open": 1,
         "merge_rate": 0.762,
         "median_mttr_s": 177,
-        "last_activity_ts": 1784760480
+        "last_activity_ts": 1785140934
       },
       {
         "repo": "fabriziosalmi/cf-box",
@@ -301,6 +303,18 @@
         "last_activity_ts": 1784972577
       },
       {
+        "repo": "fabriziosalmi/proxmox-lxc-autoscale-ml",
+        "repo_short": "proxmox-lxc-autoscale-ml",
+        "owner": "fabriziosalmi",
+        "total": 10,
+        "merged": 8,
+        "closed": 1,
+        "open": 1,
+        "merge_rate": 0.889,
+        "median_mttr_s": 123,
+        "last_activity_ts": 1785140940
+      },
+      {
         "repo": "fabriziosalmi/websites-monitor",
         "repo_short": "websites-monitor",
         "owner": "fabriziosalmi",
@@ -311,18 +325,6 @@
         "merge_rate": 0.778,
         "median_mttr_s": 118,
         "last_activity_ts": 1784961242
-      },
-      {
-        "repo": "fabriziosalmi/proxmox-lxc-autoscale-ml",
-        "repo_short": "proxmox-lxc-autoscale-ml",
-        "owner": "fabriziosalmi",
-        "total": 9,
-        "merged": 8,
-        "closed": 1,
-        "open": 0,
-        "merge_rate": 0.889,
-        "median_mttr_s": 123,
-        "last_activity_ts": 1784891554
       },
       {
         "repo": "fabriziosalmi/zion",
@@ -421,6 +423,18 @@
         "last_activity_ts": 1782130951
       },
       {
+        "repo": "fabriziosalmi/blacklists",
+        "repo_short": "blacklists",
+        "owner": "fabriziosalmi",
+        "total": 5,
+        "merged": 4,
+        "closed": 0,
+        "open": 1,
+        "merge_rate": 1.0,
+        "median_mttr_s": 318,
+        "last_activity_ts": 1785140946
+      },
+      {
         "repo": "fabriziosalmi/logos",
         "repo_short": "logos",
         "owner": "fabriziosalmi",
@@ -491,18 +505,6 @@
         "merge_rate": 1.0,
         "median_mttr_s": 380,
         "last_activity_ts": 1784961419
-      },
-      {
-        "repo": "fabriziosalmi/blacklists",
-        "repo_short": "blacklists",
-        "owner": "fabriziosalmi",
-        "total": 4,
-        "merged": 4,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 318,
-        "last_activity_ts": 1784961217
       },
       {
         "repo": "fabriziosalmi/newsgator",
@@ -949,11 +951,42 @@
         "last_activity_ts": 1780971142
       }
     ],
-    "oldest_open": [],
+    "oldest_open": [
+      {
+        "repo": "fabriziosalmi/wildbox",
+        "repo_short": "wildbox",
+        "owner": "fabriziosalmi",
+        "pr": 308,
+        "pr_url": "https://github.com/fabriziosalmi/wildbox/pull/308",
+        "title": "Config file failed to parse",
+        "date": "2026-07-27T08:28:54+00:00",
+        "ts": 1785140934
+      },
+      {
+        "repo": "fabriziosalmi/proxmox-lxc-autoscale-ml",
+        "repo_short": "proxmox-lxc-autoscale-ml",
+        "owner": "fabriziosalmi",
+        "pr": 30,
+        "pr_url": "https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml/pull/30",
+        "title": "Fix insecure direct comparison of API keys in verify step",
+        "date": "2026-07-27T08:29:00+00:00",
+        "ts": 1785140940
+      },
+      {
+        "repo": "fabriziosalmi/blacklists",
+        "repo_short": "blacklists",
+        "owner": "fabriziosalmi",
+        "pr": 35,
+        "pr_url": "https://github.com/fabriziosalmi/blacklists/pull/35",
+        "title": "Fix missing error handling for tar extraction failure",
+        "date": "2026-07-27T08:29:06+00:00",
+        "ts": 1785140946
+      }
+    ],
     "title_buckets": [
       [
         "Other",
-        100
+        101
       ],
       [
         "Bump",
@@ -969,7 +1002,7 @@
       ],
       [
         "Fix",
-        21
+        23
       ],
       [
         "Prevent",
@@ -986,6 +1019,93 @@
     ]
   },
   "prs": [
+    {
+      "date": "2026-07-27T08:29:06+00:00",
+      "ts": 1785140946,
+      "repo": "fabriziosalmi/blacklists",
+      "owner": "fabriziosalmi",
+      "repo_short": "blacklists",
+      "pr": 35,
+      "pr_url": "https://github.com/fabriziosalmi/blacklists/pull/35",
+      "title": "Fix missing error handling for tar extraction failure",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-07-27T08:29:00+00:00",
+      "ts": 1785140940,
+      "repo": "fabriziosalmi/proxmox-lxc-autoscale-ml",
+      "owner": "fabriziosalmi",
+      "repo_short": "proxmox-lxc-autoscale-ml",
+      "pr": 30,
+      "pr_url": "https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml/pull/30",
+      "title": "Fix insecure direct comparison of API keys in verify step",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-07-27T08:28:54+00:00",
+      "ts": 1785140934,
+      "repo": "fabriziosalmi/wildbox",
+      "owner": "fabriziosalmi",
+      "repo_short": "wildbox",
+      "pr": 308,
+      "pr_url": "https://github.com/fabriziosalmi/wildbox/pull/308",
+      "title": "Config file failed to parse",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
     {
       "date": "2026-07-25T09:42:57+00:00",
       "ts": 1784972577,
