@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-27",
+  "generated_at": "2026-07-28",
   "agent": "fabgpt-coder",
   "fetch": {
     "total_count": 286,
@@ -62,12 +62,6 @@
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-06-28",
-          "opened": 0,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-06-29",
           "opened": 0,
@@ -241,14 +235,20 @@
           "opened": 3,
           "resolved": 0,
           "median_s": null
+        },
+        {
+          "date": "2026-07-28",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
         }
       ]
     },
     "pulse": {
       "last_pr_at": "2026-07-27T08:29:06+00:00",
-      "last_pr_age_s": 1055,
+      "last_pr_age_s": 83871,
       "last_merge_at": "2026-07-25T10:00:40+00:00",
-      "last_merge_age_s": 168361,
+      "last_merge_age_s": 251177,
       "open_count": 3,
       "stale_count": 0,
       "stale_threshold_days": 7
