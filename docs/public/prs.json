@@ -1,24 +1,22 @@
 {
-  "generated_at": "2026-07-29",
+  "generated_at": "2026-07-30",
   "agent": "fabgpt-coder",
   "fetch": {
-    "total_count": 287,
-    "collected": 287,
+    "total_count": 288,
+    "collected": 288,
     "truncated": false,
     "error": null
   },
   "stats": {
-    "prs_total": 287,
+    "prs_total": 288,
     "diary_count": 0,
     "states": {
-      "open": 4,
-      "merged": 226,
-      "closed": 57
+      "merged": 230,
+      "closed": 58
     },
     "verdicts": {
-      "open": 4,
-      "merged": 226,
-      "closed": 57
+      "merged": 230,
+      "closed": 58
     },
     "subs_num": 0,
     "subs_den": 0,
@@ -51,23 +49,17 @@
     ],
     "top_guards": [],
     "first_day": "2026-04-21",
-    "last_day": "2026-07-28",
-    "active_days": 24,
+    "last_day": "2026-07-29",
+    "active_days": 25,
     "mttr": {
-      "count": 283,
-      "mean_s": 201414,
-      "median_s": 180,
-      "p90_s": 3277
+      "count": 288,
+      "mean_s": 200342,
+      "median_s": 184,
+      "p90_s": 6486
     },
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-06-30",
-          "opened": 0,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-07-01",
           "opened": 0,
@@ -238,6 +230,12 @@
         },
         {
           "date": "2026-07-29",
+          "opened": 1,
+          "resolved": 5,
+          "median_s": 201801
+        },
+        {
+          "date": "2026-07-30",
           "opened": 0,
           "resolved": 0,
           "median_s": null
@@ -245,11 +243,11 @@
       ]
     },
     "pulse": {
-      "last_pr_at": "2026-07-28T15:41:42+00:00",
-      "last_pr_age_s": 58613,
-      "last_merge_at": "2026-07-25T10:00:40+00:00",
-      "last_merge_age_s": 338275,
-      "open_count": 4,
+      "last_pr_at": "2026-07-29T16:28:59+00:00",
+      "last_pr_age_s": 54805,
+      "last_merge_at": "2026-07-29T17:01:12+00:00",
+      "last_merge_age_s": 52872,
+      "open_count": 0,
       "stale_count": 0,
       "stale_threshold_days": 7
     },
@@ -283,10 +281,10 @@
         "repo_short": "wildbox",
         "owner": "fabriziosalmi",
         "total": 22,
-        "merged": 16,
+        "merged": 17,
         "closed": 5,
-        "open": 1,
-        "merge_rate": 0.762,
+        "open": 0,
+        "merge_rate": 0.773,
         "median_mttr_s": 177,
         "last_activity_ts": 1785140934
       },
@@ -308,10 +306,10 @@
         "owner": "fabriziosalmi",
         "total": 10,
         "merged": 8,
-        "closed": 1,
-        "open": 1,
-        "merge_rate": 0.889,
-        "median_mttr_s": 123,
+        "closed": 2,
+        "open": 0,
+        "merge_rate": 0.8,
+        "median_mttr_s": 154,
         "last_activity_ts": 1785140940
       },
       {
@@ -319,11 +317,11 @@
         "repo_short": "aidlp",
         "owner": "fabriziosalmi",
         "total": 9,
-        "merged": 6,
+        "merged": 7,
         "closed": 2,
-        "open": 1,
-        "merge_rate": 0.75,
-        "median_mttr_s": 95,
+        "open": 0,
+        "merge_rate": 0.778,
+        "median_mttr_s": 96,
         "last_activity_ts": 1785253302
       },
       {
@@ -427,11 +425,11 @@
         "repo_short": "blacklists",
         "owner": "fabriziosalmi",
         "total": 5,
-        "merged": 4,
+        "merged": 5,
         "closed": 0,
-        "open": 1,
+        "open": 0,
         "merge_rate": 1.0,
-        "median_mttr_s": 318,
+        "median_mttr_s": 525,
         "last_activity_ts": 1785140946
       },
       {
@@ -577,6 +575,18 @@
         "merge_rate": 1.0,
         "median_mttr_s": 116,
         "last_activity_ts": 1781201857
+      },
+      {
+        "repo": "fabriziosalmi/UglyFeed",
+        "repo_short": "UglyFeed",
+        "owner": "fabriziosalmi",
+        "total": 2,
+        "merged": 1,
+        "closed": 1,
+        "open": 0,
+        "merge_rate": 0.5,
+        "median_mttr_s": 1635,
+        "last_activity_ts": 1785342539
       },
       {
         "repo": "fabriziosalmi/repos",
@@ -807,18 +817,6 @@
         "last_activity_ts": 1780960834
       },
       {
-        "repo": "fabriziosalmi/UglyFeed",
-        "repo_short": "UglyFeed",
-        "owner": "fabriziosalmi",
-        "total": 1,
-        "merged": 0,
-        "closed": 1,
-        "open": 0,
-        "merge_rate": 0.0,
-        "median_mttr_s": 1337,
-        "last_activity_ts": 1784961256
-      },
-      {
         "repo": "fabriziosalmi/linux",
         "repo_short": "linux",
         "owner": "fabriziosalmi",
@@ -951,48 +949,7 @@
         "last_activity_ts": 1780971142
       }
     ],
-    "oldest_open": [
-      {
-        "repo": "fabriziosalmi/wildbox",
-        "repo_short": "wildbox",
-        "owner": "fabriziosalmi",
-        "pr": 308,
-        "pr_url": "https://github.com/fabriziosalmi/wildbox/pull/308",
-        "title": "Config file failed to parse",
-        "date": "2026-07-27T08:28:54+00:00",
-        "ts": 1785140934
-      },
-      {
-        "repo": "fabriziosalmi/proxmox-lxc-autoscale-ml",
-        "repo_short": "proxmox-lxc-autoscale-ml",
-        "owner": "fabriziosalmi",
-        "pr": 30,
-        "pr_url": "https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml/pull/30",
-        "title": "Fix insecure direct comparison of API keys in verify step",
-        "date": "2026-07-27T08:29:00+00:00",
-        "ts": 1785140940
-      },
-      {
-        "repo": "fabriziosalmi/blacklists",
-        "repo_short": "blacklists",
-        "owner": "fabriziosalmi",
-        "pr": 35,
-        "pr_url": "https://github.com/fabriziosalmi/blacklists/pull/35",
-        "title": "Fix missing error handling for tar extraction failure",
-        "date": "2026-07-27T08:29:06+00:00",
-        "ts": 1785140946
-      },
-      {
-        "repo": "fabriziosalmi/aidlp",
-        "repo_short": "aidlp",
-        "owner": "fabriziosalmi",
-        "pr": 45,
-        "pr_url": "https://github.com/fabriziosalmi/aidlp/pull/45",
-        "title": "Guard against empty term in add_term()",
-        "date": "2026-07-28T15:41:42+00:00",
-        "ts": 1785253302
-      }
-    ],
+    "oldest_open": [],
     "title_buckets": [
       [
         "Other",
@@ -1012,7 +969,7 @@
       ],
       [
         "Fix",
-        23
+        24
       ],
       [
         "Prevent",
@@ -1030,17 +987,17 @@
   },
   "prs": [
     {
-      "date": "2026-07-28T15:41:42+00:00",
-      "ts": 1785253302,
-      "repo": "fabriziosalmi/aidlp",
+      "date": "2026-07-29T16:28:59+00:00",
+      "ts": 1785342539,
+      "repo": "fabriziosalmi/UglyFeed",
       "owner": "fabriziosalmi",
-      "repo_short": "aidlp",
-      "pr": 45,
-      "pr_url": "https://github.com/fabriziosalmi/aidlp/pull/45",
-      "title": "Guard against empty term in add_term()",
-      "state": "open",
-      "merged_at": null,
-      "closed_at": null,
+      "repo_short": "UglyFeed",
+      "pr": 56,
+      "pr_url": "https://github.com/fabriziosalmi/UglyFeed/pull/56",
+      "title": "Fix path traversal vulnerability in _serve_xml_file",
+      "state": "merged",
+      "merged_at": "2026-07-29T17:01:12Z",
+      "closed_at": "2026-07-29T17:01:12Z",
       "is_draft": false,
       "branch": "",
       "model": "",
@@ -1053,7 +1010,36 @@
       "subs_pct": null,
       "guards": [],
       "verdict": "",
-      "verdict_class": "open",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-07-28T15:41:42+00:00",
+      "ts": 1785253302,
+      "repo": "fabriziosalmi/aidlp",
+      "owner": "fabriziosalmi",
+      "repo_short": "aidlp",
+      "pr": 45,
+      "pr_url": "https://github.com/fabriziosalmi/aidlp/pull/45",
+      "title": "Guard against empty term in add_term()",
+      "state": "merged",
+      "merged_at": "2026-07-29T16:32:23Z",
+      "closed_at": "2026-07-29T16:32:23Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
       "entry_path": "",
       "entry_url": "",
       "source": "github"
@@ -1067,9 +1053,9 @@
       "pr": 35,
       "pr_url": "https://github.com/fabriziosalmi/blacklists/pull/35",
       "title": "Fix missing error handling for tar extraction failure",
-      "state": "open",
-      "merged_at": null,
-      "closed_at": null,
+      "state": "merged",
+      "merged_at": "2026-07-29T16:32:27Z",
+      "closed_at": "2026-07-29T16:32:27Z",
       "is_draft": false,
       "branch": "",
       "model": "",
@@ -1082,7 +1068,7 @@
       "subs_pct": null,
       "guards": [],
       "verdict": "",
-      "verdict_class": "open",
+      "verdict_class": "merged",
       "entry_path": "",
       "entry_url": "",
       "source": "github"
@@ -1096,9 +1082,9 @@
       "pr": 30,
       "pr_url": "https://github.com/fabriziosalmi/proxmox-lxc-autoscale-ml/pull/30",
       "title": "Fix insecure direct comparison of API keys in verify step",
-      "state": "open",
+      "state": "closed",
       "merged_at": null,
-      "closed_at": null,
+      "closed_at": "2026-07-29T16:32:57Z",
       "is_draft": false,
       "branch": "",
       "model": "",
@@ -1111,7 +1097,7 @@
       "subs_pct": null,
       "guards": [],
       "verdict": "",
-      "verdict_class": "open",
+      "verdict_class": "closed",
       "entry_path": "",
       "entry_url": "",
       "source": "github"
@@ -1125,9 +1111,9 @@
       "pr": 308,
       "pr_url": "https://github.com/fabriziosalmi/wildbox/pull/308",
       "title": "Config file failed to parse",
-      "state": "open",
-      "merged_at": null,
-      "closed_at": null,
+      "state": "merged",
+      "merged_at": "2026-07-29T16:59:38Z",
+      "closed_at": "2026-07-29T16:59:38Z",
       "is_draft": false,
       "branch": "",
       "model": "",
@@ -1140,7 +1126,7 @@
       "subs_pct": null,
       "guards": [],
       "verdict": "",
-      "verdict_class": "open",
+      "verdict_class": "merged",
       "entry_path": "",
       "entry_url": "",
       "source": "github"
