@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-08-02",
+  "generated_at": "2026-08-03",
   "agent": "fabgpt-coder",
   "fetch": {
-    "total_count": 288,
-    "collected": 288,
+    "total_count": 291,
+    "collected": 291,
     "truncated": false,
     "error": null
   },
   "stats": {
-    "prs_total": 288,
+    "prs_total": 291,
     "diary_count": 0,
     "states": {
-      "merged": 230,
+      "merged": 233,
       "closed": 58
     },
     "verdicts": {
-      "merged": 230,
+      "merged": 233,
       "closed": 58
     },
     "subs_num": 0,
@@ -32,7 +32,7 @@
       ],
       [
         "b2v",
-        30
+        31
       ],
       [
         "wildbox",
@@ -49,23 +49,17 @@
     ],
     "top_guards": [],
     "first_day": "2026-04-21",
-    "last_day": "2026-07-29",
-    "active_days": 25,
+    "last_day": "2026-08-02",
+    "active_days": 26,
     "mttr": {
-      "count": 288,
-      "mean_s": 200342,
-      "median_s": 184,
+      "count": 291,
+      "mean_s": 198279,
+      "median_s": 186,
       "p90_s": 6486
     },
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-07-04",
-          "opened": 0,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-07-05",
           "opened": 0,
@@ -236,6 +230,12 @@
         },
         {
           "date": "2026-08-02",
+          "opened": 3,
+          "resolved": 3,
+          "median_s": 286
+        },
+        {
+          "date": "2026-08-03",
           "opened": 0,
           "resolved": 0,
           "median_s": null
@@ -243,10 +243,10 @@
       ]
     },
     "pulse": {
-      "last_pr_at": "2026-07-29T16:28:59+00:00",
-      "last_pr_age_s": 313881,
-      "last_merge_at": "2026-07-29T17:01:12+00:00",
-      "last_merge_age_s": 311948,
+      "last_pr_at": "2026-08-02T09:35:47+00:00",
+      "last_pr_age_s": 83169,
+      "last_merge_at": "2026-08-02T09:40:00+00:00",
+      "last_merge_age_s": 82916,
       "open_count": 0,
       "stale_count": 0,
       "stale_threshold_days": 7
@@ -268,13 +268,13 @@
         "repo": "fabriziosalmi/b2v",
         "repo_short": "b2v",
         "owner": "fabriziosalmi",
-        "total": 30,
-        "merged": 8,
+        "total": 31,
+        "merged": 9,
         "closed": 22,
         "open": 0,
-        "merge_rate": 0.267,
-        "median_mttr_s": 15527,
-        "last_activity_ts": 1784891578
+        "merge_rate": 0.29,
+        "median_mttr_s": 6486,
+        "last_activity_ts": 1785663347
       },
       {
         "repo": "fabriziosalmi/wildbox",
@@ -373,6 +373,18 @@
         "last_activity_ts": 1781046527
       },
       {
+        "repo": "fabriziosalmi/blacklists",
+        "repo_short": "blacklists",
+        "owner": "fabriziosalmi",
+        "total": 6,
+        "merged": 6,
+        "closed": 0,
+        "open": 0,
+        "merge_rate": 1.0,
+        "median_mttr_s": 416,
+        "last_activity_ts": 1785663293
+      },
+      {
         "repo": "fabriziosalmi/webtek",
         "repo_short": "webtek",
         "owner": "fabriziosalmi",
@@ -419,18 +431,6 @@
         "merge_rate": 1.0,
         "median_mttr_s": 140,
         "last_activity_ts": 1782130951
-      },
-      {
-        "repo": "fabriziosalmi/blacklists",
-        "repo_short": "blacklists",
-        "owner": "fabriziosalmi",
-        "total": 5,
-        "merged": 5,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 525,
-        "last_activity_ts": 1785140946
       },
       {
         "repo": "fabriziosalmi/logos",
@@ -515,6 +515,18 @@
         "merge_rate": 1.0,
         "median_mttr_s": 196,
         "last_activity_ts": 1781025606
+      },
+      {
+        "repo": "fabriziosalmi/freeundergroundtekno",
+        "repo_short": "freeundergroundtekno",
+        "owner": "fabriziosalmi",
+        "total": 3,
+        "merged": 2,
+        "closed": 1,
+        "open": 0,
+        "merge_rate": 0.667,
+        "median_mttr_s": 1359,
+        "last_activity_ts": 1785663307
       },
       {
         "repo": "fabriziosalmi/speedmate",
@@ -647,18 +659,6 @@
         "merge_rate": 1.0,
         "median_mttr_s": 380815,
         "last_activity_ts": 1784961269
-      },
-      {
-        "repo": "fabriziosalmi/freeundergroundtekno",
-        "repo_short": "freeundergroundtekno",
-        "owner": "fabriziosalmi",
-        "total": 2,
-        "merged": 1,
-        "closed": 1,
-        "open": 0,
-        "merge_rate": 0.5,
-        "median_mttr_s": 2217,
-        "last_activity_ts": 1784961236
       },
       {
         "repo": "fabriziosalmi/l0-compressor",
@@ -953,7 +953,7 @@
     "title_buckets": [
       [
         "Other",
-        102
+        103
       ],
       [
         "Bump",
@@ -969,7 +969,7 @@
       ],
       [
         "Fix",
-        24
+        26
       ],
       [
         "Prevent",
@@ -986,6 +986,93 @@
     ]
   },
   "prs": [
+    {
+      "date": "2026-08-02T09:35:47+00:00",
+      "ts": 1785663347,
+      "repo": "fabriziosalmi/b2v",
+      "owner": "fabriziosalmi",
+      "repo_short": "b2v",
+      "pr": 40,
+      "pr_url": "https://github.com/fabriziosalmi/b2v/pull/40",
+      "title": "Fix potential panic in from_bytes when header contains no null byte",
+      "state": "merged",
+      "merged_at": "2026-08-02T09:39:43Z",
+      "closed_at": "2026-08-02T09:39:43Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-08-02T09:35:07+00:00",
+      "ts": 1785663307,
+      "repo": "fabriziosalmi/freeundergroundtekno",
+      "owner": "fabriziosalmi",
+      "repo_short": "freeundergroundtekno",
+      "pr": 20,
+      "pr_url": "https://github.com/fabriziosalmi/freeundergroundtekno/pull/20",
+      "title": "Fix command injection in curl call",
+      "state": "merged",
+      "merged_at": "2026-08-02T09:39:53Z",
+      "closed_at": "2026-08-02T09:39:53Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-08-02T09:34:53+00:00",
+      "ts": 1785663293,
+      "repo": "fabriziosalmi/blacklists",
+      "owner": "fabriziosalmi",
+      "repo_short": "blacklists",
+      "pr": 38,
+      "pr_url": "https://github.com/fabriziosalmi/blacklists/pull/38",
+      "title": "Guard against empty RPZ blacklist file after extraction",
+      "state": "merged",
+      "merged_at": "2026-08-02T09:40:00Z",
+      "closed_at": "2026-08-02T09:40:00Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
     {
       "date": "2026-07-29T16:28:59+00:00",
       "ts": 1785342539,
