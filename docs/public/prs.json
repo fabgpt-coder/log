@@ -1,28 +1,28 @@
 {
-  "generated_at": "2026-08-25",
+  "generated_at": "2026-08-26",
   "agent": "fabgpt-coder",
   "fetch": {
-    "total_count": 291,
-    "collected": 291,
+    "total_count": 289,
+    "collected": 289,
     "truncated": false,
     "error": null
   },
   "stats": {
-    "prs_total": 291,
+    "prs_total": 289,
     "diary_count": 0,
     "states": {
-      "merged": 233,
+      "merged": 231,
       "closed": 58
     },
     "verdicts": {
-      "merged": 233,
+      "merged": 231,
       "closed": 58
     },
     "subs_num": 0,
     "subs_den": 0,
     "subs_pct": null,
     "guard_firings": 0,
-    "distinct_repos": 58,
+    "distinct_repos": 57,
     "distinct_models": 0,
     "top_models": [],
     "top_repos": [
@@ -52,20 +52,14 @@
     "last_day": "2026-08-02",
     "active_days": 26,
     "mttr": {
-      "count": 291,
-      "mean_s": 198279,
+      "count": 289,
+      "mean_s": 199471,
       "median_s": 186,
-      "p90_s": 6486
+      "p90_s": 3281
     },
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-07-27",
-          "opened": 3,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-07-28",
           "opened": 1,
@@ -239,14 +233,20 @@
           "opened": 0,
           "resolved": 0,
           "median_s": null
+        },
+        {
+          "date": "2026-08-26",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
         }
       ]
     },
     "pulse": {
       "last_pr_at": "2026-08-02T09:35:47+00:00",
-      "last_pr_age_s": 1973427,
+      "last_pr_age_s": 2060005,
       "last_merge_at": "2026-08-02T09:40:00+00:00",
-      "last_merge_age_s": 1973174,
+      "last_merge_age_s": 2059752,
       "open_count": 0,
       "stale_count": 0,
       "stale_threshold_days": 7
@@ -685,18 +685,6 @@
         "last_activity_ts": 1781528930
       },
       {
-        "repo": "fabriziosalmi/enjoy",
-        "repo_short": "enjoy",
-        "owner": "fabriziosalmi",
-        "total": 2,
-        "merged": 2,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 26144,
-        "last_activity_ts": 1781528011
-      },
-      {
         "repo": "fabriziosalmi/silicondev",
         "repo_short": "silicondev",
         "owner": "fabriziosalmi",
@@ -953,7 +941,7 @@
     "title_buckets": [
       [
         "Other",
-        103
+        102
       ],
       [
         "Bump",
@@ -969,7 +957,7 @@
       ],
       [
         "Fix",
-        26
+        25
       ],
       [
         "Prevent",
@@ -3104,35 +3092,6 @@
       "source": "github"
     },
     {
-      "date": "2026-06-15T12:53:31+00:00",
-      "ts": 1781528011,
-      "repo": "fabriziosalmi/enjoy",
-      "owner": "fabriziosalmi",
-      "repo_short": "enjoy",
-      "pr": 57,
-      "pr_url": "https://github.com/fabriziosalmi/enjoy/pull/57",
-      "title": "fix(agssh): self-host fonts \u2014 remove Google Fonts third-party egress",
-      "state": "merged",
-      "merged_at": "2026-06-15T12:56:12Z",
-      "closed_at": "2026-06-15T12:56:12Z",
-      "is_draft": false,
-      "branch": "",
-      "model": "",
-      "model_full": "",
-      "endpoint": "",
-      "plan_source": "",
-      "subtasks_done": "",
-      "subs_num": 0,
-      "subs_den": 0,
-      "subs_pct": null,
-      "guards": [],
-      "verdict": "",
-      "verdict_class": "merged",
-      "entry_path": "",
-      "entry_url": "",
-      "source": "github"
-    },
-    {
       "date": "2026-06-15T12:11:33+00:00",
       "ts": 1781525493,
       "repo": "fabriziosalmi/certmate",
@@ -3144,35 +3103,6 @@
       "state": "merged",
       "merged_at": "2026-06-24T07:13:14Z",
       "closed_at": "2026-06-24T07:13:14Z",
-      "is_draft": false,
-      "branch": "",
-      "model": "",
-      "model_full": "",
-      "endpoint": "",
-      "plan_source": "",
-      "subtasks_done": "",
-      "subs_num": 0,
-      "subs_den": 0,
-      "subs_pct": null,
-      "guards": [],
-      "verdict": "",
-      "verdict_class": "merged",
-      "entry_path": "",
-      "entry_url": "",
-      "source": "github"
-    },
-    {
-      "date": "2026-06-15T08:02:56+00:00",
-      "ts": 1781510576,
-      "repo": "fabriziosalmi/enjoy",
-      "owner": "fabriziosalmi",
-      "repo_short": "enjoy",
-      "pr": 56,
-      "pr_url": "https://github.com/fabriziosalmi/enjoy/pull/56",
-      "title": "Config file failed to parse",
-      "state": "merged",
-      "merged_at": "2026-06-15T22:31:44Z",
-      "closed_at": "2026-06-15T22:31:44Z",
       "is_draft": false,
       "branch": "",
       "model": "",
