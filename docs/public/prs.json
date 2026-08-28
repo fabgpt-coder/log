@@ -1,28 +1,28 @@
 {
-  "generated_at": "2026-08-27",
+  "generated_at": "2026-08-28",
   "agent": "fabgpt-coder",
   "fetch": {
-    "total_count": 289,
-    "collected": 289,
+    "total_count": 298,
+    "collected": 298,
     "truncated": false,
     "error": null
   },
   "stats": {
-    "prs_total": 289,
+    "prs_total": 298,
     "diary_count": 0,
     "states": {
-      "merged": 231,
+      "merged": 240,
       "closed": 58
     },
     "verdicts": {
-      "merged": 231,
+      "merged": 240,
       "closed": 58
     },
     "subs_num": 0,
     "subs_den": 0,
     "subs_pct": null,
     "guard_firings": 0,
-    "distinct_repos": 57,
+    "distinct_repos": 59,
     "distinct_models": 0,
     "top_models": [],
     "top_repos": [
@@ -32,7 +32,7 @@
       ],
       [
         "b2v",
-        31
+        32
       ],
       [
         "wildbox",
@@ -40,32 +40,26 @@
       ],
       [
         "cf-box",
-        13
+        14
       ],
       [
-        "proxmox-lxc-autoscale-ml",
+        "aidlp",
         10
       ]
     ],
     "top_guards": [],
     "first_day": "2026-04-21",
-    "last_day": "2026-08-02",
-    "active_days": 26,
+    "last_day": "2026-08-28",
+    "active_days": 27,
     "mttr": {
-      "count": 289,
-      "mean_s": 199471,
-      "median_s": 186,
-      "p90_s": 3281
+      "count": 298,
+      "mean_s": 193616,
+      "median_s": 213,
+      "p90_s": 5639
     },
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-07-29",
-          "opened": 1,
-          "resolved": 5,
-          "median_s": 201801
-        },
         {
           "date": "2026-07-30",
           "opened": 0,
@@ -239,14 +233,20 @@
           "opened": 0,
           "resolved": 0,
           "median_s": null
+        },
+        {
+          "date": "2026-08-28",
+          "opened": 9,
+          "resolved": 9,
+          "median_s": 5587
         }
       ]
     },
     "pulse": {
-      "last_pr_at": "2026-08-02T09:35:47+00:00",
-      "last_pr_age_s": 2184835,
-      "last_merge_at": "2026-08-02T09:40:00+00:00",
-      "last_merge_age_s": 2184582,
+      "last_pr_at": "2026-08-28T11:45:26+00:00",
+      "last_pr_age_s": 20428,
+      "last_merge_at": "2026-08-28T13:23:00+00:00",
+      "last_merge_age_s": 14574,
       "open_count": 0,
       "stale_count": 0,
       "stale_threshold_days": 7
@@ -268,13 +268,13 @@
         "repo": "fabriziosalmi/b2v",
         "repo_short": "b2v",
         "owner": "fabriziosalmi",
-        "total": 31,
-        "merged": 9,
+        "total": 32,
+        "merged": 10,
         "closed": 22,
         "open": 0,
-        "merge_rate": 0.29,
-        "median_mttr_s": 6486,
-        "last_activity_ts": 1785663347
+        "merge_rate": 0.312,
+        "median_mttr_s": 6009,
+        "last_activity_ts": 1787917483
       },
       {
         "repo": "fabriziosalmi/wildbox",
@@ -292,13 +292,25 @@
         "repo": "fabriziosalmi/cf-box",
         "repo_short": "cf-box",
         "owner": "fabriziosalmi",
-        "total": 13,
-        "merged": 13,
+        "total": 14,
+        "merged": 14,
         "closed": 0,
         "open": 0,
         "merge_rate": 1.0,
-        "median_mttr_s": 147,
-        "last_activity_ts": 1784972577
+        "median_mttr_s": 148,
+        "last_activity_ts": 1787917505
+      },
+      {
+        "repo": "fabriziosalmi/aidlp",
+        "repo_short": "aidlp",
+        "owner": "fabriziosalmi",
+        "total": 10,
+        "merged": 8,
+        "closed": 2,
+        "open": 0,
+        "merge_rate": 0.8,
+        "median_mttr_s": 96,
+        "last_activity_ts": 1787917513
       },
       {
         "repo": "fabriziosalmi/proxmox-lxc-autoscale-ml",
@@ -311,18 +323,6 @@
         "merge_rate": 0.8,
         "median_mttr_s": 154,
         "last_activity_ts": 1785140940
-      },
-      {
-        "repo": "fabriziosalmi/aidlp",
-        "repo_short": "aidlp",
-        "owner": "fabriziosalmi",
-        "total": 9,
-        "merged": 7,
-        "closed": 2,
-        "open": 0,
-        "merge_rate": 0.778,
-        "median_mttr_s": 96,
-        "last_activity_ts": 1785253302
       },
       {
         "repo": "fabriziosalmi/websites-monitor",
@@ -349,6 +349,18 @@
         "last_activity_ts": 1784893052
       },
       {
+        "repo": "fabriziosalmi/llmproxy",
+        "repo_short": "llmproxy",
+        "owner": "fabriziosalmi",
+        "total": 7,
+        "merged": 7,
+        "closed": 0,
+        "open": 0,
+        "merge_rate": 1.0,
+        "median_mttr_s": 1282,
+        "last_activity_ts": 1787917526
+      },
+      {
         "repo": "fabriziosalmi/proximity",
         "repo_short": "proximity",
         "owner": "fabriziosalmi",
@@ -373,6 +385,18 @@
         "last_activity_ts": 1781046527
       },
       {
+        "repo": "fabriziosalmi/nginx-waf-ai",
+        "repo_short": "nginx-waf-ai",
+        "owner": "fabriziosalmi",
+        "total": 6,
+        "merged": 2,
+        "closed": 4,
+        "open": 0,
+        "merge_rate": 0.333,
+        "median_mttr_s": 6824,
+        "last_activity_ts": 1787917499
+      },
+      {
         "repo": "fabriziosalmi/blacklists",
         "repo_short": "blacklists",
         "owner": "fabriziosalmi",
@@ -395,18 +419,6 @@
         "merge_rate": 1.0,
         "median_mttr_s": 1166,
         "last_activity_ts": 1784972556
-      },
-      {
-        "repo": "fabriziosalmi/llmproxy",
-        "repo_short": "llmproxy",
-        "owner": "fabriziosalmi",
-        "total": 6,
-        "merged": 6,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 1180,
-        "last_activity_ts": 1784972541
       },
       {
         "repo": "fabriziosalmi/open-bpm",
@@ -467,18 +479,6 @@
         "merge_rate": 1.0,
         "median_mttr_s": 216,
         "last_activity_ts": 1782334245
-      },
-      {
-        "repo": "fabriziosalmi/nginx-waf-ai",
-        "repo_short": "nginx-waf-ai",
-        "owner": "fabriziosalmi",
-        "total": 5,
-        "merged": 1,
-        "closed": 4,
-        "open": 0,
-        "merge_rate": 0.2,
-        "median_mttr_s": 6826,
-        "last_activity_ts": 1780980149
       },
       {
         "repo": "fabriziosalmi/rainlogs",
@@ -587,6 +587,30 @@
         "merge_rate": 1.0,
         "median_mttr_s": 116,
         "last_activity_ts": 1781201857
+      },
+      {
+        "repo": "fabriziosalmi/noted",
+        "repo_short": "noted",
+        "owner": "fabriziosalmi",
+        "total": 2,
+        "merged": 1,
+        "closed": 1,
+        "open": 0,
+        "merge_rate": 0.5,
+        "median_mttr_s": 4432,
+        "last_activity_ts": 1787917491
+      },
+      {
+        "repo": "fabriziosalmi/occam-observer",
+        "repo_short": "occam-observer",
+        "owner": "fabriziosalmi",
+        "total": 2,
+        "merged": 2,
+        "closed": 0,
+        "open": 0,
+        "merge_rate": 1.0,
+        "median_mttr_s": 5516,
+        "last_activity_ts": 1787917464
       },
       {
         "repo": "fabriziosalmi/UglyFeed",
@@ -805,6 +829,18 @@
         "last_activity_ts": 1780960834
       },
       {
+        "repo": "fabriziosalmi/naso",
+        "repo_short": "naso",
+        "owner": "fabriziosalmi",
+        "total": 1,
+        "merged": 1,
+        "closed": 0,
+        "open": 0,
+        "merge_rate": 1.0,
+        "median_mttr_s": 5639,
+        "last_activity_ts": 1787917520
+      },
+      {
         "repo": "fabriziosalmi/linux",
         "repo_short": "linux",
         "owner": "fabriziosalmi",
@@ -851,18 +887,6 @@
         "merge_rate": 0.0,
         "median_mttr_s": 1149,
         "last_activity_ts": 1784893059
-      },
-      {
-        "repo": "fabriziosalmi/noted",
-        "repo_short": "noted",
-        "owner": "fabriziosalmi",
-        "total": 1,
-        "merged": 0,
-        "closed": 1,
-        "open": 0,
-        "merge_rate": 0.0,
-        "median_mttr_s": 3277,
-        "last_activity_ts": 1784891560
       },
       {
         "repo": "fabriziosalmi/tanstack-compromise-checker",
@@ -941,7 +965,7 @@
     "title_buckets": [
       [
         "Other",
-        102
+        105
       ],
       [
         "Bump",
@@ -952,12 +976,12 @@
         52
       ],
       [
-        "\ud83e\udd16 [Gitoma]",
-        28
+        "Fix",
+        31
       ],
       [
-        "Fix",
-        25
+        "\ud83e\udd16 [Gitoma]",
+        28
       ],
       [
         "Prevent",
@@ -974,6 +998,267 @@
     ]
   },
   "prs": [
+    {
+      "date": "2026-08-28T11:45:26+00:00",
+      "ts": 1787917526,
+      "repo": "fabriziosalmi/llmproxy",
+      "owner": "fabriziosalmi",
+      "repo_short": "llmproxy",
+      "pr": 134,
+      "pr_url": "https://github.com/fabriziosalmi/llmproxy/pull/134",
+      "title": "Fix missing await in InMemoryRepository.update_status() metadata assignment",
+      "state": "merged",
+      "merged_at": "2026-08-28T13:23:00Z",
+      "closed_at": "2026-08-28T13:23:00Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-08-28T11:45:20+00:00",
+      "ts": 1787917520,
+      "repo": "fabriziosalmi/naso",
+      "owner": "fabriziosalmi",
+      "repo_short": "naso",
+      "pr": 69,
+      "pr_url": "https://github.com/fabriziosalmi/naso/pull/69",
+      "title": "Fix missing required field 'type' in IdentityCreate",
+      "state": "merged",
+      "merged_at": "2026-08-28T13:19:19Z",
+      "closed_at": "2026-08-28T13:19:19Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-08-28T11:45:13+00:00",
+      "ts": 1787917513,
+      "repo": "fabriziosalmi/aidlp",
+      "owner": "fabriziosalmi",
+      "repo_short": "aidlp",
+      "pr": 70,
+      "pr_url": "https://github.com/fabriziosalmi/aidlp/pull/70",
+      "title": "Fix missing assertion in test_binary_content_type_is_skipped",
+      "state": "merged",
+      "merged_at": "2026-08-28T13:18:51Z",
+      "closed_at": "2026-08-28T13:18:51Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-08-28T11:45:05+00:00",
+      "ts": 1787917505,
+      "repo": "fabriziosalmi/cf-box",
+      "owner": "fabriziosalmi",
+      "repo_short": "cf-box",
+      "pr": 19,
+      "pr_url": "https://github.com/fabriziosalmi/cf-box/pull/19",
+      "title": "Fix test_export_cloudflare_data_no_token to await correct function",
+      "state": "merged",
+      "merged_at": "2026-08-28T13:17:21Z",
+      "closed_at": "2026-08-28T13:17:21Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-08-28T11:44:59+00:00",
+      "ts": 1787917499,
+      "repo": "fabriziosalmi/nginx-waf-ai",
+      "owner": "fabriziosalmi",
+      "repo_short": "nginx-waf-ai",
+      "pr": 23,
+      "pr_url": "https://github.com/fabriziosalmi/nginx-waf-ai/pull/23",
+      "title": "Guard against missing tests/ directory before running pytest",
+      "state": "merged",
+      "merged_at": "2026-08-28T13:18:25Z",
+      "closed_at": "2026-08-28T13:18:25Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-08-28T11:44:51+00:00",
+      "ts": 1787917491,
+      "repo": "fabriziosalmi/noted",
+      "owner": "fabriziosalmi",
+      "repo_short": "noted",
+      "pr": 36,
+      "pr_url": "https://github.com/fabriziosalmi/noted/pull/36",
+      "title": "Guard against undefined activeNoteName in NoteHistoryModal",
+      "state": "merged",
+      "merged_at": "2026-08-28T13:17:58Z",
+      "closed_at": "2026-08-28T13:17:58Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-08-28T11:44:43+00:00",
+      "ts": 1787917483,
+      "repo": "fabriziosalmi/b2v",
+      "owner": "fabriziosalmi",
+      "repo_short": "b2v",
+      "pr": 41,
+      "pr_url": "https://github.com/fabriziosalmi/b2v/pull/41",
+      "title": "Fix panic on missing null terminator in from_bytes",
+      "state": "merged",
+      "merged_at": "2026-08-28T13:16:56Z",
+      "closed_at": "2026-08-28T13:16:56Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-08-28T11:44:24+00:00",
+      "ts": 1787917464,
+      "repo": "fabriziosalmi/occam-observer",
+      "owner": "fabriziosalmi",
+      "repo_short": "occam-observer",
+      "pr": 6,
+      "pr_url": "https://github.com/fabriziosalmi/occam-observer/pull/6",
+      "title": "Guard against empty file list in jq transformation",
+      "state": "merged",
+      "merged_at": "2026-08-28T13:16:24Z",
+      "closed_at": "2026-08-28T13:16:24Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-08-28T11:44:18+00:00",
+      "ts": 1787917458,
+      "repo": "fabriziosalmi/occam-observer",
+      "owner": "fabriziosalmi",
+      "repo_short": "occam-observer",
+      "pr": 5,
+      "pr_url": "https://github.com/fabriziosalmi/occam-observer/pull/5",
+      "title": "Fix race condition in API startup by waiting for port to be ready",
+      "state": "merged",
+      "merged_at": "2026-08-28T13:16:11Z",
+      "closed_at": "2026-08-28T13:16:11Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "merged",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
     {
       "date": "2026-08-02T09:35:47+00:00",
       "ts": 1785663347,
