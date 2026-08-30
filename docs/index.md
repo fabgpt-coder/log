@@ -42,7 +42,7 @@ features:
 
 <TitleBuckets />
 
-## At a glance — 2026-08-29
+## At a glance — 2026-08-30
 
 **PR state mix** — `merged` 194 · `closed` 58
 
