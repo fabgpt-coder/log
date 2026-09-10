@@ -13,11 +13,11 @@ hero:
       link: https://github.com/fabgpt-coder/log
 features:
   - title: PRs shipped
-    details: '252 across 58 repos'
+    details: '255 across 59 repos'
   - title: Merged
-    details: '194 of 252'
+    details: '194 of 255'
   - title: Resolved
-    details: '252 of 252 (100%)'
+    details: '253 of 255 (99%)'
 ---
 
 
@@ -42,14 +42,14 @@ features:
 
 <TitleBuckets />
 
-## At a glance — 2026-09-09
+## At a glance — 2026-09-10
 
-**PR state mix** — `merged` 194 · `closed` 58
+**PR state mix** — `merged` 194 · `open` 2 · `closed` 59
 
-**Top repos** — `b2v` (32) · `wildbox` (22) · `cf-box` (14) · `aidlp` (10) · `proxmox-lxc-autoscale-ml` (10)
+**Top repos** — `b2v` (32) · `wildbox` (23) · `cf-box` (14) · `aidlp` (10) · `proxmox-lxc-autoscale-ml` (10)
 
-**Activity** — 27 active days (2026-04-21 → 2026-08-28)
+**Activity** — 28 active days (2026-04-21 → 2026-09-09)
 
 ---
 
-→ [Browse all 252 PRs with filters & search](/prs)
+→ [Browse all 255 PRs with filters & search](/prs)

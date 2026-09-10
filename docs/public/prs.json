@@ -1,28 +1,30 @@
 {
-  "generated_at": "2026-09-09",
+  "generated_at": "2026-09-10",
   "agent": "fabgpt-coder",
   "fetch": {
-    "total_count": 252,
-    "collected": 252,
+    "total_count": 255,
+    "collected": 255,
     "truncated": false,
     "error": null
   },
   "stats": {
-    "prs_total": 252,
+    "prs_total": 255,
     "diary_count": 0,
     "states": {
-      "merged": 194,
-      "closed": 58
+      "open": 2,
+      "closed": 59,
+      "merged": 194
     },
     "verdicts": {
-      "merged": 194,
-      "closed": 58
+      "open": 2,
+      "closed": 59,
+      "merged": 194
     },
     "subs_num": 0,
     "subs_den": 0,
     "subs_pct": null,
     "guard_firings": 0,
-    "distinct_repos": 58,
+    "distinct_repos": 59,
     "distinct_models": 0,
     "top_models": [],
     "top_repos": [
@@ -32,7 +34,7 @@
       ],
       [
         "wildbox",
-        22
+        23
       ],
       [
         "cf-box",
@@ -49,23 +51,17 @@
     ],
     "top_guards": [],
     "first_day": "2026-04-21",
-    "last_day": "2026-08-28",
-    "active_days": 27,
+    "last_day": "2026-09-09",
+    "active_days": 28,
     "mttr": {
-      "count": 252,
-      "mean_s": 228918,
-      "median_s": 308,
+      "count": 253,
+      "mean_s": 228014,
+      "median_s": 307,
       "p90_s": 6829
     },
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-08-11",
-          "opened": 0,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-08-12",
           "opened": 0,
@@ -236,6 +232,12 @@
         },
         {
           "date": "2026-09-09",
+          "opened": 3,
+          "resolved": 1,
+          "median_s": 90
+        },
+        {
+          "date": "2026-09-10",
           "opened": 0,
           "resolved": 0,
           "median_s": null
@@ -243,11 +245,11 @@
       ]
     },
     "pulse": {
-      "last_pr_at": "2026-08-28T11:45:26+00:00",
-      "last_pr_age_s": 1029480,
+      "last_pr_at": "2026-09-09T15:04:44+00:00",
+      "last_pr_age_s": 67047,
       "last_merge_at": "2026-08-28T13:23:00+00:00",
-      "last_merge_age_s": 1023626,
-      "open_count": 0,
+      "last_merge_age_s": 1109951,
+      "open_count": 2,
       "stale_count": 0,
       "stale_threshold_days": 7
     },
@@ -268,13 +270,13 @@
         "repo": "fabriziosalmi/wildbox",
         "repo_short": "wildbox",
         "owner": "fabriziosalmi",
-        "total": 22,
+        "total": 23,
         "merged": 17,
         "closed": 5,
-        "open": 0,
+        "open": 1,
         "merge_rate": 0.773,
         "median_mttr_s": 177,
-        "last_activity_ts": 1785140934
+        "last_activity_ts": 1788966274
       },
       {
         "repo": "fabriziosalmi/cf-box",
@@ -337,6 +339,18 @@
         "last_activity_ts": 1784893052
       },
       {
+        "repo": "fabriziosalmi/blacklists",
+        "repo_short": "blacklists",
+        "owner": "fabriziosalmi",
+        "total": 7,
+        "merged": 6,
+        "closed": 1,
+        "open": 0,
+        "merge_rate": 0.857,
+        "median_mttr_s": 307,
+        "last_activity_ts": 1788958454
+      },
+      {
         "repo": "fabriziosalmi/llmproxy",
         "repo_short": "llmproxy",
         "owner": "fabriziosalmi",
@@ -383,18 +397,6 @@
         "merge_rate": 0.333,
         "median_mttr_s": 6824,
         "last_activity_ts": 1787917499
-      },
-      {
-        "repo": "fabriziosalmi/blacklists",
-        "repo_short": "blacklists",
-        "owner": "fabriziosalmi",
-        "total": 6,
-        "merged": 6,
-        "closed": 0,
-        "open": 0,
-        "merge_rate": 1.0,
-        "median_mttr_s": 416,
-        "last_activity_ts": 1785663293
       },
       {
         "repo": "fabriziosalmi/webtek",
@@ -817,6 +819,18 @@
         "last_activity_ts": 1780960834
       },
       {
+        "repo": "fabriziosalmi/patterns",
+        "repo_short": "patterns",
+        "owner": "fabriziosalmi",
+        "total": 1,
+        "merged": 0,
+        "closed": 0,
+        "open": 1,
+        "merge_rate": null,
+        "median_mttr_s": null,
+        "last_activity_ts": 1788966284
+      },
+      {
         "repo": "fabriziosalmi/naso",
         "repo_short": "naso",
         "owner": "fabriziosalmi",
@@ -949,7 +963,28 @@
         "last_activity_ts": 1780971142
       }
     ],
-    "oldest_open": [],
+    "oldest_open": [
+      {
+        "repo": "fabriziosalmi/wildbox",
+        "repo_short": "wildbox",
+        "owner": "fabriziosalmi",
+        "pr": 423,
+        "pr_url": "https://github.com/fabriziosalmi/wildbox/pull/423",
+        "title": "Fix ((count++)) killing the script under set -e when the counter is 0",
+        "date": "2026-09-09T15:04:34+00:00",
+        "ts": 1788966274
+      },
+      {
+        "repo": "fabriziosalmi/patterns",
+        "repo_short": "patterns",
+        "owner": "fabriziosalmi",
+        "pr": 53,
+        "pr_url": "https://github.com/fabriziosalmi/patterns/pull/53",
+        "title": "Guard against empty maps file causing misleading nginx error",
+        "date": "2026-09-09T15:04:44+00:00",
+        "ts": 1788966284
+      }
+    ],
     "title_buckets": [
       [
         "Bump",
@@ -957,7 +992,7 @@
       ],
       [
         "Other",
-        60
+        61
       ],
       [
         "Add",
@@ -965,7 +1000,7 @@
       ],
       [
         "Fix",
-        31
+        33
       ],
       [
         "\ud83e\udd16 [Gitoma]",
@@ -986,6 +1021,93 @@
     ]
   },
   "prs": [
+    {
+      "date": "2026-09-09T15:04:44+00:00",
+      "ts": 1788966284,
+      "repo": "fabriziosalmi/patterns",
+      "owner": "fabriziosalmi",
+      "repo_short": "patterns",
+      "pr": 53,
+      "pr_url": "https://github.com/fabriziosalmi/patterns/pull/53",
+      "title": "Guard against empty maps file causing misleading nginx error",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-09-09T15:04:34+00:00",
+      "ts": 1788966274,
+      "repo": "fabriziosalmi/wildbox",
+      "owner": "fabriziosalmi",
+      "repo_short": "wildbox",
+      "pr": 423,
+      "pr_url": "https://github.com/fabriziosalmi/wildbox/pull/423",
+      "title": "Fix ((count++)) killing the script under set -e when the counter is 0",
+      "state": "open",
+      "merged_at": null,
+      "closed_at": null,
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "open",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
+    {
+      "date": "2026-09-09T12:54:14+00:00",
+      "ts": 1788958454,
+      "repo": "fabriziosalmi/blacklists",
+      "owner": "fabriziosalmi",
+      "repo_short": "blacklists",
+      "pr": 42,
+      "pr_url": "https://github.com/fabriziosalmi/blacklists/pull/42",
+      "title": "Fix cosmetic-rule over-blocking, unloadable RPZ artifact, and the licensing position",
+      "state": "closed",
+      "merged_at": null,
+      "closed_at": "2026-09-09T12:55:44Z",
+      "is_draft": false,
+      "branch": "",
+      "model": "",
+      "model_full": "",
+      "endpoint": "",
+      "plan_source": "",
+      "subtasks_done": "",
+      "subs_num": 0,
+      "subs_den": 0,
+      "subs_pct": null,
+      "guards": [],
+      "verdict": "",
+      "verdict_class": "closed",
+      "entry_path": "",
+      "entry_url": "",
+      "source": "github"
+    },
     {
       "date": "2026-08-28T11:45:26+00:00",
       "ts": 1787917526,
