@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30",
+  "generated_at": "2026-10-01",
   "agent": "fabgpt-coder",
   "fetch": {
     "total_count": 255,
@@ -11,13 +11,13 @@
     "prs_total": 255,
     "diary_count": 0,
     "states": {
-      "open": 2,
-      "closed": 59,
+      "closed": 60,
+      "open": 1,
       "merged": 194
     },
     "verdicts": {
-      "open": 2,
-      "closed": 59,
+      "closed": 60,
+      "open": 1,
       "merged": 194
     },
     "subs_num": 0,
@@ -54,20 +54,14 @@
     "last_day": "2026-09-09",
     "active_days": 28,
     "mttr": {
-      "count": 253,
-      "mean_s": 228014,
-      "median_s": 307,
-      "p90_s": 6829
+      "count": 254,
+      "mean_s": 234510,
+      "median_s": 308,
+      "p90_s": 6832
     },
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-09-01",
-          "opened": 0,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-09-02",
           "opened": 0,
@@ -241,16 +235,22 @@
           "opened": 0,
           "resolved": 0,
           "median_s": null
+        },
+        {
+          "date": "2026-10-01",
+          "opened": 0,
+          "resolved": 1,
+          "median_s": 1878174
         }
       ]
     },
     "pulse": {
       "last_pr_at": "2026-09-09T15:04:44+00:00",
-      "last_pr_age_s": 1800276,
+      "last_pr_age_s": 1888288,
       "last_merge_at": "2026-08-28T13:23:00+00:00",
-      "last_merge_age_s": 2843180,
-      "open_count": 2,
-      "stale_count": 2,
+      "last_merge_age_s": 2931192,
+      "open_count": 1,
+      "stale_count": 1,
       "stale_threshold_days": 7
     },
     "repo_health": [
@@ -824,10 +824,10 @@
         "owner": "fabriziosalmi",
         "total": 1,
         "merged": 0,
-        "closed": 0,
-        "open": 1,
-        "merge_rate": null,
-        "median_mttr_s": null,
+        "closed": 1,
+        "open": 0,
+        "merge_rate": 0.0,
+        "median_mttr_s": 1878174,
         "last_activity_ts": 1788966284
       },
       {
@@ -973,16 +973,6 @@
         "title": "Fix ((count++)) killing the script under set -e when the counter is 0",
         "date": "2026-09-09T15:04:34+00:00",
         "ts": 1788966274
-      },
-      {
-        "repo": "fabriziosalmi/patterns",
-        "repo_short": "patterns",
-        "owner": "fabriziosalmi",
-        "pr": 53,
-        "pr_url": "https://github.com/fabriziosalmi/patterns/pull/53",
-        "title": "Guard against empty maps file causing misleading nginx error",
-        "date": "2026-09-09T15:04:44+00:00",
-        "ts": 1788966284
       }
     ],
     "title_buckets": [
@@ -1030,9 +1020,9 @@
       "pr": 53,
       "pr_url": "https://github.com/fabriziosalmi/patterns/pull/53",
       "title": "Guard against empty maps file causing misleading nginx error",
-      "state": "open",
+      "state": "closed",
       "merged_at": null,
-      "closed_at": null,
+      "closed_at": "2026-10-01T08:47:38Z",
       "is_draft": false,
       "branch": "",
       "model": "",
@@ -1045,7 +1035,7 @@
       "subs_pct": null,
       "guards": [],
       "verdict": "",
-      "verdict_class": "open",
+      "verdict_class": "closed",
       "entry_path": "",
       "entry_url": "",
       "source": "github"
