@@ -17,7 +17,7 @@ features:
   - title: Merged
     details: '194 of 255'
   - title: Resolved
-    details: '254 of 255 (100%)'
+    details: '255 of 255 (100%)'
 ---
 
 
@@ -42,9 +42,9 @@ features:
 
 <TitleBuckets />
 
-## At a glance — 2026-10-01
+## At a glance — 2026-10-02
 
-**PR state mix** — `merged` 194 · `open` 1 · `closed` 60
+**PR state mix** — `merged` 194 · `closed` 61
 
 **Top repos** — `b2v` (32) · `wildbox` (23) · `cf-box` (14) · `aidlp` (10) · `proxmox-lxc-autoscale-ml` (10)
 

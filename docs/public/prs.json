@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01",
+  "generated_at": "2026-10-02",
   "agent": "fabgpt-coder",
   "fetch": {
     "total_count": 255,
@@ -11,13 +11,11 @@
     "prs_total": 255,
     "diary_count": 0,
     "states": {
-      "closed": 60,
-      "open": 1,
+      "closed": 61,
       "merged": 194
     },
     "verdicts": {
-      "closed": 60,
-      "open": 1,
+      "closed": 61,
       "merged": 194
     },
     "subs_num": 0,
@@ -54,20 +52,14 @@
     "last_day": "2026-09-09",
     "active_days": 28,
     "mttr": {
-      "count": 254,
-      "mean_s": 234510,
-      "median_s": 308,
-      "p90_s": 6832
+      "count": 255,
+      "mean_s": 241149,
+      "median_s": 309,
+      "p90_s": 24568
     },
     "daily_series": {
       "days": 30,
       "series": [
-        {
-          "date": "2026-09-02",
-          "opened": 0,
-          "resolved": 0,
-          "median_s": null
-        },
         {
           "date": "2026-09-03",
           "opened": 0,
@@ -239,18 +231,24 @@
         {
           "date": "2026-10-01",
           "opened": 0,
-          "resolved": 1,
-          "median_s": 1878174
+          "resolved": 2,
+          "median_s": 1902780
+        },
+        {
+          "date": "2026-10-02",
+          "opened": 0,
+          "resolved": 0,
+          "median_s": null
         }
       ]
     },
     "pulse": {
       "last_pr_at": "2026-09-09T15:04:44+00:00",
-      "last_pr_age_s": 1888288,
+      "last_pr_age_s": 1972853,
       "last_merge_at": "2026-08-28T13:23:00+00:00",
-      "last_merge_age_s": 2931192,
-      "open_count": 1,
-      "stale_count": 1,
+      "last_merge_age_s": 3015757,
+      "open_count": 0,
+      "stale_count": 0,
       "stale_threshold_days": 7
     },
     "repo_health": [
@@ -272,10 +270,10 @@
         "owner": "fabriziosalmi",
         "total": 23,
         "merged": 17,
-        "closed": 5,
-        "open": 1,
-        "merge_rate": 0.773,
-        "median_mttr_s": 177,
+        "closed": 6,
+        "open": 0,
+        "merge_rate": 0.739,
+        "median_mttr_s": 178,
         "last_activity_ts": 1788966274
       },
       {
@@ -963,18 +961,7 @@
         "last_activity_ts": 1780971142
       }
     ],
-    "oldest_open": [
-      {
-        "repo": "fabriziosalmi/wildbox",
-        "repo_short": "wildbox",
-        "owner": "fabriziosalmi",
-        "pr": 423,
-        "pr_url": "https://github.com/fabriziosalmi/wildbox/pull/423",
-        "title": "Fix ((count++)) killing the script under set -e when the counter is 0",
-        "date": "2026-09-09T15:04:34+00:00",
-        "ts": 1788966274
-      }
-    ],
+    "oldest_open": [],
     "title_buckets": [
       [
         "Bump",
@@ -1049,9 +1036,9 @@
       "pr": 423,
       "pr_url": "https://github.com/fabriziosalmi/wildbox/pull/423",
       "title": "Fix ((count++)) killing the script under set -e when the counter is 0",
-      "state": "open",
+      "state": "closed",
       "merged_at": null,
-      "closed_at": null,
+      "closed_at": "2026-10-01T22:27:41Z",
       "is_draft": false,
       "branch": "",
       "model": "",
@@ -1064,7 +1051,7 @@
       "subs_pct": null,
       "guards": [],
       "verdict": "",
-      "verdict_class": "open",
+      "verdict_class": "closed",
       "entry_path": "",
       "entry_url": "",
       "source": "github"
